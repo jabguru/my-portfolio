@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Julius Alibrown | Mobile Software Engineer</title>
+    <meta
+        content="Portfolio of Julius Alibrown, a Mobile Software Engineer specializing in scalable iOS and Android applications."
+        name="description" />
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2a66ea', // From Custom Color
+                        secondary: '#0F172A',
+                        accent: '#22C55E',
+                        background: '#F8FAFC',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        'custom': '8px', // From ROUND_EIGHT
+                    }
+                }
+            }
+        }
+    </script>
+    <style data-purpose="custom-animations">
+        @keyframes float {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(2deg);
+            }
+
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e2e8f0;
+        }
+    </style>
+</head>
+
+<body class="bg-background font-sans text-secondary selection:bg-primary selection:text-white">
+    <!-- BEGIN: Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-card border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a class="text-xl font-bold tracking-tight" href="#">Julius<span class="text-primary">.</span></a>
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600">
+                <a class="hover:text-primary transition-colors" href="#apps">Apps</a>
+                <a class="hover:text-primary transition-colors" href="#experience">Experience</a>
+                <a class="hover:text-primary transition-colors" href="#skills">Skills</a>
+                <a class="px-5 py-2.5 bg-primary text-white rounded-custom hover:opacity-90 transition-all shadow-lg shadow-primary/20"
+                    href="#contact">Contact Me</a>
+            </div>
+        </div>
+    </nav>
+    <!-- END: Navigation -->
+    <!-- BEGIN: Hero Section -->
+    <section class="relative pt-32 pb-20 overflow-hidden min-h-screen flex items-center" id="hero">
+        <!-- Background Mockup Decorations -->
+        <div class="absolute right-[-10%] top-[20%] hidden lg:block opacity-20 pointer-events-none">
+            <div class="w-64 h-[500px] bg-slate-800 rounded-[3rem] border-8 border-slate-900 shadow-2xl animate-float"
+                style="animation-delay: -2s;"></div>
+        </div>
+        <div class="absolute right-[10%] top-[10%] hidden lg:block opacity-20 pointer-events-none">
+            <div class="w-64 h-[500px] bg-slate-800 rounded-[3rem] border-8 border-slate-900 shadow-2xl animate-float">
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="max-w-3xl">
+                <span
+                    class="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-primary text-sm font-semibold mb-6 border border-blue-100">Available
+                    for Opportunities</span>
+                <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter mb-6 leading-[1.1]">
+                    Julius Alibrown
+                </h1>
+                <h2 class="text-3xl md:text-4xl font-medium text-slate-500 mb-8">
+                    Mobile Software Engineer
+                </h2>
+                <p class="text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl">
+                    I build scalable mobile applications used by real users across iOS and Android, focusing on
+                    performance, clean architecture, and exceptional user experience.
+                </p>
+                <div class="flex flex-wrap gap-4 mb-12">
+                    <a class="px-8 py-4 bg-primary text-white font-bold rounded-custom text-lg hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl shadow-primary/25"
+                        href="#apps">View Apps</a>
+                    <a class="px-8 py-4 bg-white text-secondary font-bold rounded-custom text-lg border border-slate-200 hover:bg-slate-50 transition-all"
+                        href="#contact">Contact Me</a>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a class="text-slate-400 hover:text-primary transition-colors" href="#" title="GitHub">
+                        <svg class="w-7 h-7" fill="currentColor" viewbox="0 0 24 24">
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.041-1.412-4.041-1.412-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a class="text-slate-400 hover:text-primary transition-colors" href="#" title="LinkedIn">
+                        <svg class="w-7 h-7" fill="currentColor" viewbox="0 0 24 24">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a class="flex items-center space-x-2 text-slate-500 hover:text-primary transition-colors font-medium"
+                        href="#">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                            <path
+                                d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                        </svg>
+                        <span>Download CV</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: Hero Section -->
+    <!-- BEGIN: Production Impact -->
+    <section class="py-24 bg-white border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 lg:grid-cols-5 gap-8">
+                <div class="text-center md:text-left">
+                    <p class="text-4xl font-extrabold text-primary mb-2">3+</p>
+                    <p class="text-slate-500 font-medium">Years Experience</p>
+                </div>
+                <div class="text-center md:text-left">
+                    <p class="text-4xl font-extrabold text-primary mb-2">3+</p>
+                    <p class="text-slate-500 font-medium">Production Apps</p>
+                </div>
+                <div class="text-center md:text-left">
+                    <p class="text-4xl font-extrabold text-primary mb-2">10k+</p>
+                    <p class="text-slate-500 font-medium">Active Users</p>
+                </div>
+                <div class="text-center md:text-left">
+                    <p class="text-4xl font-extrabold text-primary mb-2">iOS/And</p>
+                    <p class="text-slate-500 font-medium">Cross-Platform</p>
+                </div>
+                <div class="text-center md:text-left">
+                    <p class="text-4xl font-extrabold text-primary mb-2">Fintech</p>
+                    <p class="text-slate-500 font-medium">Niche Focus</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: Production Impact -->
+    <!-- BEGIN: Apps I've Built -->
+    <section class="py-32" id="apps">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-20">
+                <h2 class="text-4xl font-bold tracking-tight mb-4">Apps I've Built</h2>
+                <p class="text-slate-500 text-lg max-w-2xl">High-performance mobile solutions for finance and
+                    productivity.</p>
+            </div>
+            <div class="space-y-32">
+                <!-- TellerOne -->
+                <div class="flex flex-col lg:flex-row items-center gap-16 group">
+                    <div class="w-full lg:w-1/2 order-2 lg:order-1">
+                        <div class="flex items-center space-x-4 mb-6">
+                            <div
+                                class="w-12 h-12 bg-blue-600 rounded-2xl shadow-lg flex items-center justify-center text-white font-bold text-xl">
+                                T</div>
+                            <h3 class="text-3xl font-bold">TellerOne</h3>
+                        </div>
+                        <p class="text-xl text-slate-600 mb-8 leading-relaxed">
+                            A comprehensive digital banking mobile application providing seamless financial
+                            transactions, account management, and real-time security alerts for thousands of users.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-10">
+                            <span
+                                class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Flutter</span>
+                            <span
+                                class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Firebase</span>
+                            <span class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Clean
+                                Architecture</span>
+                            <span
+                                class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">BLoC</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a class="px-6 py-3 bg-secondary text-white rounded-custom font-semibold flex items-center space-x-2 hover:bg-slate-800 transition-colors"
+                                href="#">
+                                <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+                                    <path
+                                        d="M17.5 13c-2.481 0-4.5 2.019-4.5 4.5s2.019 4.5 4.5 4.5 4.5-2.019 4.5-4.5-2.019-4.5-4.5-4.5zm0 7c-1.379 0-2.5-1.121-2.5-2.5s1.121-2.5 2.5-2.5 2.5 1.121 2.5 2.5-1.121 2.5-2.5 2.5zm-15.5-12h14v-1.5c0-1.93 1.57-3.5 3.5-3.5s3.5 1.57 3.5 3.5v1.5h1v12h-1.31c-.347.599-.817 1.117-1.385 1.523l-.117.077h2.812v-10h-20v10h10.455c-.29-.444-.523-.93-.688-1.447l-.067-.219-.7-.334h-9v-12zm16-1.5c0-1.103-.897-2-2-2s-2 .897-2 2v1.5h4v-1.5z">
+                                    </path>
+                                </svg>
+                                <span>App Store</span>
+                            </a>
+                            <a class="px-6 py-3 bg-white border border-slate-200 text-secondary rounded-custom font-semibold flex items-center space-x-2 hover:bg-slate-50 transition-colors"
+                                href="#">
+                                <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+                                    <path
+                                        d="M17.523 15.341l-3.103 3.103c-.2.2-.524.2-.724 0l-1.034-1.034a.512.512 0 010-.724l1.034-1.034c.2-.2.524-.2.724 0l1.034 1.034a.512.512 0 00.724 0l1.034-1.034c.2-.2.524-.2.724 0l.69.69c.2.2.2.524 0 .724l-1.034 1.034c-.2.2-.524.2-.724 0zm5.177-10.341l-1.724 1.724c-.4.4-1.048.4-1.448 0l-1.724-1.724c-.4-.4-.4-1.048 0-1.448s1.048-.4 1.448 0l1.034 1.034c.4.4 1.048.4 1.448 0l1.724-1.724c.4-.4 1.048-.4 1.448 0s.4 1.048 0 1.448zM3 13h4v4H3v-4zm0-6h4v4H3V7zm10 0h4v4h-4V7z">
+                                    </path>
+                                </svg>
+                                <span>Play Store</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="w-full lg:w-1/2 order-1 lg:order-2 flex justify-center">
+                        <div class="relative group-hover:-translate-y-4 transition-transform duration-500">
+                            <div
+                                class="w-64 h-[520px] bg-slate-900 rounded-[2.5rem] border-8 border-slate-900 shadow-2xl relative overflow-hidden">
+                                <img alt="TellerOne App Interface" class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEZuBikrQb2jBhcpkIX8KkUhukMTXcG7Z3eOIaIiDu7TVtAZC3quGsYxGUol91xTln1wy1Z9On0VjHGHZ1c2ARiUTtSVgCNfNpROA5NJljOjDEJrxRED-YOy90lB_vUxuQFNsNdO5TM1txDJr1baDe9EscipYWpV-AL9gUIx3-LwYtL3r2kp1VZ6VtvkvRyPsHz9GydV6etpEvUktTjTlQK-u1QJjDHBRIAYEuaRKzPBQqIajpDjGhLqs0AwsBAcJ-WAY-yLIjfTqb" />
+                            </div>
+                            <div
+                                class="absolute -right-8 -bottom-8 w-48 h-[400px] bg-slate-800 rounded-[2rem] border-4 border-slate-900 shadow-2xl overflow-hidden hidden md:block">
+                                <img alt="TellerOne Secondary View" class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuATujHaj-qrPlhIdAB6c6Fl69Cx4gbVAckFWk3IXDbtL3vszudVlq0pdBQTV5Lw38FU5tmUbEioPxbfMDN2XxGOLV6SvIliGsHBiy-9jNtDYXSXD-ifEv07fG-17rJpKO74X0feC_pN5aJ9-X-eF8Rt7C_IiIaD1K8dSTsk2-3c9aKAAUpFPGrXhwdz9TKqOrpHMUxi3Y7I3_LAJLLsWpdhSGnydEjwUS9J3IwRnZbHqbtRdYINTBfQUHlMgpeJiT4sy0xJfMHEhNvG" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Contree -->
+                <div class="flex flex-col lg:flex-row items-center gap-16 group">
+                    <div class="w-full lg:w-1/2 flex justify-center">
+                        <div class="relative group-hover:-translate-y-4 transition-transform duration-500">
+                            <div
+                                class="w-64 h-[520px] bg-slate-900 rounded-[2.5rem] border-8 border-slate-900 shadow-2xl relative overflow-hidden">
+                                <img alt="Contree App Interface" class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK4sf-o78GZMt1yiETDrPnCG1xLy6m4D6ULn7gjfCxF0Q1mFbvbkoZKnssHHzoooROA532YghzxfRj4FETni2Rt7sICQlTnj_5QyndiCuBNJvARAjsVEtcwEh_vV-dhcAjZJWmuCsa0uZjIwjqqFQyOfFxLuyFxJK5RQ2dVUXgIvI3uQrAbIO4A9QKXjKZ-O1gU_RLU61Pa2BrHg5g9v0K3eYz8ldXpIe_ptFzRY18QiSFu_Yo6wxFt_x_0OS1isvykXhUrC3jMyuK" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full lg:w-1/2">
+                        <div class="flex items-center space-x-4 mb-6">
+                            <div
+                                class="w-12 h-12 bg-accent rounded-2xl shadow-lg flex items-center justify-center text-white font-bold text-xl">
+                                C</div>
+                            <h3 class="text-3xl font-bold">Contree</h3>
+                        </div>
+                        <p class="text-xl text-slate-600 mb-8 leading-relaxed">
+                            A fintech solution built with Flutter, focused on community contributions and transparent
+                            financial tracking for groups and organizations.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-10">
+                            <span
+                                class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Flutter</span>
+                            <span
+                                class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Supabase</span>
+                            <span
+                                class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Riverpod</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a class="px-6 py-3 bg-secondary text-white rounded-custom font-semibold flex items-center space-x-2 hover:bg-slate-800 transition-colors"
+                                href="#">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                                    <path
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                                </svg>
+                                <span>Visit Website</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- iJot -->
+                <div class="flex flex-col lg:flex-row items-center gap-16 group">
+                    <div class="w-full lg:w-1/2 order-2 lg:order-1">
+                        <div class="flex items-center space-x-4 mb-6">
+                            <div
+                                class="w-12 h-12 bg-amber-500 rounded-2xl shadow-lg flex items-center justify-center text-white font-bold text-xl">
+                                J</div>
+                            <h3 class="text-3xl font-bold">iJot</h3>
+                        </div>
+                        <p class="text-xl text-slate-600 mb-8 leading-relaxed">
+                            A lightning-fast cross-platform note-taking application designed for productivity hackers.
+                            Features offline support and instantaneous cloud sync.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-10">
+                            <span
+                                class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Dart</span>
+                            <span
+                                class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">SQLite</span>
+                            <span class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Web
+                                Support</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a class="px-6 py-3 bg-white border border-slate-200 text-secondary rounded-custom font-semibold flex items-center space-x-2 hover:bg-slate-50 transition-colors"
+                                href="#">
+                                <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+                                    <path
+                                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.041-1.412-4.041-1.412-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                                    </path>
+                                </svg>
+                                <span>View Source</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="w-full lg:w-1/2 order-1 lg:order-2 flex justify-center">
+                        <div class="relative group-hover:-translate-y-4 transition-transform duration-500">
+                            <div
+                                class="w-64 h-[520px] bg-slate-900 rounded-[2.5rem] border-8 border-slate-900 shadow-2xl relative overflow-hidden">
+                                <img alt="iJot App Interface" class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7HPweSIm6Xdekw0XQTY-6AL11p8s6CEyHyALoJl3U4wpm1NSy7HEmGxCeKNJBlzKkwvG99hQN_RIlqqQaRZ2Ex4Iy_0iaT_9O8QHrMYIHA6TrUm0l5-fkZDY5oqnK_RrQwdJwb5rrkpcbL27AZnVtreoYkjC5rmtfwZRCnc4genlY7H0bIfTvylhOtGoAEQzfi-HarM1OYhu2XlHTsMXgYEJDE1-p4IW9gHJdBdVKXSB5eNBqTlebLKo9FHqCgN6jvslOm3jw11oY" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: Apps I've Built -->
+    <!-- BEGIN: Engineering Highlights -->
+    <section class="py-32 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-20 text-center">
+                <h2 class="text-4xl font-bold tracking-tight mb-4">Engineering Highlights</h2>
+                <p class="text-slate-500 text-lg">My focus is on technical excellence and operational impact.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div
+                    class="p-8 bg-white rounded-custom shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-blue-50 text-primary rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                            <path
+                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Auth Systems</h4>
+                    <p class="text-slate-600 text-sm">Implemented secure OTP flows, deep linking, and OAuth2
+                        integrations for sensitive fintech data.</p>
+                </div>
+                <div
+                    class="p-8 bg-white rounded-custom shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                    <div
+                        class="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                            <path
+                                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Architecture</h4>
+                    <p class="text-slate-600 text-sm">Deep expertise in Clean Architecture, BLoC/Cubit, and decoupled
+                        state management patterns.</p>
+                </div>
+                <div
+                    class="p-8 bg-white rounded-custom shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-green-50 text-green-600 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                            <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Performance</h4>
+                    <p class="text-slate-600 text-sm">Optimizing API consumption, local caching strategies, and
+                        efficient frame-rate UI rendering.</p>
+                </div>
+                <div
+                    class="p-8 bg-white rounded-custom shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                    <div
+                        class="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Impact</h4>
+                    <p class="text-slate-600 text-sm">Reduced app crash rates by 40% through robust global error
+                        handling and monitoring.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: Engineering Highlights -->
+    <!-- BEGIN: How I Build -->
+    <section class="py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-20 text-center">
+                <h2 class="text-4xl font-bold tracking-tight mb-4">How I Build Mobile Apps</h2>
+                <p class="text-slate-500 text-lg">A systematic approach to reliable software delivery.</p>
+            </div>
+            <div class="relative">
+                <div class="flex flex-col lg:flex-row justify-between items-center gap-8 relative z-10">
+                    <div class="w-48 p-6 bg-white border border-slate-200 rounded-custom shadow-sm text-center">
+                        <p class="font-bold text-sm text-slate-800 uppercase tracking-widest mb-2">UI Layer</p>
+                        <p class="text-slate-500 text-xs italic">Design System &amp; Widgets</p>
+                    </div>
+                    <div class="hidden lg:block w-12 h-px bg-slate-300"></div>
+                    <div
+                        class="w-48 p-6 bg-primary text-white border border-primary rounded-custom shadow-xl text-center">
+                        <p class="font-bold text-sm uppercase tracking-widest mb-2">State Management</p>
+                        <p class="text-blue-100 text-xs italic">BLoC / Cubit / Riverpod</p>
+                    </div>
+                    <div class="hidden lg:block w-12 h-px bg-slate-300"></div>
+                    <div class="w-48 p-6 bg-white border border-slate-200 rounded-custom shadow-sm text-center">
+                        <p class="font-bold text-sm text-slate-800 uppercase tracking-widest mb-2">Repository</p>
+                        <p class="text-slate-500 text-xs italic">Data Logic &amp; Sources</p>
+                    </div>
+                    <div class="hidden lg:block w-12 h-px bg-slate-300"></div>
+                    <div
+                        class="w-48 p-6 bg-slate-900 text-white border border-slate-800 rounded-custom shadow-sm text-center">
+                        <p class="font-bold text-sm uppercase tracking-widest mb-2">Backend/API</p>
+                        <p class="text-slate-400 text-xs italic">REST / Firebase / Supabase</p>
+                    </div>
+                </div>
+                <!-- Background decorative line for mobile (simulated) -->
+                <div class="absolute left-1/2 top-0 bottom-0 w-px bg-slate-100 -z-10 lg:hidden"></div>
+            </div>
+        </div>
+    </section>
+    <!-- END: How I Build -->
+    <!-- BEGIN: Work Experience -->
+    <section class="py-32 bg-white" id="experience">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="mb-20">
+                <h2 class="text-4xl font-bold tracking-tight mb-4 text-center">Work Experience</h2>
+            </div>
+            <div class="relative pl-12 timeline-line space-y-20">
+                <!-- Exp 1 -->
+                <div class="relative">
+                    <div
+                        class="absolute -left-[54px] top-0 w-10 h-10 bg-white border-2 border-primary rounded-full flex items-center justify-center z-10">
+                        <div class="w-2.5 h-2.5 bg-primary rounded-full"></div>
+                    </div>
+                    <div>
+                        <span class="text-primary font-bold text-sm uppercase tracking-wider">Current Role</span>
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mt-2 mb-6">
+                            <h3 class="text-2xl font-bold text-slate-900">Flutter Developer</h3>
+                            <p class="text-slate-500 font-medium">Contree | 2022 - Present</p>
+                        </div>
+                        <ul class="space-y-4 text-slate-600">
+                            <li class="flex items-start">
+                                <span class="mr-3 text-primary mt-1.5">•</span>
+                                <span>Architected the mobile application using Flutter and BLoC for high
+                                    scalability.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-3 text-primary mt-1.5">•</span>
+                                <span>Integrated Supabase for real-time data sync and user authentication.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-3 text-primary mt-1.5">•</span>
+                                <span>Improved application loading time by 30% through advanced caching
+                                    strategies.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Exp 2 -->
+                <div class="relative">
+                    <div
+                        class="absolute -left-[54px] top-0 w-10 h-10 bg-white border-2 border-slate-200 rounded-full flex items-center justify-center z-10">
+                        <div class="w-2.5 h-2.5 bg-slate-300 rounded-full"></div>
+                    </div>
+                    <div>
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
+                            <h3 class="text-2xl font-bold text-slate-900">Flutter Developer</h3>
+                            <p class="text-slate-500 font-medium">TellerOne | 2021 - 2022</p>
+                        </div>
+                        <ul class="space-y-4 text-slate-600">
+                            <li class="flex items-start">
+                                <span class="mr-3 text-primary mt-1.5">•</span>
+                                <span>Led the development of core banking features including inter-bank
+                                    transfers.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-3 text-primary mt-1.5">•</span>
+                                <span>Collaborated with designers to implement a pixel-perfect banking UI/UX.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-3 text-primary mt-1.5">•</span>
+                                <span>Implemented biometric authentication and secure local storage.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Exp 3 -->
+                <div class="relative">
+                    <div
+                        class="absolute -left-[54px] top-0 w-10 h-10 bg-white border-2 border-slate-200 rounded-full flex items-center justify-center z-10">
+                        <div class="w-2.5 h-2.5 bg-slate-300 rounded-full"></div>
+                    </div>
+                    <div>
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
+                            <h3 class="text-2xl font-bold text-slate-900">Flutter Developer</h3>
+                            <p class="text-slate-500 font-medium">Sisu Von | 2020 - 2021</p>
+                        </div>
+                        <ul class="space-y-4 text-slate-600">
+                            <li class="flex items-start">
+                                <span class="mr-3 text-primary mt-1.5">•</span>
+                                <span>Developed MVP for a luxury e-commerce platform using Flutter.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-3 text-primary mt-1.5">•</span>
+                                <span>Managed API integration with custom Node.js backend.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: Work Experience -->
+    <!-- BEGIN: Skills -->
+    <section class="py-32 bg-slate-50" id="skills">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-20 text-center">
+                <h2 class="text-4xl font-bold tracking-tight mb-4">Skill Arsenal</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Mobile -->
+                <div class="bg-white p-8 rounded-custom shadow-sm border border-slate-200">
+                    <h4 class="text-xl font-bold mb-6 flex items-center text-primary">
+                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                            <path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                        </svg>
+                        Mobile
+                    </h4>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-slate-50 rounded-lg text-slate-700 font-medium">Flutter</span>
+                        <span class="px-4 py-2 bg-slate-50 rounded-lg text-slate-700 font-medium">Kotlin</span>
+                        <span class="px-4 py-2 bg-slate-50 rounded-lg text-slate-700 font-medium">Swift</span>
+                        <span class="px-4 py-2 bg-slate-50 rounded-lg text-slate-700 font-medium">Dart</span>
+                        <span class="px-4 py-2 bg-slate-50 rounded-lg text-slate-700 font-medium">Clean Arch</span>
+                    </div>
+                </div>
+                <!-- Backend -->
+                <div class="bg-white p-8 rounded-custom shadow-sm border border-slate-200">
+                    <h4 class="text-xl font-bold mb-6 flex items-center text-accent">
+                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                            <path
+                                d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                        </svg>
+                        Backend
+                    </h4>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-slate-50 rounded-lg text-slate-700 font-medium">Spring Boot</span>
+                        <span class="px-4 py-2 bg-slate-50 rounded-lg text-slate-700 font-medium">Django</span>
+                        <span class="px-4 py-2 bg-slate-50 rounded-lg text-slate-700 font-medium">FastAPI</span>
+                        <span class="px-4 py-2 bg-slate-50 rounded-lg text-slate-700 font-medium">SQL</span>
+                        <span class="px-4 py-2 bg-slate-50 rounded-lg text-slate-700 font-medium">Node.js</span>
+                    </div>
+                </div>
+                <!-- Tools -->
+                <div class="bg-white p-8 rounded-custom shadow-sm border border-slate-200">
+                    <h4 class="text-xl font-bold mb-6 flex items-center text-orange-500">
+                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                            <path
+                                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                            <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2"></path>
+                        </svg>
+                        Tools
+                    </h4>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-slate-50 rounded-lg text-slate-700 font-medium">Firebase</span>
+                        <span class="px-4 py-2 bg-slate-50 rounded-lg text-slate-700 font-medium">Supabase</span>
+                        <span class="px-4 py-2 bg-slate-50 rounded-lg text-slate-700 font-medium">Git/GitHub</span>
+                        <span class="px-4 py-2 bg-slate-50 rounded-lg text-slate-700 font-medium">CI/CD</span>
+                        <span class="px-4 py-2 bg-slate-50 rounded-lg text-slate-700 font-medium">Docker</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: Skills -->
+    <!-- BEGIN: Achievements -->
+    <section class="py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-20">
+                <h2 class="text-4xl font-bold tracking-tight mb-4">Achievements</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div
+                    class="p-6 bg-white border border-slate-200 rounded-custom hover:border-primary/50 transition-colors">
+                    <p class="text-xs font-bold text-primary uppercase mb-2">Competition</p>
+                    <h5 class="text-lg font-bold mb-1">Winner - NCPC</h5>
+                    <p class="text-slate-500 text-sm">National Collegiate Programming Contest winner.</p>
+                </div>
+                <div
+                    class="p-6 bg-white border border-slate-200 rounded-custom hover:border-primary/50 transition-colors">
+                    <p class="text-xs font-bold text-primary uppercase mb-2">Hackathon</p>
+                    <h5 class="text-lg font-bold mb-1">Flutterwave Hackathon</h5>
+                    <p class="text-slate-500 text-sm">First place for innovative fintech solution.</p>
+                </div>
+                <div
+                    class="p-6 bg-white border border-slate-200 rounded-custom hover:border-primary/50 transition-colors">
+                    <p class="text-xs font-bold text-primary uppercase mb-2">Leadership</p>
+                    <h5 class="text-lg font-bold mb-1">President - UNILAG JCF</h5>
+                    <p class="text-slate-500 text-sm">Leading the campus computing community.</p>
+                </div>
+                <div
+                    class="p-6 bg-white border border-slate-200 rounded-custom hover:border-primary/50 transition-colors">
+                    <p class="text-xs font-bold text-primary uppercase mb-2">Community</p>
+                    <h5 class="text-lg font-bold mb-1">Tutor - GDSC</h5>
+                    <p class="text-slate-500 text-sm">Mentoring students in mobile development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: Achievements -->
+    <!-- BEGIN: Open Source/Code -->
+    <section class="py-32 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-16">
+                <div class="lg:w-1/2">
+                    <h2 class="text-4xl font-bold mb-6">Open Source &amp; Code</h2>
+                    <p class="text-slate-400 text-lg mb-10 leading-relaxed">
+                        I believe in contributing back to the community. Check out my GitHub for recent libraries,
+                        architecture templates, and personal experiments.
+                    </p>
+                    <a class="inline-flex items-center space-x-2 text-primary font-bold text-lg hover:underline underline-offset-8"
+                        href="#">
+                        <span>Explore my GitHub repositories</span>
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                            <path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2"></path>
+                        </svg>
+                    </a>
+                </div>
+                <div class="lg:w-1/2 w-full">
+                    <!-- GitHub Activity Placeholder Visual -->
+                    <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700">
+                        <div class="flex items-center justify-between mb-8">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-full bg-slate-700 overflow-hidden">
+                                    <img alt="Julius Avatar"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwpdD3GrAmBKm8AhZitxJDnFqo-xC6vVlUfYvYR93PQ-pu7lUJmL9FdFxoplYaIJUNpAQMGAwaHd7J7gn8WwDCWikRJ1Vrv9lIha2x3AYYASc5DeBlzJhbJ2ahRRur8gro51eHwlVjM5Dka07zm28ZnwscZPMa6K_6MtXJk8ZRMTKr_5Z7Q8n8wl6QGMt2xMln0DvMUjTbPEZnOoBXX8Ca-b-3t8rK8aPHA3u2FgDmT_BizI_fzYNLeqEZ8rnsh815wC43HHKLPrtN" />
+                                </div>
+                                <div>
+                                    <p class="font-bold">juliusalibrown</p>
+                                    <p class="text-xs text-slate-500">2,451 contributions in the last year</p>
+                                </div>
+                            </div>
+                            <div class="px-3 py-1 bg-slate-700 text-xs rounded-full">Public Profile</div>
+                        </div>
+                        <!-- Mock Contribution Graph -->
+                        <div class="grid grid-cols-12 md:grid-cols-24 gap-1.5">
+                            <!-- Generating mock grid cells -->
+                            <script>
+                                const gridContainer = document.currentScript.parentElement;
+                                for (let i = 0; i < 84; i++) {
+                                    const div = document.createElement('div');
+                                    const intensity = Math.floor(Math.random() * 4);
+                                    const colors = ['bg-slate-700', 'bg-emerald-900', 'bg-emerald-700', 'bg-emerald-500', 'bg-emerald-400'];
+                                    div.className = `w-full aspect-square rounded-sm ${colors[intensity]}`;
+                                    gridContainer.appendChild(div);
+                                }
+                            </script>
+                        </div>
+                        <div
+                            class="mt-4 flex justify-end items-center space-x-2 text-[10px] text-slate-500 uppercase font-bold tracking-widest">
+                            <span>Less</span>
+                            <div class="w-2.5 h-2.5 bg-slate-700 rounded-sm"></div>
+                            <div class="w-2.5 h-2.5 bg-emerald-900 rounded-sm"></div>
+                            <div class="w-2.5 h-2.5 bg-emerald-700 rounded-sm"></div>
+                            <div class="w-2.5 h-2.5 bg-emerald-500 rounded-sm"></div>
+                            <div class="w-2.5 h-2.5 bg-emerald-400 rounded-sm"></div>
+                            <span>More</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: Open Source/Code -->
+    <!-- BEGIN: Contact Section -->
+    <section class="py-32" id="contact">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="bg-white rounded-[2rem] border border-slate-200 shadow-2xl overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-2">
+                    <div class="p-12 md:p-20 bg-primary text-white">
+                        <h2 class="text-4xl font-bold mb-8">Let's build something amazing together.</h2>
+                        <p class="text-blue-100 text-lg mb-12">I'm currently open to new opportunities and interesting
+                            mobile projects.</p>
+                        <div class="space-y-6">
+                            <a class="flex items-center space-x-4 hover:text-blue-200 transition-colors"
+                                href="mailto:hello@juliusalibrown.com">
+                                <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                                        <path
+                                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-xl font-medium">hello@juliusalibrown.com</span>
+                            </a>
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                                        <path
+                                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                                        <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round"
+                                            stroke-linejoin="round" stroke-width="2"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-xl font-medium">Lagos, Nigeria / Remote</span>
+                            </div>
+                        </div>
+                        <div class="mt-20 flex space-x-6">
+                            <a class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
+                                href="#">
+                                <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
+                                    <path
+                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z">
+                                    </path>
+                                </svg>
+                            </a>
+                            <a class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
+                                href="#">
+                                <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
+                                    <path
+                                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.041-1.412-4.041-1.412-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-12 md:p-20 bg-white">
+                        <form action="#" class="space-y-6" method="POST">
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide"
+                                    for="name">Full Name</label>
+                                <input
+                                    class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-custom focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
+                                    id="name" name="name" placeholder="John Doe" type="text" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide"
+                                    for="email">Email Address</label>
+                                <input
+                                    class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-custom focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
+                                    id="email" name="email" placeholder="john@example.com" type="email" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide"
+                                    for="message">Your Message</label>
+                                <textarea
+                                    class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-custom focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none resize-none"
+                                    id="message" name="message" placeholder="Tell me about your project..."
+                                    rows="5"></textarea>
+                            </div>
+                            <button
+                                class="w-full py-5 bg-secondary text-white font-bold rounded-custom hover:opacity-90 transition-all shadow-xl shadow-slate-200 uppercase tracking-widest"
+                                type="submit">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: Contact Section -->
+    <!-- BEGIN: Footer -->
+    <footer class="py-12 border-t border-slate-200 bg-white">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-slate-500 text-sm mb-4 md:mb-0">© 2023 Julius Alibrown. All rights reserved.</p>
+            <div class="flex space-x-8 text-sm font-medium text-slate-600">
+                <a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+                <a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+                <a class="hover:text-primary transition-colors" href="#hero">Back to Top</a>
+            </div>
+        </div>
+    </footer>
+    <!-- END: Footer -->
+</body>
+
+</html>
