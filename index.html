@@ -70,19 +70,96 @@
             width: 2px;
             background: #e2e8f0;
         }
+
+        .site-container {
+            max-width: 80rem;
+            margin-inline: auto;
+            padding-inline: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .site-container {
+                padding-inline: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .site-container {
+                padding-inline: 2.5rem;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .site-container {
+                padding-inline: 3rem;
+            }
+        }
+
+        .section-container {
+            max-width: 80rem;
+            margin-inline: auto;
+            padding-inline: 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .section-container {
+                padding-inline: 2rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .section-container {
+                padding-inline: 6rem;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .section-container {
+                padding-inline: 8rem;
+            }
+        }
+
+        .app-description {
+            text-align: left;
+        }
+
+        @media (min-width: 1024px) {
+            .app-description {
+                text-align: justify;
+                text-justify: inter-word;
+                hyphens: auto;
+            }
+        }
     </style>
 </head>
 
 <body class="bg-background font-sans text-secondary selection:bg-primary selection:text-white">
     <!-- BEGIN: Navigation -->
     <nav class="fixed top-0 w-full z-50 glass-card border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a class="text-xl font-bold tracking-tight" href="#">Julius<span class="text-primary">.</span></a>
+        <div class="site-container h-20 flex items-center justify-between">
+            <a class="text-xl font-bold tracking-tight" href="#hero">Julius<span class="text-primary">.</span></a>
             <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600">
                 <a class="hover:text-primary transition-colors" href="#apps">Apps</a>
                 <a class="hover:text-primary transition-colors" href="#experience">Experience</a>
                 <a class="hover:text-primary transition-colors" href="#skills">Skills</a>
                 <a class="px-5 py-2.5 bg-primary text-white rounded-custom hover:opacity-90 transition-all shadow-lg shadow-primary/20"
+                    href="#contact">Contact Me</a>
+            </div>
+            <button aria-controls="mobile-menu" aria-expanded="false" aria-label="Open navigation menu"
+                class="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-xl border border-slate-200 text-slate-700 hover:text-primary hover:border-primary/40 transition-colors"
+                id="mobile-menu-button" type="button">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <div class="hidden md:hidden border-t border-slate-200 bg-white/95 backdrop-blur" id="mobile-menu">
+            <div class="site-container py-4 flex flex-col space-y-3 text-sm font-medium text-slate-700">
+                <a class="py-2 hover:text-primary transition-colors" href="#apps">Apps</a>
+                <a class="py-2 hover:text-primary transition-colors" href="#experience">Experience</a>
+                <a class="py-2 hover:text-primary transition-colors" href="#skills">Skills</a>
+                <a class="mt-2 inline-flex justify-center px-5 py-2.5 bg-primary text-white rounded-custom hover:opacity-90 transition-all shadow-lg shadow-primary/20"
                     href="#contact">Contact Me</a>
             </div>
         </div>
@@ -99,7 +176,7 @@
             <div class="w-64 h-[500px] bg-slate-800 rounded-[3rem] border-8 border-slate-900 shadow-2xl animate-float">
             </div>
         </div>
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="site-container relative z-10">
             <div class="max-w-3xl">
                 <span
                     class="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-primary text-sm font-semibold mb-6 border border-blue-100">Available
@@ -121,22 +198,27 @@
                         href="#contact">Contact Me</a>
                 </div>
                 <div class="flex items-center space-x-6">
-                    <a class="text-slate-400 hover:text-primary transition-colors" href="#" title="GitHub">
+                    <a aria-label="Visit GitHub profile" class="text-slate-400 hover:text-primary transition-colors"
+                        href="https://github.com/jabguru" rel="noopener noreferrer" target="_blank" title="GitHub">
                         <svg class="w-7 h-7" fill="currentColor" viewbox="0 0 24 24">
                             <path
                                 d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.041-1.412-4.041-1.412-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
                             </path>
                         </svg>
                     </a>
-                    <a class="text-slate-400 hover:text-primary transition-colors" href="#" title="LinkedIn">
+                    <a aria-label="Visit LinkedIn profile" class="text-slate-400 hover:text-primary transition-colors"
+                        href="https://linkedin.com/in/jabguru" rel="noopener noreferrer" target="_blank"
+                        title="LinkedIn">
                         <svg class="w-7 h-7" fill="currentColor" viewbox="0 0 24 24">
                             <path
                                 d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z">
                             </path>
                         </svg>
                     </a>
-                    <a class="flex items-center space-x-2 text-slate-500 hover:text-primary transition-colors font-medium"
-                        href="#">
+                    <a aria-label="Download resume"
+                        class="flex items-center space-x-2 text-slate-500 hover:text-primary transition-colors font-medium"
+                        href="https://drive.google.com/file/d/1ARL6BSdXx9im3rR_s9syoXBU_EPjS6wM/view?usp=sharing"
+                        rel="noopener noreferrer" target="_blank">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
                             <path
                                 d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
@@ -151,7 +233,7 @@
     <!-- END: Hero Section -->
     <!-- BEGIN: Production Impact -->
     <section class="py-24 bg-white border-y border-slate-100">
-        <div class="max-w-7xl mx-auto px-6">
+        <div class="section-container">
             <div class="grid grid-cols-2 lg:grid-cols-5 gap-8">
                 <div class="text-center md:text-left">
                     <p class="text-4xl font-extrabold text-primary mb-2">3+</p>
@@ -179,7 +261,7 @@
     <!-- END: Production Impact -->
     <!-- BEGIN: Apps I've Built -->
     <section class="py-32" id="apps">
-        <div class="max-w-7xl mx-auto px-6">
+        <div class="section-container">
             <div class="mb-20">
                 <h2 class="text-4xl font-bold tracking-tight mb-4">Apps I've Built</h2>
                 <p class="text-slate-500 text-lg max-w-2xl">High-performance mobile solutions for finance and
@@ -191,11 +273,13 @@
                     <div class="w-full lg:w-1/2 order-2 lg:order-1">
                         <div class="flex items-center space-x-4 mb-6">
                             <div
-                                class="w-12 h-12 bg-blue-600 rounded-2xl shadow-lg flex items-center justify-center text-white font-bold text-xl">
-                                T</div>
+                                class="w-12 h-12 rounded-2xl shadow-lg overflow-hidden bg-white border border-slate-200">
+                                <img alt="TellerOne logo" class="w-full h-full object-cover"
+                                    src="images/logos/tellerone.png" />
+                            </div>
                             <h3 class="text-3xl font-bold">TellerOne</h3>
                         </div>
-                        <p class="text-xl text-slate-600 mb-8 leading-relaxed">
+                        <p class="app-description text-xl text-slate-600 mb-8 leading-relaxed">
                             A comprehensive digital banking mobile application providing seamless financial
                             transactions, account management, and real-time security alerts for thousands of users.
                         </p>
@@ -209,21 +293,25 @@
                             <span
                                 class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">BLoC</span>
                         </div>
-                        <div class="flex space-x-4">
+                        <div class="flex flex-wrap gap-4">
                             <a class="px-6 py-3 bg-secondary text-white rounded-custom font-semibold flex items-center space-x-2 hover:bg-slate-800 transition-colors"
-                                href="#">
-                                <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+                                href="https://apps.apple.com/ng/app/tellerone/id1671370158" rel="noopener noreferrer"
+                                target="_blank">
+                                <svg class="w-5 h-5 shrink-0" fill="currentColor" viewbox="0 0 24 24"
+                                    aria-hidden="true">
                                     <path
-                                        d="M17.5 13c-2.481 0-4.5 2.019-4.5 4.5s2.019 4.5 4.5 4.5 4.5-2.019 4.5-4.5-2.019-4.5-4.5-4.5zm0 7c-1.379 0-2.5-1.121-2.5-2.5s1.121-2.5 2.5-2.5 2.5 1.121 2.5 2.5-1.121 2.5-2.5 2.5zm-15.5-12h14v-1.5c0-1.93 1.57-3.5 3.5-3.5s3.5 1.57 3.5 3.5v1.5h1v12h-1.31c-.347.599-.817 1.117-1.385 1.523l-.117.077h2.812v-10h-20v10h10.455c-.29-.444-.523-.93-.688-1.447l-.067-.219-.7-.334h-9v-12zm16-1.5c0-1.103-.897-2-2-2s-2 .897-2 2v1.5h4v-1.5z">
+                                        d="M16.365 1.43c0 1.14-.463 2.273-1.206 3.062-.777.827-2.06 1.466-3.162 1.38-.14-1.105.355-2.29 1.096-3.085.79-.85 2.158-1.46 3.272-1.357zm3.997 14.11c-.508 1.135-.75 1.643-1.403 2.64-.91 1.38-2.19 3.1-3.78 3.115-1.41.015-1.773-.913-3.69-.902-1.916.01-2.316.92-3.726.904-1.59-.015-2.8-1.568-3.71-2.95-2.547-3.866-2.816-8.4-1.242-10.82 1.12-1.72 2.89-2.728 4.552-2.728 1.695 0 2.76.932 4.16.932 1.36 0 2.19-.934 4.146-.934 1.48 0 3.05.807 4.17 2.2-3.67 2.02-3.08 7.26.523 8.543z">
                                     </path>
                                 </svg>
                                 <span>App Store</span>
                             </a>
                             <a class="px-6 py-3 bg-white border border-slate-200 text-secondary rounded-custom font-semibold flex items-center space-x-2 hover:bg-slate-50 transition-colors"
-                                href="#">
-                                <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+                                href="https://play.google.com/store/apps/details?id=co.tellerone.app"
+                                rel="noopener noreferrer" target="_blank">
+                                <svg class="w-5 h-5 shrink-0" fill="currentColor" viewbox="0 0 24 24"
+                                    aria-hidden="true">
                                     <path
-                                        d="M17.523 15.341l-3.103 3.103c-.2.2-.524.2-.724 0l-1.034-1.034a.512.512 0 010-.724l1.034-1.034c.2-.2.524-.2.724 0l1.034 1.034a.512.512 0 00.724 0l1.034-1.034c.2-.2.524-.2.724 0l.69.69c.2.2.2.524 0 .724l-1.034 1.034c-.2.2-.524.2-.724 0zm5.177-10.341l-1.724 1.724c-.4.4-1.048.4-1.448 0l-1.724-1.724c-.4-.4-.4-1.048 0-1.448s1.048-.4 1.448 0l1.034 1.034c.4.4 1.048.4 1.448 0l1.724-1.724c.4-.4 1.048-.4 1.448 0s.4 1.048 0 1.448zM3 13h4v4H3v-4zm0-6h4v4H3V7zm10 0h4v4h-4V7z">
+                                        d="M3.61 1.814L13.792 12 3.61 22.186A2.372 2.372 0 013 20.5v-17c0-.688.234-1.322.61-1.686zm10.89 10.894l2.096 2.096-9.85 5.516 7.754-7.612zm7.89-1.065c.743.412.743 1.48 0 1.892l-4.868 2.725L15.208 12l2.314-4.26 4.868 2.903zM6.746 3.68l9.85 5.516-2.096 2.096L6.746 3.68z">
                                     </path>
                                 </svg>
                                 <span>Play Store</span>
@@ -259,11 +347,13 @@
                     <div class="w-full lg:w-1/2">
                         <div class="flex items-center space-x-4 mb-6">
                             <div
-                                class="w-12 h-12 bg-accent rounded-2xl shadow-lg flex items-center justify-center text-white font-bold text-xl">
-                                C</div>
+                                class="w-12 h-12 rounded-2xl shadow-lg overflow-hidden bg-white border border-slate-200">
+                                <img alt="Contree logo" class="w-full h-full object-cover"
+                                    src="images/logos/contree.png" />
+                            </div>
                             <h3 class="text-3xl font-bold">Contree</h3>
                         </div>
-                        <p class="text-xl text-slate-600 mb-8 leading-relaxed">
+                        <p class="app-description text-xl text-slate-600 mb-8 leading-relaxed">
                             A fintech solution built with Flutter, focused on community contributions and transparent
                             financial tracking for groups and organizations.
                         </p>
@@ -275,15 +365,28 @@
                             <span
                                 class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Riverpod</span>
                         </div>
-                        <div class="flex space-x-4">
+                        <div class="flex flex-wrap gap-4">
                             <a class="px-6 py-3 bg-secondary text-white rounded-custom font-semibold flex items-center space-x-2 hover:bg-slate-800 transition-colors"
-                                href="#">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                                href="https://apps.apple.com/ng/app/contree/id6756983455" rel="noopener noreferrer"
+                                target="_blank">
+                                <svg class="w-5 h-5 shrink-0" fill="currentColor" viewbox="0 0 24 24"
+                                    aria-hidden="true">
                                     <path
-                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                                        d="M16.365 1.43c0 1.14-.463 2.273-1.206 3.062-.777.827-2.06 1.466-3.162 1.38-.14-1.105.355-2.29 1.096-3.085.79-.85 2.158-1.46 3.272-1.357zm3.997 14.11c-.508 1.135-.75 1.643-1.403 2.64-.91 1.38-2.19 3.1-3.78 3.115-1.41.015-1.773-.913-3.69-.902-1.916.01-2.316.92-3.726.904-1.59-.015-2.8-1.568-3.71-2.95-2.547-3.866-2.816-8.4-1.242-10.82 1.12-1.72 2.89-2.728 4.552-2.728 1.695 0 2.76.932 4.16.932 1.36 0 2.19-.934 4.146-.934 1.48 0 3.05.807 4.17 2.2-3.67 2.02-3.08 7.26.523 8.543z">
+                                    </path>
                                 </svg>
-                                <span>Visit Website</span>
+                                <span>App Store</span>
+                            </a>
+                            <a class="px-6 py-3 bg-white border border-slate-200 text-secondary rounded-custom font-semibold flex items-center space-x-2 hover:bg-slate-50 transition-colors"
+                                href="https://play.google.com/store/apps/details?id=com.contreeapp.app&pcampaignid=web_share"
+                                rel="noopener noreferrer" target="_blank">
+                                <svg class="w-5 h-5 shrink-0" fill="currentColor" viewbox="0 0 24 24"
+                                    aria-hidden="true">
+                                    <path
+                                        d="M3.61 1.814L13.792 12 3.61 22.186A2.372 2.372 0 013 20.5v-17c0-.688.234-1.322.61-1.686zm10.89 10.894l2.096 2.096-9.85 5.516 7.754-7.612zm7.89-1.065c.743.412.743 1.48 0 1.892l-4.868 2.725L15.208 12l2.314-4.26 4.868 2.903zM6.746 3.68l9.85 5.516-2.096 2.096L6.746 3.68z">
+                                    </path>
+                                </svg>
+                                <span>Play Store</span>
                             </a>
                         </div>
                     </div>
@@ -293,11 +396,12 @@
                     <div class="w-full lg:w-1/2 order-2 lg:order-1">
                         <div class="flex items-center space-x-4 mb-6">
                             <div
-                                class="w-12 h-12 bg-amber-500 rounded-2xl shadow-lg flex items-center justify-center text-white font-bold text-xl">
-                                J</div>
+                                class="w-12 h-12 rounded-2xl shadow-lg overflow-hidden bg-white border border-slate-200">
+                                <img alt="iJot logo" class="w-full h-full object-cover" src="images/logos/iJot.png" />
+                            </div>
                             <h3 class="text-3xl font-bold">iJot</h3>
                         </div>
-                        <p class="text-xl text-slate-600 mb-8 leading-relaxed">
+                        <p class="app-description text-xl text-slate-600 mb-8 leading-relaxed">
                             A lightning-fast cross-platform note-taking application designed for productivity hackers.
                             Features offline support and instantaneous cloud sync.
                         </p>
@@ -309,15 +413,27 @@
                             <span class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Web
                                 Support</span>
                         </div>
-                        <div class="flex space-x-4">
+                        <div class="flex flex-wrap gap-4">
                             <a class="px-6 py-3 bg-white border border-slate-200 text-secondary rounded-custom font-semibold flex items-center space-x-2 hover:bg-slate-50 transition-colors"
-                                href="#">
-                                <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+                                href="https://play.google.com/store/apps/details?id=com.jabguru.iJot&hl=en"
+                                rel="noopener noreferrer" target="_blank">
+                                <svg class="w-5 h-5 shrink-0" fill="currentColor" viewbox="0 0 24 24"
+                                    aria-hidden="true">
                                     <path
-                                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.041-1.412-4.041-1.412-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                                        d="M3.61 1.814L13.792 12 3.61 22.186A2.372 2.372 0 013 20.5v-17c0-.688.234-1.322.61-1.686zm10.89 10.894l2.096 2.096-9.85 5.516 7.754-7.612zm7.89-1.065c.743.412.743 1.48 0 1.892l-4.868 2.725L15.208 12l2.314-4.26 4.868 2.903zM6.746 3.68l9.85 5.516-2.096 2.096L6.746 3.68z">
                                     </path>
                                 </svg>
-                                <span>View Source</span>
+                                <span>Play Store</span>
+                            </a>
+                            <a class="px-6 py-3 bg-secondary text-white rounded-custom font-semibold flex items-center space-x-2 hover:bg-slate-800 transition-colors"
+                                href="https://ijot-1da7a.web.app/" rel="noopener noreferrer" target="_blank">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                                    <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-width="2"></path>
+                                    <path d="M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 010 18M12 3a15 15 0 000 18"
+                                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                                </svg>
+                                <span>Web App</span>
                             </a>
                         </div>
                     </div>
@@ -337,7 +453,7 @@
     <!-- END: Apps I've Built -->
     <!-- BEGIN: Engineering Highlights -->
     <section class="py-32 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-6">
+        <div class="section-container">
             <div class="mb-20 text-center">
                 <h2 class="text-4xl font-bold tracking-tight mb-4">Engineering Highlights</h2>
                 <p class="text-slate-500 text-lg">My focus is on technical excellence and operational impact.</p>
@@ -401,7 +517,7 @@
     <!-- END: Engineering Highlights -->
     <!-- BEGIN: How I Build -->
     <section class="py-32">
-        <div class="max-w-7xl mx-auto px-6">
+        <div class="section-container">
             <div class="mb-20 text-center">
                 <h2 class="text-4xl font-bold tracking-tight mb-4">How I Build Mobile Apps</h2>
                 <p class="text-slate-500 text-lg">A systematic approach to reliable software delivery.</p>
@@ -438,7 +554,7 @@
     <!-- END: How I Build -->
     <!-- BEGIN: Work Experience -->
     <section class="py-32 bg-white" id="experience">
-        <div class="max-w-4xl mx-auto px-6">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16 xl:px-24">
             <div class="mb-20">
                 <h2 class="text-4xl font-bold tracking-tight mb-4 text-center">Work Experience</h2>
             </div>
@@ -530,7 +646,7 @@
     <!-- END: Work Experience -->
     <!-- BEGIN: Skills -->
     <section class="py-32 bg-slate-50" id="skills">
-        <div class="max-w-7xl mx-auto px-6">
+        <div class="section-container">
             <div class="mb-20 text-center">
                 <h2 class="text-4xl font-bold tracking-tight mb-4">Skill Arsenal</h2>
             </div>
@@ -596,7 +712,7 @@
     <!-- END: Skills -->
     <!-- BEGIN: Achievements -->
     <section class="py-32">
-        <div class="max-w-7xl mx-auto px-6">
+        <div class="section-container">
             <div class="mb-20">
                 <h2 class="text-4xl font-bold tracking-tight mb-4">Achievements</h2>
             </div>
@@ -631,7 +747,7 @@
     <!-- END: Achievements -->
     <!-- BEGIN: Open Source/Code -->
     <section class="py-32 bg-slate-900 text-white">
-        <div class="max-w-7xl mx-auto px-6">
+        <div class="section-container">
             <div class="flex flex-col lg:flex-row items-center justify-between gap-16">
                 <div class="lg:w-1/2">
                     <h2 class="text-4xl font-bold mb-6">Open Source &amp; Code</h2>
@@ -640,7 +756,7 @@
                         architecture templates, and personal experiments.
                     </p>
                     <a class="inline-flex items-center space-x-2 text-primary font-bold text-lg hover:underline underline-offset-8"
-                        href="#">
+                        href="https://github.com/jabguru" rel="noopener noreferrer" target="_blank">
                         <span>Explore my GitHub repositories</span>
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
                             <path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-linecap="round" stroke-linejoin="round"
@@ -658,7 +774,7 @@
                                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwpdD3GrAmBKm8AhZitxJDnFqo-xC6vVlUfYvYR93PQ-pu7lUJmL9FdFxoplYaIJUNpAQMGAwaHd7J7gn8WwDCWikRJ1Vrv9lIha2x3AYYASc5DeBlzJhbJ2ahRRur8gro51eHwlVjM5Dka07zm28ZnwscZPMa6K_6MtXJk8ZRMTKr_5Z7Q8n8wl6QGMt2xMln0DvMUjTbPEZnOoBXX8Ca-b-3t8rK8aPHA3u2FgDmT_BizI_fzYNLeqEZ8rnsh815wC43HHKLPrtN" />
                                 </div>
                                 <div>
-                                    <p class="font-bold">juliusalibrown</p>
+                                    <p class="font-bold">jabguru</p>
                                     <p class="text-xs text-slate-500">2,451 contributions in the last year</p>
                                 </div>
                             </div>
@@ -696,10 +812,10 @@
     <!-- END: Open Source/Code -->
     <!-- BEGIN: Contact Section -->
     <section class="py-32" id="contact">
-        <div class="max-w-7xl mx-auto px-6">
+        <div class="section-container">
             <div class="bg-white rounded-[2rem] border border-slate-200 shadow-2xl overflow-hidden">
                 <div class="grid grid-cols-1 lg:grid-cols-2">
-                    <div class="p-12 md:p-20 bg-primary text-white">
+                    <div class="p-8 sm:p-10 lg:p-14 bg-primary text-white">
                         <h2 class="text-4xl font-bold mb-8">Let's build something amazing together.</h2>
                         <p class="text-blue-100 text-lg mb-12">I'm currently open to new opportunities and interesting
                             mobile projects.</p>
@@ -729,16 +845,18 @@
                             </div>
                         </div>
                         <div class="mt-20 flex space-x-6">
-                            <a class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
-                                href="#">
+                            <a aria-label="Visit LinkedIn profile"
+                                class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
+                                href="https://linkedin.com/in/jabguru" rel="noopener noreferrer" target="_blank">
                                 <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
                                     <path
                                         d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z">
                                     </path>
                                 </svg>
                             </a>
-                            <a class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
-                                href="#">
+                            <a aria-label="Visit GitHub profile"
+                                class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
+                                href="https://github.com/jabguru" rel="noopener noreferrer" target="_blank">
                                 <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
                                     <path
                                         d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.041-1.412-4.041-1.412-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
@@ -747,33 +865,34 @@
                             </a>
                         </div>
                     </div>
-                    <div class="p-12 md:p-20 bg-white">
-                        <form action="#" class="space-y-6" method="POST">
+                    <div class="p-8 sm:p-10 lg:p-14 bg-white">
+                        <form action="#" class="space-y-6" id="contact-form" method="POST">
                             <div>
                                 <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide"
                                     for="name">Full Name</label>
                                 <input
                                     class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-custom focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
-                                    id="name" name="name" placeholder="John Doe" type="text" />
+                                    id="name" name="name" placeholder="John Doe" required type="text" />
                             </div>
                             <div>
                                 <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide"
                                     for="email">Email Address</label>
                                 <input
                                     class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-custom focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
-                                    id="email" name="email" placeholder="john@example.com" type="email" />
+                                    id="email" name="email" placeholder="john@example.com" required type="email" />
                             </div>
                             <div>
                                 <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide"
                                     for="message">Your Message</label>
                                 <textarea
                                     class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-custom focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none resize-none"
-                                    id="message" name="message" placeholder="Tell me about your project..."
+                                    id="message" name="message" placeholder="Tell me about your project..." required
                                     rows="5"></textarea>
                             </div>
                             <button
                                 class="w-full py-5 bg-secondary text-white font-bold rounded-custom hover:opacity-90 transition-all shadow-xl shadow-slate-200 uppercase tracking-widest"
                                 type="submit">Send Message</button>
+                            <p aria-live="polite" class="text-sm text-slate-500 hidden" id="form-status"></p>
                         </form>
                     </div>
                 </div>
@@ -783,7 +902,7 @@
     <!-- END: Contact Section -->
     <!-- BEGIN: Footer -->
     <footer class="py-12 border-t border-slate-200 bg-white">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+        <div class="section-container flex flex-col md:flex-row justify-between items-center">
             <p class="text-slate-500 text-sm mb-4 md:mb-0">© 2023 Julius Alibrown. All rights reserved.</p>
             <div class="flex space-x-8 text-sm font-medium text-slate-600">
                 <a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
@@ -793,6 +912,55 @@
         </div>
     </footer>
     <!-- END: Footer -->
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuLinks = mobileMenu ? mobileMenu.querySelectorAll('a') : [];
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                const isHidden = mobileMenu.classList.toggle('hidden');
+                mobileMenuButton.setAttribute('aria-expanded', String(!isHidden));
+            });
+
+            mobileMenuLinks.forEach((link) => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
+
+        const contactForm = document.getElementById('contact-form');
+        const formStatus = document.getElementById('form-status');
+
+        if (contactForm && formStatus) {
+            contactForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                const name = document.getElementById('name')?.value.trim();
+                const email = document.getElementById('email')?.value.trim();
+                const message = document.getElementById('message')?.value.trim();
+
+                if (!name || !email || !message) {
+                    formStatus.classList.remove('hidden');
+                    formStatus.classList.remove('text-emerald-600');
+                    formStatus.classList.add('text-rose-600');
+                    formStatus.textContent = 'Please fill in all fields before sending your message.';
+                    return;
+                }
+
+                const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
+                const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+                window.location.href = `mailto:hello@juliusalibrown.com?subject=${subject}&body=${body}`;
+
+                formStatus.classList.remove('hidden');
+                formStatus.classList.remove('text-rose-600');
+                formStatus.classList.add('text-emerald-600');
+                formStatus.textContent = 'Opening your email client to send the message.';
+            });
+        }
+    </script>
 </body>
 
 </html>
