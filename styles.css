@@ -30,10 +30,16 @@
     box-shadow: 0 10px 20px -12px rgba(15, 23, 42, 0.2);
 }
 
+.timeline-line {
+    --timeline-row-padding-left: 3rem;
+    --timeline-dot-left: -54px;
+    --timeline-dot-size: 40px;
+}
+
 .timeline-line::before {
     content: '';
     position: absolute;
-    left: 0;
+    left: calc(var(--timeline-row-padding-left) + var(--timeline-dot-left) + (var(--timeline-dot-size) / 2) - 1px);
     top: 0;
     bottom: 0;
     width: 2px;
