@@ -56,9 +56,17 @@
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.7);
+            background: transparent;
+            backdrop-filter: none;
+            border-bottom: 1px solid transparent;
+            transition: background-color 220ms ease, backdrop-filter 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+        }
+
+        .glass-card.is-scrolled {
+            background: rgba(255, 255, 255, 0.78);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom-color: #e2e8f0;
+            box-shadow: 0 10px 20px -12px rgba(15, 23, 42, 0.2);
         }
 
         .timeline-line::before {
@@ -135,7 +143,7 @@
 
 <body class="bg-background font-sans text-secondary selection:bg-primary selection:text-white">
     <!-- BEGIN: Navigation -->
-    <nav class="fixed top-0 w-full z-50 glass-card border-b border-slate-200">
+    <nav class="fixed top-0 w-full z-50 glass-card" id="site-nav">
         <div class="site-container h-20 flex items-center justify-between">
             <a class="text-xl font-bold tracking-tight" href="#hero">Julius<span class="text-primary">.</span></a>
             <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600">
@@ -262,9 +270,9 @@
     <!-- BEGIN: Apps I've Built -->
     <section class="py-32" id="apps">
         <div class="section-container">
-            <div class="mb-20">
+            <div class="mb-20 text-center">
                 <h2 class="text-4xl font-bold tracking-tight mb-4">Apps I've Built</h2>
-                <p class="text-slate-500 text-lg max-w-2xl">High-performance mobile solutions for finance and
+                <p class="text-slate-500 text-lg max-w-2xl mx-auto">High-performance mobile solutions for finance and
                     productivity.</p>
             </div>
             <div class="space-y-32">
@@ -929,6 +937,17 @@
                     mobileMenuButton.setAttribute('aria-expanded', 'false');
                 });
             });
+        }
+
+        const siteNav = document.getElementById('site-nav');
+
+        if (siteNav) {
+            const toggleNavScrolledState = () => {
+                siteNav.classList.toggle('is-scrolled', window.scrollY > 12);
+            };
+
+            toggleNavScrolledState();
+            window.addEventListener('scroll', toggleNavScrolledState, { passive: true });
         }
 
         const contactForm = document.getElementById('contact-form');
