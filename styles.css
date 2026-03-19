@@ -152,6 +152,20 @@ html.dark .hover\:bg-slate-50:hover {
     background-color: #1e293b !important;
 }
 
+html.dark #impact .text-primary,
+html.dark #experience .text-primary {
+    color: #60a5fa !important;
+    text-shadow: 0 0 18px rgba(42, 102, 234, 0.22);
+}
+
+html.dark #experience .border-primary {
+    border-color: #60a5fa !important;
+}
+
+html.dark #experience .bg-primary {
+    background-color: #3b82f6 !important;
+}
+
 .timeline-line {
     --timeline-row-padding-left: 3rem;
     --timeline-dot-left: -54px;
