@@ -101,37 +101,6 @@
     <!-- BEGIN: Hero Section -->
     <section class="relative pt-32 pb-20 overflow-hidden min-h-screen flex items-center" id="hero">
         <!-- Floating platform logos -->
-        <div class="absolute right-[6%] top-[58%] hidden lg:block pointer-events-none z-20 animate-float"
-            style="animation-delay: -2s;">
-            <div class="w-24 h-24 rounded-2xl bg-white shadow-xl flex items-center justify-center text-slate-900">
-                <svg aria-hidden="true" class="w-14 h-14" fill="currentColor" viewbox="8 8 20 24">
-                    <path
-                        d="M24.76888,20.30068a4.94881,4.94881,0,0,1,2.35656-4.15206,5.06566,5.06566,0,0,0-3.99116-2.15768c-1.67924-.17626-3.30719,1.00483-4.1629,1.00483-.87227,0-2.18977-.98733-3.6085-.95814a5.31529,5.31529,0,0,0-4.47292,2.72787c-1.934,3.34842-.49141,8.26947,1.3612,10.97608.9269,1.32535,2.01018,2.8058,3.42763,2.7533,1.38706-.05753,1.9051-.88448,3.5794-.88448,1.65876,0,2.14479.88448,3.591.8511,1.48838-.02416,2.42613-1.33124,3.32051-2.66914a10.962,10.962,0,0,0,1.51842-3.09251A4.78205,4.78205,0,0,1,24.76888,20.30068Z">
-                    </path>
-                    <path
-                        d="M22.03725,12.21089a4.87248,4.87248,0,0,0,1.11452-3.49062,4.95746,4.95746,0,0,0-3.20758,1.65961,4.63634,4.63634,0,0,0-1.14371,3.36139A4.09905,4.09905,0,0,0,22.03725,12.21089Z">
-                    </path>
-                </svg>
-            </div>
-        </div>
-        <div class="absolute right-[30%] top-[12%] hidden lg:block pointer-events-none z-20 animate-float-reverse"
-            style="animation-delay: -0.8s;">
-            <div class="w-24 h-24 rounded-2xl bg-white shadow-xl flex items-center justify-center">
-                <svg aria-hidden="true" class="w-14 h-14" viewbox="260 220 620 800">
-                    <path
-                        d="m548.2 600l-272.2 340.6q0.1 0.1 0.1 0.2c8.3 37 37 64.2 71 64.2 13.6 0 26.3-4.3 37.3-11.9l0.9-0.6 306.3-208.4z"
-                        fill="#ea4335"></path>
-                    <path
-                        d="m823.6 542l-0.2-0.2-132.3-90.4-149 156.3 149.5 176.3 131.6-89.5c23-14.7 38.7-43.3 38.7-76.4 0-32.8-15.4-61.4-38.3-76.1z"
-                        fill="#fbbc04"></path>
-                    <path d="m276 294.2c-1.6 7.1-2.5 14.5-2.5 22.3v601.8c0 7.7 0.9 15.2 2.5 22.3l281.6-331.9z"
-                        fill="#4285f4"></path>
-                    <path
-                        d="m550.2 617.4l140.9-166.1-306-209.1c-11.1-7.9-24.1-12.4-38-12.4-34 0-62.7 27.2-71.1 64.3q0 0 0 0.1z"
-                        fill="#34a853"></path>
-                </svg>
-            </div>
-        </div>
         <div class="section-container relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-16 items-center">
                 <div class="max-w-3xl order-2 lg:order-1">
@@ -148,6 +117,41 @@
                 </div>
                 <div class="flex justify-center lg:justify-end order-1 lg:order-2">
                     <div class="relative">
+                        <div class="absolute -top-6 -left-6 md:-top-8 md:-left-8 pointer-events-none z-20 animate-float-reverse"
+                            style="animation-delay: -0.8s;">
+                            <div
+                                class="w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-white shadow-xl flex items-center justify-center">
+                                <svg aria-hidden="true" class="w-12 h-12 md:w-14 md:h-14" viewbox="260 220 620 800">
+                                    <path
+                                        d="m548.2 600l-272.2 340.6q0.1 0.1 0.1 0.2c8.3 37 37 64.2 71 64.2 13.6 0 26.3-4.3 37.3-11.9l0.9-0.6 306.3-208.4z"
+                                        fill="#ea4335"></path>
+                                    <path
+                                        d="m823.6 542l-0.2-0.2-132.3-90.4-149 156.3 149.5 176.3 131.6-89.5c23-14.7 38.7-43.3 38.7-76.4 0-32.8-15.4-61.4-38.3-76.1z"
+                                        fill="#fbbc04"></path>
+                                    <path
+                                        d="m276 294.2c-1.6 7.1-2.5 14.5-2.5 22.3v601.8c0 7.7 0.9 15.2 2.5 22.3l281.6-331.9z"
+                                        fill="#4285f4"></path>
+                                    <path
+                                        d="m550.2 617.4l140.9-166.1-306-209.1c-11.1-7.9-24.1-12.4-38-12.4-34 0-62.7 27.2-71.1 64.3q0 0 0 0.1z"
+                                        fill="#34a853"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 md:-bottom-8 md:-right-8 pointer-events-none z-20 animate-float"
+                            style="animation-delay: -2s;">
+                            <div
+                                class="w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-white shadow-xl flex items-center justify-center text-slate-900">
+                                <svg aria-hidden="true" class="w-12 h-12 md:w-14 md:h-14" fill="currentColor"
+                                    viewbox="8 8 20 24">
+                                    <path
+                                        d="M24.76888,20.30068a4.94881,4.94881,0,0,1,2.35656-4.15206,5.06566,5.06566,0,0,0-3.99116-2.15768c-1.67924-.17626-3.30719,1.00483-4.1629,1.00483-.87227,0-2.18977-.98733-3.6085-.95814a5.31529,5.31529,0,0,0-4.47292,2.72787c-1.934,3.34842-.49141,8.26947,1.3612,10.97608.9269,1.32535,2.01018,2.8058,3.42763,2.7533,1.38706-.05753,1.9051-.88448,3.5794-.88448,1.65876,0,2.14479.88448,3.591.8511,1.48838-.02416,2.42613-1.33124,3.32051-2.66914a10.962,10.962,0,0,0,1.51842-3.09251A4.78205,4.78205,0,0,1,24.76888,20.30068Z">
+                                    </path>
+                                    <path
+                                        d="M22.03725,12.21089a4.87248,4.87248,0,0,0,1.11452-3.49062,4.95746,4.95746,0,0,0-3.20758,1.65961,4.63634,4.63634,0,0,0-1.14371,3.36139A4.09905,4.09905,0,0,0,22.03725,12.21089Z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
                         <div
                             class="hero-portrait-glow absolute -inset-4 rounded-[2.5rem] bg-gradient-to-br from-primary/25 via-white/50 to-accent/20 blur-2xl">
                         </div>
