@@ -1,6 +1,40 @@
 const mobileMenuButton = document.getElementById('mobile-menu-button');
 const mobileMenu = document.getElementById('mobile-menu');
 const mobileMenuLinks = mobileMenu ? mobileMenu.querySelectorAll('a') : [];
+const themeToggle = document.getElementById('theme-toggle');
+const themeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+const THEME_PREFERENCE_KEY = 'theme-preference';
+
+const getSystemTheme = () => (themeMediaQuery.matches ? 'dark' : 'light');
+const getStoredPreference = () => localStorage.getItem(THEME_PREFERENCE_KEY);
+
+const setTheme = (mode) => {
+    const effectiveTheme = mode === 'dark' || mode === 'light' ? mode : getSystemTheme();
+    const isDark = effectiveTheme === 'dark';
+    document.documentElement.classList.toggle('dark', isDark);
+
+    if (themeToggle) {
+        themeToggle.setAttribute('aria-pressed', String(isDark));
+        themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    }
+};
+
+if (themeToggle) {
+    const initialPreference = getStoredPreference() ?? 'system';
+    setTheme(initialPreference);
+
+    themeToggle.addEventListener('click', () => {
+        const nextTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+        setTheme(nextTheme);
+        localStorage.setItem(THEME_PREFERENCE_KEY, nextTheme);
+    });
+
+    themeMediaQuery.addEventListener('change', () => {
+        if (!getStoredPreference()) {
+            setTheme('system');
+        }
+    });
+}
 
 if (mobileMenuButton && mobileMenu) {
     mobileMenuButton.addEventListener('click', () => {

@@ -34,6 +34,17 @@
             }
         }
     </script>
+    <script>
+            (() => {
+                const savedPreference = localStorage.getItem('theme-preference');
+                const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                const effectiveTheme = savedPreference === 'dark' || savedPreference === 'light'
+                    ? savedPreference
+                    : systemTheme;
+
+                document.documentElement.classList.toggle('dark', effectiveTheme === 'dark');
+            })();
+    </script>
     <link href="styles.css" rel="stylesheet" />
 </head>
 
@@ -42,7 +53,7 @@
     <nav class="fixed top-0 w-full z-50 glass-card" id="site-nav">
         <div class="site-container h-20 flex items-center justify-between">
             <a class="text-xl font-bold tracking-tight" href="#hero">JAB<span class="text-primary">.</span></a>
-            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600">
+            <div class="hidden md:flex ml-auto items-center space-x-8 text-sm font-medium text-slate-600">
                 <a class="hover:text-primary transition-colors" href="#apps">Apps</a>
                 <a class="hover:text-primary transition-colors" href="#experience">Experience</a>
                 <a class="px-5 py-2.5 bg-primary text-white rounded-custom hover:opacity-90 transition-all shadow-lg shadow-primary/20"
@@ -54,6 +65,23 @@
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
                     <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
                     </path>
+                </svg>
+            </button>
+            <button aria-label="Toggle dark mode"
+                class="inline-flex items-center justify-center w-11 h-11 rounded-xl border border-slate-200 bg-white/80 text-slate-700 hover:text-primary hover:border-primary/40 transition-colors md:ml-3"
+                id="theme-toggle" type="button">
+                <svg aria-hidden="true" class="w-5 h-5" data-theme-icon="moon" fill="none" stroke="currentColor"
+                    viewbox="0 0 24 24">
+                    <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2"></path>
+                </svg>
+                <svg aria-hidden="true" class="w-5 h-5 hidden" data-theme-icon="sun" fill="none" stroke="currentColor"
+                    viewbox="0 0 24 24">
+                    <path
+                        d="M12 4V2m0 20v-2m8-8h2M2 12h2m13.66 5.66l1.41 1.41M4.93 4.93l1.41 1.41m0 11.32l-1.41 1.41m12.73-12.73l1.41-1.41"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                    <circle cx="12" cy="12" r="4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    </circle>
                 </svg>
             </button>
         </div>
@@ -118,7 +146,7 @@
                 <div class="flex justify-center lg:justify-end order-1 lg:order-2">
                     <div class="relative">
                         <div
-                            class="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-br from-primary/25 via-white/50 to-accent/20 blur-2xl">
+                            class="hero-portrait-glow absolute -inset-4 rounded-[2.5rem] bg-gradient-to-br from-primary/25 via-white/50 to-accent/20 blur-2xl">
                         </div>
                         <div
                             class="relative w-72 h-72 md:w-80 md:h-80 rounded-[2rem] bg-white/90 border border-slate-200 shadow-2xl p-3 animate-float">
