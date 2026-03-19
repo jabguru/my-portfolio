@@ -59,31 +59,34 @@
                 <a class="px-5 py-2.5 bg-primary text-white rounded-custom hover:opacity-90 transition-all shadow-lg shadow-primary/20"
                     href="#contact">Contact Me</a>
             </div>
-            <button aria-controls="mobile-menu" aria-expanded="false" aria-label="Open navigation menu"
-                class="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-xl border border-slate-200 text-slate-700 hover:text-primary hover:border-primary/40 transition-colors"
-                id="mobile-menu-button" type="button">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-                    <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                    </path>
-                </svg>
-            </button>
-            <button aria-label="Toggle dark mode"
-                class="inline-flex items-center justify-center w-11 h-11 rounded-xl border border-slate-200 bg-white/80 text-slate-700 hover:text-primary hover:border-primary/40 transition-colors md:ml-3"
-                id="theme-toggle" type="button">
-                <svg aria-hidden="true" class="w-5 h-5" data-theme-icon="moon" fill="none" stroke="currentColor"
-                    viewbox="0 0 24 24">
-                    <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2"></path>
-                </svg>
-                <svg aria-hidden="true" class="w-5 h-5 hidden" data-theme-icon="sun" fill="none" stroke="currentColor"
-                    viewbox="0 0 24 24">
-                    <path
-                        d="M12 4V2m0 20v-2m8-8h2M2 12h2m13.66 5.66l1.41 1.41M4.93 4.93l1.41 1.41m0 11.32l-1.41 1.41m12.73-12.73l1.41-1.41"
-                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-                    <circle cx="12" cy="12" r="4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                    </circle>
-                </svg>
-            </button>
+            <div class="ml-auto md:ml-3 flex items-center gap-2">
+                <button aria-label="Toggle dark mode"
+                    class="inline-flex items-center justify-center w-11 h-11 rounded-xl border border-slate-200 bg-white/80 text-slate-700 hover:text-primary hover:border-primary/40 transition-colors md:ml-3"
+                    id="theme-toggle" type="button">
+                    <svg aria-hidden="true" class="w-5 h-5" data-theme-icon="moon" fill="none" stroke="currentColor"
+                        viewbox="0 0 24 24">
+                        <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="2"></path>
+                    </svg>
+                    <svg aria-hidden="true" class="w-5 h-5 hidden" data-theme-icon="sun" fill="none"
+                        stroke="currentColor" viewbox="0 0 24 24">
+                        <path
+                            d="M12 4V2m0 20v-2m8-8h2M2 12h2m13.66 5.66l1.41 1.41M4.93 4.93l1.41 1.41m0 11.32l-1.41 1.41m12.73-12.73l1.41-1.41"
+                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                        <circle cx="12" cy="12" r="4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                        </circle>
+                    </svg>
+                </button>
+                <button aria-controls="mobile-menu" aria-expanded="false" aria-label="Open navigation menu"
+                    class="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-xl border border-slate-200 text-slate-700 hover:text-primary hover:border-primary/40 transition-colors"
+                    id="mobile-menu-button" type="button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                        <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2">
+                        </path>
+                    </svg>
+                </button>
+            </div>
         </div>
         <div class="hidden md:hidden border-t border-slate-200 bg-white/95 backdrop-blur" id="mobile-menu">
             <div class="site-container py-4 flex flex-col space-y-3 text-sm font-medium text-slate-700">
