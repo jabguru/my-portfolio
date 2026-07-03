@@ -55,6 +55,7 @@
             <a class="text-xl font-bold tracking-tight" href="#hero">JAB<span class="text-primary">.</span></a>
             <div class="hidden md:flex ml-auto items-center space-x-8 text-sm font-medium text-slate-600">
                 <a class="hover:text-primary transition-colors" href="#apps">Apps</a>
+                <a class="hover:text-primary transition-colors" href="#github-apps">GitHub Apps</a>
                 <a class="hover:text-primary transition-colors" href="#experience">Experience</a>
                 <a class="px-5 py-2.5 bg-primary text-white rounded-custom hover:opacity-90 transition-all shadow-lg shadow-primary/20"
                     href="#contact">Contact Me</a>
@@ -91,6 +92,7 @@
         <div class="hidden md:hidden border-t border-slate-200 bg-white/95 backdrop-blur" id="mobile-menu">
             <div class="site-container py-4 flex flex-col space-y-3 text-sm font-medium text-slate-700">
                 <a class="py-2 hover:text-primary transition-colors" href="#apps">Apps</a>
+                <a class="py-2 hover:text-primary transition-colors" href="#github-apps">GitHub Apps</a>
                 <a class="py-2 hover:text-primary transition-colors" href="#experience">Experience</a>
                 <a class="mt-2 inline-flex justify-center px-5 py-2.5 bg-primary text-white rounded-custom hover:opacity-90 transition-all shadow-lg shadow-primary/20"
                     href="#contact">Contact Me</a>
@@ -423,6 +425,221 @@
         </div>
     </section>
     <!-- END: Apps I've Built -->
+    <!-- BEGIN: GitHub Apps -->
+    <section class="py-32 bg-slate-50 border-y border-slate-100" id="github-apps">
+        <div class="section-container">
+            <div class="mb-20 text-center">
+                <p class="text-sm font-bold uppercase tracking-[0.28em] text-primary mb-4">GitHub Projects</p>
+                <h2 class="text-4xl font-bold tracking-tight mb-4">Apps Not in Production</h2>
+                <p class="text-slate-500 text-lg max-w-3xl mx-auto">
+                    These are personal and experimental apps I built and published on GitHub. They are not
+                    production releases, but they show how I approach product ideas, state management, and UI.
+                </p>
+            </div>
+
+            <div class="space-y-10">
+                <article
+                    class="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_20px_60px_-30px_rgba(15,23,42,0.25)]">
+                    <div class="grid grid-cols-1 lg:grid-cols-2">
+                        <div class="p-8 sm:p-10 lg:p-12">
+                            <div class="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary mb-6">
+                                Featured GitHub App
+                            </div>
+                            <div class="flex items-center space-x-4 mb-6">
+                                <div class="w-12 h-12 rounded-2xl shadow-lg overflow-hidden bg-white border border-slate-200 flex items-center justify-center">
+                                    <span class="text-primary font-black text-lg">D</span>
+                                </div>
+                                <h3 class="text-3xl font-bold">Delivery Live Tracking</h3>
+                            </div>
+                            <p class="app-description text-lg text-slate-600 mb-8 leading-relaxed">
+                                A live delivery tracking demo with smooth rider motion, OpenStreetMap routing,
+                                OSRM-based paths, ETA updates, and a responsive bottom sheet that keeps the rider
+                                visible above the UI.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Flutter</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Riverpod</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">flutter_map</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">OSRM</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Clean Architecture</span>
+                            </div>
+                            <ul class="space-y-3 text-slate-600 mb-8">
+                                <li class="flex items-start gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-primary shrink-0"></span><span>Smooth rider marker rotation and interpolation to avoid jumpy map motion.</span></li>
+                                <li class="flex items-start gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-primary shrink-0"></span><span>OSRM route generation with a fallback path when the API is unavailable.</span></li>
+                                <li class="flex items-start gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-primary shrink-0"></span><span>Gesture-aware auto-follow logic that respects user map interactions.</span></li>
+                            </ul>
+                            <a class="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-white rounded-custom font-semibold hover:bg-slate-800 transition-colors"
+                                href="https://github.com/jabguru/delivery-live-tracking" rel="noopener noreferrer" target="_blank">
+                                <span>View on GitHub</span>
+                                <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                                    <path d="M7 17L17 7M17 7H8m9 0v9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="bg-slate-100 p-6 sm:p-8 lg:p-10 flex items-center justify-center">
+                            <div class="w-full max-w-md rounded-[1.75rem] bg-white border border-slate-200 shadow-xl overflow-hidden">
+                                <img alt="Delivery Live Tracking preview"
+                                    class="w-full h-full object-cover"
+                                    src="https://github.com/jabguru/delivery-live-tracking/releases/download/v1.0.0/android_demo_trim.gif" />
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <div class="grid grid-cols-1 xl:grid-cols-2 gap-10">
+                    <article class="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-lg">
+                        <div class="p-8 sm:p-10">
+                            <div class="flex items-center space-x-4 mb-6">
+                                <div class="w-12 h-12 rounded-2xl shadow-lg overflow-hidden bg-slate-900 flex items-center justify-center">
+                                    <span class="text-white font-black text-lg">AI</span>
+                                </div>
+                                <h3 class="text-3xl font-bold">AI Chat App</h3>
+                            </div>
+                            <p class="app-description text-lg text-slate-600 mb-8 leading-relaxed">
+                                A dark-themed AI chat experience with Groq/OpenAI support, Supabase auth,
+                                live streaming responses, voice input, and text-to-speech playback.
+                            </p>
+                            <div class="grid grid-cols-2 gap-3 mb-8">
+                                <img alt="AI Chat App welcome screen" class="rounded-2xl border border-slate-200 object-cover w-full h-36"
+                                    src="https://raw.githubusercontent.com/jabguru/AI-Chat-App/main/screenshots/welcome_screen.png" />
+                                <img alt="AI Chat App chat screen" class="rounded-2xl border border-slate-200 object-cover w-full h-36"
+                                    src="https://raw.githubusercontent.com/jabguru/AI-Chat-App/main/screenshots/chat_screen.png" />
+                            </div>
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Flutter</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Riverpod</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Supabase</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Groq</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Voice UI</span>
+                            </div>
+                            <a class="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-white rounded-custom font-semibold hover:bg-slate-800 transition-colors"
+                                href="https://github.com/jabguru/AI-Chat-App" rel="noopener noreferrer" target="_blank">
+                                <span>View on GitHub</span>
+                                <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                                    <path d="M7 17L17 7M17 7H8m9 0v9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-lg">
+                        <div class="p-8 sm:p-10">
+                            <div class="flex items-center space-x-4 mb-6">
+                                <div class="w-12 h-12 rounded-2xl shadow-lg overflow-hidden bg-slate-900 flex items-center justify-center">
+                                    <span class="text-white font-black text-lg">FB</span>
+                                </div>
+                                <h3 class="text-3xl font-bold">Football Live Score App</h3>
+                            </div>
+                            <p class="app-description text-lg text-slate-600 mb-8 leading-relaxed">
+                                A Flutter livescore app for fixtures, match status, and statistics, with a focus on
+                                clear match presentation and data-driven score updates.
+                            </p>
+                            <div class="rounded-[1.5rem] border border-slate-200 bg-gradient-to-br from-slate-900 via-slate-800 to-primary p-5 mb-8 text-white overflow-hidden">
+                                <p class="text-xs uppercase tracking-[0.24em] text-blue-100 mb-2">GitHub demo</p>
+                                <p class="text-2xl font-bold mb-3">Match data, scores, and statistics</p>
+                                <p class="text-sm text-slate-300 mb-5 max-w-md">
+                                    Built around fixtures, live cards, and match detail views for quick sports updates.
+                                </p>
+                                <div class="rounded-[1rem] border border-white/10 bg-white/5 p-5">
+                                    <p class="text-sm text-slate-200 mb-4">
+                                        Demo video is available in the GitHub repository.
+                                    </p>
+                                    <a class="inline-flex items-center gap-2 px-5 py-3 bg-white text-slate-900 rounded-custom font-semibold hover:bg-slate-100 transition-colors"
+                                        href="https://github.com/jabguru/football_app" rel="noopener noreferrer" target="_blank">
+                                        <span>Open repo demo</span>
+                                        <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                                            <path d="M7 17L17 7M17 7H8m9 0v9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Flutter</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">BLoC</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Dio</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">API Sports</span>
+                            </div>
+                            <a class="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-white rounded-custom font-semibold hover:bg-slate-800 transition-colors"
+                                href="https://github.com/jabguru/football_app" rel="noopener noreferrer" target="_blank">
+                                <span>View on GitHub</span>
+                                <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                                    <path d="M7 17L17 7M17 7H8m9 0v9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="grid grid-cols-1 xl:grid-cols-2 gap-10">
+                    <article class="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-lg">
+                        <div class="p-8 sm:p-10">
+                            <div class="flex items-center space-x-4 mb-6">
+                                <div class="w-12 h-12 rounded-2xl shadow-lg overflow-hidden bg-emerald-600 flex items-center justify-center">
+                                    <span class="text-white font-black text-lg">C</span>
+                                </div>
+                                <h3 class="text-3xl font-bold">Crypto App</h3>
+                            </div>
+                            <p class="app-description text-lg text-slate-600 mb-8 leading-relaxed">
+                                A Flutter crypto mobile app that pulls market data through an API-backed flow and
+                                presents a clean finance-style interface for browsing digital assets.
+                            </p>
+                            <div class="rounded-[1.5rem] border border-slate-200 bg-gradient-to-br from-slate-950 via-slate-800 to-emerald-600 p-5 mb-8 text-white">
+                                <p class="text-xs uppercase tracking-[0.24em] text-emerald-200 mb-2">Repo preview</p>
+                                <p class="text-2xl font-bold mb-3">Market-oriented Flutter UI</p>
+                                <p class="text-sm text-slate-300">Built with Flutter and API integrations for cryptocurrency data exploration.</p>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Flutter</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Riverpod</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">HTTP</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">CoinGecko</span>
+                            </div>
+                            <a class="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-white rounded-custom font-semibold hover:bg-slate-800 transition-colors"
+                                href="https://github.com/jabguru/crypto_app" rel="noopener noreferrer" target="_blank">
+                                <span>View on GitHub</span>
+                                <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                                    <path d="M7 17L17 7M17 7H8m9 0v9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-lg">
+                        <div class="p-8 sm:p-10">
+                            <div class="flex items-center space-x-4 mb-6">
+                                <div class="w-12 h-12 rounded-2xl shadow-lg overflow-hidden bg-amber-500 flex items-center justify-center">
+                                    <span class="text-white font-black text-lg">B</span>
+                                </div>
+                                <h3 class="text-3xl font-bold">Bike Shopping App</h3>
+                            </div>
+                            <p class="app-description text-lg text-slate-600 mb-8 leading-relaxed">
+                                A Flutter shopping concept focused on storefront presentation and product browsing,
+                                published as a GitHub project rather than a production release.
+                            </p>
+                            <div class="rounded-[1.5rem] border border-slate-200 bg-gradient-to-br from-amber-50 via-white to-slate-100 p-5 mb-8">
+                                <p class="text-xs uppercase tracking-[0.24em] text-amber-700 mb-2">GitHub project</p>
+                                <p class="text-2xl font-bold text-slate-900 mb-3">Shopping UI concept</p>
+                                <p class="text-sm text-slate-600">Flutter-based app structure with mobile shopping presentation.</p>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Flutter</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">UI Concept</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Mobile Commerce</span>
+                            </div>
+                            <a class="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-white rounded-custom font-semibold hover:bg-slate-800 transition-colors"
+                                href="https://github.com/jabguru/Bike-Shopping" rel="noopener noreferrer" target="_blank">
+                                <span>View on GitHub</span>
+                                <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                                    <path d="M7 17L17 7M17 7H8m9 0v9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: GitHub Apps -->
     <!-- BEGIN: Engineering Highlights -->
     <!-- <section class="py-32 bg-slate-50">
         <div class="section-container">
@@ -549,30 +766,27 @@
                         <ul class="space-y-4 text-slate-600">
                             <li class="flex items-start">
                                 <span class="mr-3 text-primary mt-1.5">•</span>
-                                <span>Founding Mobile Engineer for a fintech platform that processed ₦1B+ in
-                                    transactions — leading all mobile development from scratch on Android and
-                                    iOS.</span>
+                                <span>Sole mobile engineer for a fintech platform processing ₦1B+ in transactions;
+                                    architected and shipped the entire Android and iOS product from zero to
+                                    production.</span>
                             </li>
                             <li class="flex items-start">
                                 <span class="mr-3 text-primary mt-1.5">•</span>
-                                <span>Built and maintained a Flutter app with Clean Architecture and BLoC/Cubit,
-                                    keeping features modular, testable, and scalable.</span>
+                                <span>Architected and maintained a Flutter mobile app from the ground up using clean
+                                    architecture and BLoC/Cubit, keeping features modular, testable, and scalable across
+                                    a rapidly growing codebase.</span>
                             </li>
                             <li class="flex items-start">
                                 <span class="mr-3 text-primary mt-1.5">•</span>
-                                <span>Implemented secure authentication and session controls including OTP, deep links,
-                                    biometric gating, and inactivity or expired-session handling.</span>
+                                <span>Implemented secure authentication and session controls (OTP flows, deep-link
+                                    handling, biometric gating, inactivity / expired session handling) to protect user
+                                    access.</span>
                             </li>
                             <li class="flex items-start">
                                 <span class="mr-3 text-primary mt-1.5">•</span>
-                                <span>Developed a robust data layer with typed models, centralized error handling, and
-                                    repository abstractions for reliable API-driven UI updates.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="mr-3 text-primary mt-1.5">•</span>
-                                <span>Integrated production-readiness tooling including crash reporting, analytics
-                                    funnels, route tracking, and user-context attachment for better
-                                    observability.</span>
+                                <span>ntegrated production readiness tooling (crash reporting, user-context attachment,
+                                    analytics/funnel events, route-based screen tracking) to improve observability and
+                                    debugging.</span>
                             </li>
                         </ul>
                     </div>
@@ -593,19 +807,15 @@
                         <ul class="space-y-4 text-slate-600">
                             <li class="flex items-start">
                                 <span class="mr-3 text-primary mt-1.5">•</span>
-                                <span>Developed cross-platform Flutter features for a digital banking app with 2,000+
-                                    downloads on Android and iOS.</span>
+                                <span>Delivered Flutter features across Android and iOS for a digital banking app,
+                                    covering transfers, KYC onboarding, and real-time transaction history via RESTful
+                                    API integration.</span>
                             </li>
                             <li class="flex items-start">
                                 <span class="mr-3 text-primary mt-1.5">•</span>
-                                <span>Collaborated in a cross-functional Agile team of Flutter developers, designers,
-                                    backend engineers, and QA to deliver features on schedule.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="mr-3 text-primary mt-1.5">•</span>
-                                <span>Built responsive UI for core banking flows — including transfers, transaction
-                                    history, and KYC — and integrated RESTful APIs for secure, real-time payment
-                                    processing.</span>
+                                <span>Shipped features on a two-week sprint cadence alongside designers, backend
+                                    engineers, and QA; owned mobile-side API contracts and coordinated integration
+                                    testing.</span>
                             </li>
                         </ul>
                     </div>
@@ -625,19 +835,15 @@
                         <ul class="space-y-4 text-slate-600">
                             <li class="flex items-start">
                                 <span class="mr-3 text-primary mt-1.5">•</span>
-                                <span>Designed and developed multiple Flutter mobile applications across healthcare and
-                                    lifestyle domains, delivering complete, production-ready codebases.</span>
+                                <span>Built and shipped multiple production Flutter apps in healthcare and lifestyle
+                                    verticals; applied Clean Architecture and Test-Driven Development (TDD) across all
+                                    codebases for maintainable, testable delivery.</span>
                             </li>
                             <li class="flex items-start">
                                 <span class="mr-3 text-primary mt-1.5">•</span>
-                                <span>Applied Clean Architecture and TDD to deliver robust, maintainable, and scalable
-                                    codebases.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="mr-3 text-primary mt-1.5">•</span>
-                                <span>Implemented advanced features including maps and location tracking, in-app
-                                    audio/video calls, push notifications, animations, dynamic theming,
-                                    text-to-speech, and multilingual support (70+ languages).</span>
+                                <span>Integrated WebRTC-based in-app audio/video calls, real-time GPS tracking,
+                                    Text-to-Speech, and multilingual support (70+ languages) within a single
+                                    cross-platform Flutter codebase.</span>
                             </li>
                         </ul>
                     </div>
