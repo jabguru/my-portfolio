@@ -75,6 +75,15 @@ if (processGrid) {
 
 /* ---------- Count-up stats ---------- */
 
+/* data-count-since="YYYY-MM" derives whole years elapsed, so tenure never goes stale */
+document.querySelectorAll('[data-count-since]').forEach((el) => {
+    const [year, month] = el.dataset.countSince.split('-').map(Number);
+    const now = new Date();
+    let years = now.getFullYear() - year;
+    if (now.getMonth() + 1 < month) years -= 1;
+    el.dataset.count = String(Math.max(years, 0));
+});
+
 const counters = document.querySelectorAll('[data-count]');
 const runCounter = (el) => {
     const target = parseFloat(el.dataset.count);
