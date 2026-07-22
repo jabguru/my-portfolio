@@ -10,7 +10,8 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap"
         rel="stylesheet" />
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -19,16 +20,19 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#2a66ea', // From Custom Color
-                        secondary: '#0F172A',
-                        accent: '#22C55E',
-                        background: '#F8FAFC',
+                        primary: '#1F7A5C',   // Signal Green — settled / production accent
+                        secondary: '#17241D', // Ledger Ink — near-black primary text
+                        accent: '#B3492E',    // Rust — unsettled / experimental accent
+                        background: '#F2F0E6',// Statement Paper
+                        hairline: '#D9D4C0',  // Rule lines / dividers
+                        carbon: '#12130F',    // Dark-mode base
                     },
                     fontFamily: {
-                        sans: ['Work Sans', 'sans-serif'],
+                        sans: ['IBM Plex Sans', 'sans-serif'],
+                        mono: ['IBM Plex Mono', 'monospace'],
                     },
                     borderRadius: {
-                        'custom': '8px', // From ROUND_EIGHT
+                        'custom': '2px',
                     }
                 }
             }
@@ -50,15 +54,15 @@
 
 <body class="bg-background font-sans text-secondary selection:bg-primary selection:text-white">
     <!-- BEGIN: Navigation -->
-    <nav class="fixed top-0 w-full z-50 glass-card" id="site-nav">
+    <nav class="fixed top-0 w-full z-50 glass-card font-mono" id="site-nav">
         <div class="site-container h-20 flex items-center justify-between">
-            <a class="text-xl font-bold tracking-tight" href="#hero">JAB<span class="text-primary">.</span></a>
+            <a class="text-xl font-semibold tracking-tight" href="#hero">JAB<span class="text-primary">·</span></a>
             <div class="hidden md:flex ml-auto items-center space-x-8 text-sm font-medium text-slate-600">
                 <a class="hover:text-primary transition-colors" href="#apps">Apps</a>
-                <a class="hover:text-primary transition-colors" href="#github-apps">GitHub Apps</a>
                 <a class="hover:text-primary transition-colors" href="#experience">Experience</a>
-                <a class="px-5 py-2.5 bg-primary text-white rounded-custom hover:opacity-90 transition-all shadow-lg shadow-primary/20"
-                    href="#contact">Contact Me</a>
+                <a class="hover:text-primary transition-colors" href="#github-apps">GitHub Apps</a>
+                <a class="px-5 py-2.5 bg-primary text-white rounded-custom hover:opacity-90 transition-all"
+                    href="#contact">Get in Touch</a>
             </div>
             <div class="ml-auto md:ml-3 flex items-center gap-2">
                 <button aria-label="Toggle dark mode"
@@ -89,148 +93,115 @@
                 </button>
             </div>
         </div>
-        <div class="hidden md:hidden border-t border-slate-200 bg-white/95 backdrop-blur" id="mobile-menu">
+        <div class="hidden md:hidden border-t border-slate-200 bg-white/95 backdrop-blur font-mono" id="mobile-menu">
             <div class="site-container py-4 flex flex-col space-y-3 text-sm font-medium text-slate-700">
                 <a class="py-2 hover:text-primary transition-colors" href="#apps">Apps</a>
-                <a class="py-2 hover:text-primary transition-colors" href="#github-apps">GitHub Apps</a>
                 <a class="py-2 hover:text-primary transition-colors" href="#experience">Experience</a>
-                <a class="mt-2 inline-flex justify-center px-5 py-2.5 bg-primary text-white rounded-custom hover:opacity-90 transition-all shadow-lg shadow-primary/20"
-                    href="#contact">Contact Me</a>
+                <a class="py-2 hover:text-primary transition-colors" href="#github-apps">GitHub Apps</a>
+                <a class="mt-2 inline-flex justify-center px-5 py-2.5 bg-primary text-white rounded-custom hover:opacity-90 transition-all"
+                    href="#contact">Get in Touch</a>
             </div>
         </div>
     </nav>
     <!-- END: Navigation -->
     <!-- BEGIN: Hero Section -->
-    <section class="relative pt-32 pb-20 overflow-hidden min-h-screen flex items-center" id="hero">
-        <!-- Floating platform logos -->
-        <div class="section-container relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-16 items-center">
+    <section class="hero-statement relative pt-32 pb-16 overflow-hidden min-h-screen flex items-center" id="hero">
+        <div class="section-container relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-[1.35fr_1fr] gap-14 lg:gap-20 items-center">
                 <div class="max-w-3xl order-2 lg:order-1">
-                    <h1 class="text-6xl md:text-8xl font-extrabold tracking-tight mb-6 leading-[1.1] text-left">
-                        Julius Alibrown
+                    <p class="font-mono text-xs sm:text-sm tracking-[0.25em] text-primary font-semibold uppercase mb-6">
+                        Mobile Engineer &mdash; Fintech &amp; Consumer Apps
+                    </p>
+                    <h1
+                        class="font-mono font-semibold tracking-tight mb-6 leading-[0.95] text-left text-5xl sm:text-6xl md:text-7xl uppercase">
+                        Julius<br />Alibrown
                     </h1>
-                    <h2 class="text-3xl md:text-4xl font-medium text-slate-500 mb-8 text-left">
+                    <h2 class="text-2xl md:text-3xl font-medium text-slate-500 mb-8 text-left">
                         Mobile Software Engineer
                     </h2>
-                    <p class="text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl text-left">
+                    <p class="text-lg text-slate-600 mb-10 leading-relaxed max-w-2xl text-left">
                         I build scalable mobile applications across iOS and Android, focusing on
                         performance, clean architecture, and exceptional user experience.
                     </p>
+
+                    <dl class="ledger-block mb-10 max-w-xl">
+                        <div class="ledger-row">
+                            <dt>Years shipping to production</dt>
+                            <span class="leader" aria-hidden="true"></span>
+                            <dd>3+</dd>
+                        </div>
+                        <div class="ledger-row">
+                            <dt>Apps live in production</dt>
+                            <span class="leader" aria-hidden="true"></span>
+                            <dd>3</dd>
+                        </div>
+                        <div class="ledger-row">
+                            <dt>Active users served</dt>
+                            <span class="leader" aria-hidden="true"></span>
+                            <dd>2,000+</dd>
+                        </div>
+                    </dl>
+
+                    <div class="flex flex-wrap gap-4 mb-10">
+                        <a class="px-8 py-4 bg-primary text-white font-mono font-semibold rounded-custom text-base hover:opacity-90 active:scale-[0.98] transition-all"
+                            href="#apps">View Apps</a>
+                        <a class="px-8 py-4 bg-transparent text-secondary font-mono font-semibold rounded-custom text-base border border-secondary/30 hover:bg-secondary/5 transition-all"
+                            href="#contact">Get in Touch</a>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-6">
+                        <a aria-label="Visit GitHub profile" class="text-slate-400 hover:text-primary transition-colors"
+                            href="https://github.com/jabguru" rel="noopener noreferrer" target="_blank" title="GitHub">
+                            <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
+                                <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.041-1.412-4.041-1.412-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a aria-label="Visit LinkedIn profile"
+                            class="text-slate-400 hover:text-primary transition-colors"
+                            href="https://linkedin.com/in/jabguru" rel="noopener noreferrer" target="_blank"
+                            title="LinkedIn">
+                            <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a aria-label="Download resume"
+                            class="flex items-center space-x-2 text-slate-500 hover:text-primary transition-colors font-mono text-sm font-medium"
+                            href="https://drive.google.com/file/d/1GiCRpJ4y4slYvIouu8Mrq-16oKYgJNn5/view?usp=sharing"
+                            rel="noopener noreferrer" target="_blank">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                                <path
+                                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                            </svg>
+                            <span>Download CV</span>
+                        </a>
+                    </div>
                 </div>
                 <div class="flex justify-center lg:justify-end order-1 lg:order-2">
-                    <div class="relative">
-                        <div class="absolute -top-6 -left-6 md:-top-8 md:-left-8 pointer-events-none z-20 animate-float-reverse"
-                            style="animation-delay: -0.8s;">
-                            <div
-                                class="w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-white shadow-xl flex items-center justify-center">
-                                <svg aria-hidden="true" class="w-12 h-12 md:w-14 md:h-14" viewbox="260 220 620 800">
-                                    <path
-                                        d="m548.2 600l-272.2 340.6q0.1 0.1 0.1 0.2c8.3 37 37 64.2 71 64.2 13.6 0 26.3-4.3 37.3-11.9l0.9-0.6 306.3-208.4z"
-                                        fill="#ea4335"></path>
-                                    <path
-                                        d="m823.6 542l-0.2-0.2-132.3-90.4-149 156.3 149.5 176.3 131.6-89.5c23-14.7 38.7-43.3 38.7-76.4 0-32.8-15.4-61.4-38.3-76.1z"
-                                        fill="#fbbc04"></path>
-                                    <path
-                                        d="m276 294.2c-1.6 7.1-2.5 14.5-2.5 22.3v601.8c0 7.7 0.9 15.2 2.5 22.3l281.6-331.9z"
-                                        fill="#4285f4"></path>
-                                    <path
-                                        d="m550.2 617.4l140.9-166.1-306-209.1c-11.1-7.9-24.1-12.4-38-12.4-34 0-62.7 27.2-71.1 64.3q0 0 0 0.1z"
-                                        fill="#34a853"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="absolute -bottom-6 -right-6 md:-bottom-8 md:-right-8 pointer-events-none z-20 animate-float"
-                            style="animation-delay: -2s;">
-                            <div
-                                class="w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-white shadow-xl flex items-center justify-center text-slate-900">
-                                <svg aria-hidden="true" class="w-12 h-12 md:w-14 md:h-14" fill="currentColor"
-                                    viewbox="8 8 20 24">
-                                    <path
-                                        d="M24.76888,20.30068a4.94881,4.94881,0,0,1,2.35656-4.15206,5.06566,5.06566,0,0,0-3.99116-2.15768c-1.67924-.17626-3.30719,1.00483-4.1629,1.00483-.87227,0-2.18977-.98733-3.6085-.95814a5.31529,5.31529,0,0,0-4.47292,2.72787c-1.934,3.34842-.49141,8.26947,1.3612,10.97608.9269,1.32535,2.01018,2.8058,3.42763,2.7533,1.38706-.05753,1.9051-.88448,3.5794-.88448,1.65876,0,2.14479.88448,3.591.8511,1.48838-.02416,2.42613-1.33124,3.32051-2.66914a10.962,10.962,0,0,0,1.51842-3.09251A4.78205,4.78205,0,0,1,24.76888,20.30068Z">
-                                    </path>
-                                    <path
-                                        d="M22.03725,12.21089a4.87248,4.87248,0,0,0,1.11452-3.49062,4.95746,4.95746,0,0,0-3.20758,1.65961,4.63634,4.63634,0,0,0-1.14371,3.36139A4.09905,4.09905,0,0,0,22.03725,12.21089Z">
-                                    </path>
-                                </svg>
-                            </div>
-                        </div>
-                        <div
-                            class="hero-portrait-glow absolute -inset-4 rounded-[2.5rem] bg-gradient-to-br from-primary/25 via-white/50 to-accent/20 blur-2xl">
-                        </div>
-                        <div
-                            class="relative w-72 h-72 md:w-80 md:h-80 rounded-[2rem] bg-white/90 border border-slate-200 shadow-2xl p-3 animate-float">
-                            <img alt="Portrait of Julius Alibrown"
-                                class="w-full h-full rounded-[1.4rem] object-cover object-center"
+                    <div class="verification-stamp">
+                        <div class="verification-stamp-frame animate-float">
+                            <img alt="Portrait of Julius Alibrown" class="w-full h-full object-cover object-center"
                                 src="images/julius.jpg" />
+                            <span class="verification-stamp-tag">Verified</span>
                         </div>
+                        <p class="verification-stamp-code">Lagos, Nigeria · Mobile Engineer</p>
                     </div>
                 </div>
             </div>
-            <div class="mt-4 flex flex-col items-center gap-5">
-                <div class="flex flex-wrap justify-center gap-4">
-                    <a class="px-8 py-4 bg-primary text-white font-bold rounded-custom text-lg hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl shadow-primary/25"
-                        href="#apps">View Apps</a>
-                    <a class="px-8 py-4 bg-white text-secondary font-bold rounded-custom text-lg border border-slate-200 hover:bg-slate-50 transition-all"
-                        href="#contact">Contact Me</a>
-                </div>
-                <div class="flex flex-wrap items-center justify-center gap-6">
-                    <a aria-label="Visit GitHub profile" class="text-slate-400 hover:text-primary transition-colors"
-                        href="https://github.com/jabguru" rel="noopener noreferrer" target="_blank" title="GitHub">
-                        <svg class="w-7 h-7" fill="currentColor" viewbox="0 0 24 24">
-                            <path
-                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.041-1.412-4.041-1.412-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
-                            </path>
-                        </svg>
-                    </a>
-                    <a aria-label="Visit LinkedIn profile" class="text-slate-400 hover:text-primary transition-colors"
-                        href="https://linkedin.com/in/jabguru" rel="noopener noreferrer" target="_blank"
-                        title="LinkedIn">
-                        <svg class="w-7 h-7" fill="currentColor" viewbox="0 0 24 24">
-                            <path
-                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z">
-                            </path>
-                        </svg>
-                    </a>
-                    <a aria-label="Download resume"
-                        class="flex items-center space-x-2 text-slate-500 hover:text-primary transition-colors font-medium"
-                        href="https://drive.google.com/file/d/1GiCRpJ4y4slYvIouu8Mrq-16oKYgJNn5/view?usp=sharing"
-                        rel="noopener noreferrer" target="_blank">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-                            <path
-                                d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-                        </svg>
-                        <span>Download CV</span>
-                    </a>
-                </div>
-            </div>
         </div>
+        <div class="hero-perforation" aria-hidden="true"></div>
     </section>
     <!-- END: Hero Section -->
-    <!-- BEGIN: Production Impact -->
-    <section class="py-24 bg-white border-y border-slate-100" id="impact">
-        <div class="section-container">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div class="text-center">
-                    <p class="text-4xl font-extrabold text-primary mb-2">3+</p>
-                    <p class="text-slate-500 font-medium">Years Experience</p>
-                </div>
-                <div class="text-center">
-                    <p class="text-4xl font-extrabold text-primary mb-2">3</p>
-                    <p class="text-slate-500 font-medium">Production Apps</p>
-                </div>
-                <div class="text-center">
-                    <p class="text-4xl font-extrabold text-primary mb-2">2k+</p>
-                    <p class="text-slate-500 font-medium">Active Users</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- END: Production Impact -->
     <!-- BEGIN: Apps I've Built -->
     <section class="py-32" id="apps">
         <div class="section-container">
             <div class="mb-20 text-center">
+                <p class="font-mono text-xs tracking-[0.28em] text-primary font-semibold uppercase mb-4">Live in
+                    Production</p>
                 <h2 class="text-4xl font-bold tracking-tight mb-4">Apps I've Built</h2>
                 <p class="text-slate-500 text-lg max-w-2xl mx-auto">High-performance mobile solutions for finance and
                     productivity.</p>
@@ -239,13 +210,16 @@
                 <!-- TellerOne -->
                 <div class="flex flex-col lg:flex-row items-center gap-16 group">
                     <div class="w-full lg:w-1/2 order-2 lg:order-1">
-                        <div class="flex items-center space-x-4 mb-6">
-                            <div
-                                class="w-12 h-12 rounded-2xl shadow-lg overflow-hidden bg-white border border-slate-200">
-                                <img alt="TellerOne logo" class="w-full h-full object-cover"
-                                    src="images/logos/tellerone.png" />
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center space-x-4">
+                                <div
+                                    class="w-12 h-12 rounded-custom shadow-sm overflow-hidden bg-white border border-slate-200">
+                                    <img alt="TellerOne logo" class="w-full h-full object-cover"
+                                        src="images/logos/tellerone.png" />
+                                </div>
+                                <h3 class="text-3xl font-bold">TellerOne</h3>
                             </div>
-                            <h3 class="text-3xl font-bold">TellerOne</h3>
+                            <span class="settled-tag">&#9679; In Production</span>
                         </div>
                         <p class="app-description text-xl text-slate-600 mb-8 leading-relaxed">
                             TellerOne is a cross-border digital neo-bank where users can hold, save, spend, and
@@ -254,10 +228,11 @@
                         </p>
                         <div class="flex flex-wrap gap-2 mb-10">
                             <span
-                                class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Flutter</span>
+                                class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">Flutter</span>
                             <span
-                                class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">BLoC</span>
-                            <span class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Clean
+                                class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">BLoC</span>
+                            <span
+                                class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">Clean
                                 Architecture</span>
                         </div>
                         <div class="flex flex-wrap gap-4">
@@ -315,13 +290,16 @@
                         </div>
                     </div>
                     <div class="w-full lg:w-1/2">
-                        <div class="flex items-center space-x-4 mb-6">
-                            <div
-                                class="w-12 h-12 rounded-2xl shadow-lg overflow-hidden bg-white border border-slate-200">
-                                <img alt="Contree logo" class="w-full h-full object-cover"
-                                    src="images/logos/contree.png" />
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center space-x-4">
+                                <div
+                                    class="w-12 h-12 rounded-custom shadow-sm overflow-hidden bg-white border border-slate-200">
+                                    <img alt="Contree logo" class="w-full h-full object-cover"
+                                        src="images/logos/contree.png" />
+                                </div>
+                                <h3 class="text-3xl font-bold">Contree</h3>
                             </div>
-                            <h3 class="text-3xl font-bold">Contree</h3>
+                            <span class="settled-tag">&#9679; In Production</span>
                         </div>
                         <p class="app-description text-xl text-slate-600 mb-8 leading-relaxed">
                             A fintech solution focused on community contributions and transparent
@@ -329,10 +307,11 @@
                         </p>
                         <div class="flex flex-wrap gap-2 mb-10">
                             <span
-                                class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Flutter</span>
+                                class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">Flutter</span>
                             <span
-                                class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">BLoC</span>
-                            <span class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Clean
+                                class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">BLoC</span>
+                            <span
+                                class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">Clean
                                 Architecture</span>
                         </div>
                         <div class="flex flex-wrap gap-4">
@@ -364,12 +343,16 @@
                 <!-- iJot -->
                 <div class="flex flex-col lg:flex-row items-center gap-16 group">
                     <div class="w-full lg:w-1/2 order-2 lg:order-1">
-                        <div class="flex items-center space-x-4 mb-6">
-                            <div
-                                class="w-12 h-12 rounded-2xl shadow-lg overflow-hidden bg-white border border-slate-200">
-                                <img alt="iJot logo" class="w-full h-full object-cover" src="images/logos/iJot.png" />
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center space-x-4">
+                                <div
+                                    class="w-12 h-12 rounded-custom shadow-sm overflow-hidden bg-white border border-slate-200">
+                                    <img alt="iJot logo" class="w-full h-full object-cover"
+                                        src="images/logos/iJot.png" />
+                                </div>
+                                <h3 class="text-3xl font-bold">iJot</h3>
                             </div>
-                            <h3 class="text-3xl font-bold">iJot</h3>
+                            <span class="settled-tag">&#9679; In Production</span>
                         </div>
                         <p class="app-description text-xl text-slate-600 mb-8 leading-relaxed">
                             A lightning-fast note-taking application designed for productivity hackers.
@@ -377,11 +360,11 @@
                         </p>
                         <div class="flex flex-wrap gap-2 mb-10">
                             <span
-                                class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Flutter</span>
+                                class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">Flutter</span>
                             <span
-                                class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Firebase</span>
+                                class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">Firebase</span>
                             <span
-                                class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Riverpod</span>
+                                class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">Riverpod</span>
                         </div>
                         <div class="flex flex-wrap gap-4">
                             <a class="px-6 py-3 bg-white border border-slate-200 text-secondary rounded-custom font-semibold flex items-center space-x-2 hover:bg-slate-50 transition-colors"
@@ -425,263 +408,6 @@
         </div>
     </section>
     <!-- END: Apps I've Built -->
-    <!-- BEGIN: GitHub Apps -->
-    <section class="py-32 bg-slate-50 border-y border-slate-100" id="github-apps">
-        <div class="section-container">
-            <div class="mb-20 text-center">
-                <p class="text-sm font-bold uppercase tracking-[0.28em] text-primary mb-4">GitHub Projects</p>
-                <h2 class="text-4xl font-bold tracking-tight mb-4">Apps Not in Production</h2>
-                <p class="text-slate-500 text-lg max-w-3xl mx-auto">
-                    These are personal and experimental apps I built and published on GitHub.
-                </p>
-            </div>
-
-            <div class="space-y-10">
-                <article
-                    class="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_20px_60px_-30px_rgba(15,23,42,0.25)]">
-                    <div class="grid grid-cols-1 lg:grid-cols-2">
-                        <div class="p-8 sm:p-10 lg:p-12">
-                            <div
-                                class="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary mb-6">
-                                Featured GitHub App
-                            </div>
-                            <div class="flex items-center space-x-4 mb-6">
-                                <div
-                                    class="w-12 h-12 rounded-2xl shadow-lg overflow-hidden bg-white border border-slate-200 flex items-center justify-center">
-                                    <span class="text-primary font-black text-lg">D</span>
-                                </div>
-                                <h3 class="text-3xl font-bold">Delivery Live Tracking</h3>
-                            </div>
-                            <p class="app-description text-lg text-slate-600 mb-8 leading-relaxed">
-                                A live delivery tracking demo with smooth rider motion, OpenStreetMap routing,
-                                OSRM-based paths, ETA updates, and a responsive bottom sheet that keeps the rider
-                                visible above the UI.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-8">
-                                <span
-                                    class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Flutter</span>
-                                <span
-                                    class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Riverpod</span>
-                                <span
-                                    class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">flutter_map</span>
-                                <span
-                                    class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">OSRM</span>
-                                <span
-                                    class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Clean
-                                    Architecture</span>
-                            </div>
-                            <ul class="space-y-3 text-slate-600 mb-8">
-                                <li class="flex items-start gap-3"><span
-                                        class="mt-2 h-2 w-2 rounded-full bg-primary shrink-0"></span><span>Smooth rider
-                                        marker rotation and interpolation to avoid jumpy map motion.</span></li>
-                                <li class="flex items-start gap-3"><span
-                                        class="mt-2 h-2 w-2 rounded-full bg-primary shrink-0"></span><span>OSRM route
-                                        generation with a fallback path when the API is unavailable.</span></li>
-                                <li class="flex items-start gap-3"><span
-                                        class="mt-2 h-2 w-2 rounded-full bg-primary shrink-0"></span><span>Gesture-aware
-                                        auto-follow logic that respects user map interactions.</span></li>
-                            </ul>
-                            <a class="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-white rounded-custom font-semibold hover:bg-slate-800 transition-colors"
-                                href="https://github.com/jabguru/delivery-live-tracking" rel="noopener noreferrer"
-                                target="_blank">
-                                <span>View on GitHub</span>
-                                <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor"
-                                    viewbox="0 0 24 24">
-                                    <path d="M7 17L17 7M17 7H8m9 0v9" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2"></path>
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="bg-slate-100 p-6 sm:p-8 lg:p-10 flex items-center justify-center">
-                            <div
-                                class="w-full max-w-md rounded-[1.75rem] bg-white border border-slate-200 shadow-xl overflow-hidden">
-                                <img alt="Delivery Live Tracking preview" class="w-full h-full object-cover"
-                                    src="https://github.com/jabguru/delivery-live-tracking/releases/download/v1.0.0/android_demo_trim.gif" />
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <div class="grid grid-cols-1 xl:grid-cols-2 gap-10">
-                    <article class="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-lg">
-                        <div class="p-8 sm:p-10">
-                            <div class="flex items-center space-x-4 mb-6">
-                                <div
-                                    class="w-12 h-12 rounded-2xl shadow-lg overflow-hidden bg-slate-900 flex items-center justify-center">
-                                    <span class="text-white font-black text-lg">AI</span>
-                                </div>
-                                <h3 class="text-3xl font-bold">AI Chat App</h3>
-                            </div>
-                            <p class="app-description text-lg text-slate-600 mb-8 leading-relaxed">
-                                A dark-themed AI chat experience with Groq/OpenAI support, Supabase auth,
-                                live streaming responses, voice input, and text-to-speech playback.
-                            </p>
-                            <div class="grid grid-cols-2 gap-3 mb-8">
-                                <img alt="AI Chat App welcome screen"
-                                    class="rounded-2xl border border-slate-200 object-cover w-full h-36"
-                                    src="https://raw.githubusercontent.com/jabguru/AI-Chat-App/main/screenshots/welcome_screen.png" />
-                                <img alt="AI Chat App login screen"
-                                    class="rounded-2xl border border-slate-200 object-cover w-full h-36"
-                                    src="https://raw.githubusercontent.com/jabguru/AI-Chat-App/main/screenshots/login_screen.png" />
-                                <img alt="AI Chat App chat screen"
-                                    class="rounded-2xl border border-slate-200 object-cover w-full h-36"
-                                    src="https://raw.githubusercontent.com/jabguru/AI-Chat-App/main/screenshots/chat_screen.png" />
-                                <img alt="AI Chat App chat history"
-                                    class="rounded-2xl border border-slate-200 object-cover w-full h-36"
-                                    src="https://raw.githubusercontent.com/jabguru/AI-Chat-App/main/screenshots/chat_history.png" />
-                            </div>
-                            <div class="flex flex-wrap gap-2 mb-8">
-                                <span
-                                    class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Flutter</span>
-                                <span
-                                    class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Riverpod</span>
-                                <span
-                                    class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Supabase</span>
-                                <span
-                                    class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Groq</span>
-                                <span
-                                    class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Voice
-                                    UI</span>
-                            </div>
-                            <a class="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-white rounded-custom font-semibold hover:bg-slate-800 transition-colors"
-                                href="https://github.com/jabguru/AI-Chat-App" rel="noopener noreferrer" target="_blank">
-                                <span>View on GitHub</span>
-                                <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor"
-                                    viewbox="0 0 24 24">
-                                    <path d="M7 17L17 7M17 7H8m9 0v9" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-lg">
-                        <div class="p-8 sm:p-10">
-                            <div class="flex items-center space-x-4 mb-6">
-                                <div
-                                    class="w-12 h-12 rounded-2xl shadow-lg overflow-hidden bg-slate-900 flex items-center justify-center">
-                                    <span class="text-white font-black text-lg">FB</span>
-                                </div>
-                                <h3 class="text-3xl font-bold">Football Live Score App</h3>
-                            </div>
-                            <p class="app-description text-lg text-slate-600 mb-8 leading-relaxed">
-                                A Flutter livescore app for fixtures, match status, and statistics, with a focus on
-                                clear match presentation and data-driven score updates.
-                            </p>
-                            <div class="app-media-shell mb-8 h-[260px] sm:h-[280px] overflow-hidden">
-                                <video class="app-media-frame app-media-video" controls playsinline preload="metadata"
-                                    src="https://github.com/jabguru/football_app/assets/48110023/3703d540-42c6-496c-9550-e496b98dc24c"></video>
-                            </div>
-                            <div class="flex flex-wrap gap-2 mb-8">
-                                <span
-                                    class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Flutter</span>
-                                <span
-                                    class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">BLoC</span>
-                                <span
-                                    class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Dio</span>
-                                <span
-                                    class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">API
-                                    Sports</span>
-                            </div>
-                            <a class="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-white rounded-custom font-semibold hover:bg-slate-800 transition-colors"
-                                href="https://github.com/jabguru/football_app" rel="noopener noreferrer"
-                                target="_blank">
-                                <span>View on GitHub</span>
-                                <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor"
-                                    viewbox="0 0 24 24">
-                                    <path d="M7 17L17 7M17 7H8m9 0v9" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="grid grid-cols-1 xl:grid-cols-2 gap-10">
-                    <article class="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-lg">
-                        <div class="p-8 sm:p-10">
-                            <div class="flex items-center space-x-4 mb-6">
-                                <div
-                                    class="w-12 h-12 rounded-2xl shadow-lg overflow-hidden bg-emerald-600 flex items-center justify-center">
-                                    <span class="text-white font-black text-lg">C</span>
-                                </div>
-                                <h3 class="text-3xl font-bold">Crypto App</h3>
-                            </div>
-                            <p class="app-description text-lg text-slate-600 mb-8 leading-relaxed">
-                                A Flutter crypto mobile app that pulls market data through an API-backed flow and
-                                presents a clean finance-style interface for browsing digital assets.
-                            </p>
-                            <div class="app-media-shell mb-8 h-[260px] sm:h-[280px] overflow-hidden">
-                                <video class="app-media-frame app-media-video" controls playsinline preload="metadata"
-                                    src="https://github.com/jabguru/crypto_app/assets/48110023/dc31cf3d-0c64-45e2-b251-eb2a21356083"></video>
-                            </div>
-                            <div class="flex flex-wrap gap-2 mb-8">
-                                <span
-                                    class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Flutter</span>
-                                <span
-                                    class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Riverpod</span>
-                                <span
-                                    class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">HTTP</span>
-                                <span
-                                    class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">CoinGecko</span>
-                            </div>
-                            <a class="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-white rounded-custom font-semibold hover:bg-slate-800 transition-colors"
-                                href="https://github.com/jabguru/crypto_app" rel="noopener noreferrer" target="_blank">
-                                <span>View on GitHub</span>
-                                <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor"
-                                    viewbox="0 0 24 24">
-                                    <path d="M7 17L17 7M17 7H8m9 0v9" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-lg">
-                        <div class="p-8 sm:p-10">
-                            <div class="flex items-center space-x-4 mb-6">
-                                <div
-                                    class="w-12 h-12 rounded-2xl shadow-lg overflow-hidden bg-amber-500 flex items-center justify-center">
-                                    <span class="text-white font-black text-lg">B</span>
-                                </div>
-                                <h3 class="text-3xl font-bold">Bike Shopping App</h3>
-                            </div>
-                            <p class="app-description text-lg text-slate-600 mb-8 leading-relaxed">
-                                A Flutter shopping concept focused on storefront presentation and product browsing,
-                                published as a GitHub project rather than a production release.
-                            </p>
-                            <div class="app-media-shell mb-8 h-[260px] sm:h-[280px]">
-                                <img alt="Bike Shopping app screenshot"
-                                    class="app-media-frame app-media-cover object-top"
-                                    src="https://raw.githubusercontent.com/jabguru/Bike-Shopping/main/assets/bike-app-screenshot.png" />
-                            </div>
-                            <div class="flex flex-wrap gap-2 mb-8">
-                                <span
-                                    class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Flutter</span>
-                                <span
-                                    class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">UI
-                                    Concept</span>
-                                <span
-                                    class="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-custom">Mobile
-                                    Commerce</span>
-                            </div>
-                            <a class="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-white rounded-custom font-semibold hover:bg-slate-800 transition-colors"
-                                href="https://github.com/jabguru/Bike-Shopping" rel="noopener noreferrer"
-                                target="_blank">
-                                <span>View on GitHub</span>
-                                <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor"
-                                    viewbox="0 0 24 24">
-                                    <path d="M7 17L17 7M17 7H8m9 0v9" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- END: GitHub Apps -->
     <!-- BEGIN: Engineering Highlights -->
     <!-- <section class="py-32 bg-slate-50">
         <div class="section-container">
@@ -750,35 +476,38 @@
     <section class="py-32">
         <div class="section-container">
             <div class="mb-20 text-center">
+                <p class="font-mono text-xs tracking-[0.28em] text-primary font-semibold uppercase mb-4">Process</p>
                 <h2 class="text-4xl font-bold tracking-tight mb-4">How I Build Mobile Apps</h2>
-                <p class="text-slate-500 text-lg">A systematic approach to reliable software delivery.</p>
+                <p class="text-slate-500 text-lg">A systematic approach to reliable software delivery, layer by layer.
+                </p>
             </div>
             <div class="relative">
                 <div class="flex flex-col lg:flex-row justify-between items-center gap-8 relative z-10">
-                    <div class="w-48 p-6 bg-white border border-slate-200 rounded-custom shadow-sm text-center">
-                        <p class="font-bold text-sm text-slate-800 uppercase tracking-widest mb-2">UI Layer</p>
-                        <p class="text-slate-500 text-xs italic">Design System &amp; Widgets</p>
+                    <div class="w-48 p-6 bg-white border border-slate-200 rounded-custom text-center">
+                        <p class="font-mono font-semibold text-sm text-slate-800 uppercase tracking-widest mb-2">01
+                            &middot; UI Layer</p>
+                        <p class="text-slate-500 text-xs">Design System &amp; Widgets</p>
                     </div>
-                    <div class="hidden lg:block w-12 h-px bg-slate-300"></div>
-                    <div
-                        class="w-48 p-6 bg-primary text-white border border-primary rounded-custom shadow-xl text-center">
-                        <p class="font-bold text-sm uppercase tracking-widest mb-2">State Management</p>
-                        <p class="text-blue-100 text-xs italic">BLoC / Riverpod</p>
+                    <div class="hidden lg:block w-12 h-px pipeline-arrow"></div>
+                    <div class="w-48 p-6 bg-primary text-white border border-primary rounded-custom text-center">
+                        <p class="font-mono font-semibold text-sm uppercase tracking-widest mb-2">02 &middot; State</p>
+                        <p class="text-white/70 text-xs">BLoC / Riverpod</p>
                     </div>
-                    <div class="hidden lg:block w-12 h-px bg-slate-300"></div>
-                    <div class="w-48 p-6 bg-white border border-slate-200 rounded-custom shadow-sm text-center">
-                        <p class="font-bold text-sm text-slate-800 uppercase tracking-widest mb-2">Repository</p>
-                        <p class="text-slate-500 text-xs italic">Mediates Data & Domain Layers</p>
+                    <div class="hidden lg:block w-12 h-px pipeline-arrow"></div>
+                    <div class="w-48 p-6 bg-white border border-slate-200 rounded-custom text-center">
+                        <p class="font-mono font-semibold text-sm text-slate-800 uppercase tracking-widest mb-2">03
+                            &middot; Repository</p>
+                        <p class="text-slate-500 text-xs">Mediates Data &amp; Domain</p>
                     </div>
-                    <div class="hidden lg:block w-12 h-px bg-slate-300"></div>
-                    <div
-                        class="w-48 p-6 bg-slate-900 text-white border border-slate-800 rounded-custom shadow-sm text-center">
-                        <p class="font-bold text-sm uppercase tracking-widest mb-2">Backend/API</p>
-                        <p class="text-slate-400 text-xs italic">REST / Firebase / Supabase</p>
+                    <div class="hidden lg:block w-12 h-px pipeline-arrow"></div>
+                    <div class="w-48 p-6 bg-secondary text-white border border-secondary rounded-custom text-center">
+                        <p class="font-mono font-semibold text-sm uppercase tracking-widest mb-2">04 &middot; Backend
+                        </p>
+                        <p class="text-white/60 text-xs">REST / Firebase / Supabase</p>
                     </div>
                 </div>
                 <!-- Background decorative line for mobile (simulated) -->
-                <div class="absolute left-1/2 top-0 bottom-0 w-px bg-slate-100 -z-10 lg:hidden"></div>
+                <div class="absolute left-1/2 top-0 bottom-0 w-px bg-hairline -z-10 lg:hidden"></div>
             </div>
         </div>
     </section>
@@ -786,109 +515,104 @@
     <!-- BEGIN: Work Experience -->
     <section class="py-32 bg-white" id="experience">
         <div class="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16 xl:px-24">
-            <div class="mb-20">
+            <div class="mb-16">
                 <h2 class="text-4xl font-bold tracking-tight mb-4 text-center">Work Experience</h2>
             </div>
-            <div class="relative pl-12 timeline-line space-y-20">
+            <div class="ledger-table">
                 <!-- Exp 1 -->
-                <div class="relative">
-                    <div
-                        class="absolute -left-[54px] top-0 w-10 h-10 bg-white border-2 border-primary rounded-full flex items-center justify-center z-10">
-                        <div class="w-2.5 h-2.5 bg-primary rounded-full"></div>
-                    </div>
-                    <div>
-                        <span class="text-primary font-bold text-sm uppercase tracking-wider">Current Role</span>
-                        <div class="flex flex-col md:flex-row md:items-center justify-between mt-2 mb-6">
+                <div class="ledger-table-row">
+                    <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-6">
+                        <div class="flex items-center gap-3">
+                            <span class="ledger-dot ledger-dot--active" aria-hidden="true"></span>
                             <h3 class="text-2xl font-bold text-slate-900">Founding Mobile Engineer</h3>
-                            <p class="text-slate-500 font-medium"><a class="text-primary hover:underline"
-                                    href="https://www.contreeapp.com/" rel="noopener noreferrer"
-                                    target="_blank">Contree</a>
-                                | Nov 2025 - Present</p>
                         </div>
-                        <ul class="space-y-4 text-slate-600">
-                            <li class="flex items-start">
-                                <span class="mr-3 text-primary mt-1.5">•</span>
-                                <span>Sole mobile engineer for a fintech platform processing ₦1B+ in transactions;
-                                    architected and shipped the entire Android and iOS product from zero to
-                                    production.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="mr-3 text-primary mt-1.5">•</span>
-                                <span>Architected and maintained a Flutter mobile app from the ground up using clean
-                                    architecture and BLoC/Cubit, keeping features modular, testable, and scalable across
-                                    a rapidly growing codebase.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="mr-3 text-primary mt-1.5">•</span>
-                                <span>Implemented secure authentication and session controls (OTP flows, deep-link
-                                    handling, biometric gating, inactivity / expired session handling) to protect user
-                                    access.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="mr-3 text-primary mt-1.5">•</span>
-                                <span>Integrated production readiness tooling (crash reporting, user-context attachment,
-                                    analytics/funnel events, route-based screen tracking) to improve observability and
-                                    debugging.</span>
-                            </li>
-                        </ul>
+                        <p class="font-mono text-sm text-slate-500 pl-6 md:pl-0"><a class="text-primary hover:underline"
+                                href="https://www.contreeapp.com/" rel="noopener noreferrer" target="_blank">Contree</a>
+                            &middot; Nov 2025&ndash;Present</p>
                     </div>
+                    <ul class="space-y-4 text-slate-600 pl-6">
+                        <li class="flex items-start">
+                            <span class="mr-3 text-primary mt-1.5">&bull;</span>
+                            <span>Sole mobile engineer for a fintech platform processing &#8358;1B+ in transactions;
+                                architected and shipped the entire Android and iOS product from zero to
+                                production.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-3 text-primary mt-1.5">&bull;</span>
+                            <span>Architected and maintained a Flutter mobile app from the ground up using clean
+                                architecture and BLoC/Cubit, keeping features modular, testable, and scalable across
+                                a rapidly growing codebase.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-3 text-primary mt-1.5">&bull;</span>
+                            <span>Implemented secure authentication and session controls (OTP flows, deep-link
+                                handling, biometric gating, inactivity / expired session handling) to protect user
+                                access.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-3 text-primary mt-1.5">&bull;</span>
+                            <span>Integrated production readiness tooling (crash reporting, user-context attachment,
+                                analytics/funnel events, route-based screen tracking) to improve observability and
+                                debugging.</span>
+                        </li>
+                    </ul>
                 </div>
                 <!-- Exp 2 -->
-                <div class="relative">
-                    <div
-                        class="absolute -left-[54px] top-0 w-10 h-10 bg-white border-2 border-slate-200 rounded-full flex items-center justify-center z-10">
-                        <div class="w-2.5 h-2.5 bg-slate-300 rounded-full"></div>
-                    </div>
-                    <div>
-                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
+                <div class="ledger-table-row">
+                    <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-6">
+                        <div class="flex items-center gap-3">
+                            <span class="ledger-dot" aria-hidden="true"></span>
                             <h3 class="text-2xl font-bold text-slate-900">Flutter Developer</h3>
-                            <p class="text-slate-500 font-medium"><a class="text-primary hover:underline"
-                                    href="https://tellerone.com" rel="noopener noreferrer" target="_blank">TellerOne</a>
-                                | Apr 2024 - Nov 2025</p>
                         </div>
-                        <ul class="space-y-4 text-slate-600">
-                            <li class="flex items-start">
-                                <span class="mr-3 text-primary mt-1.5">•</span>
-                                <span>Delivered Flutter features across Android and iOS for a digital banking app,
-                                    covering transfers, KYC onboarding, and real-time transaction history via RESTful
-                                    API integration.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="mr-3 text-primary mt-1.5">•</span>
-                                <span>Shipped features on a two-week sprint cadence alongside designers, backend
-                                    engineers, and QA; owned mobile-side API contracts and coordinated integration
-                                    testing.</span>
-                            </li>
-                        </ul>
+                        <p class="font-mono text-sm text-slate-500 pl-6 md:pl-0"><a class="text-primary hover:underline"
+                                href="https://tellerone.com" rel="noopener noreferrer" target="_blank">TellerOne</a>
+                            &middot; Apr 2024&ndash;Nov 2025</p>
                     </div>
+                    <ul class="space-y-4 text-slate-600 pl-6">
+                        <li class="flex items-start">
+                            <span class="mr-3 text-primary mt-1.5">&bull;</span>
+                            <span>Delivered Flutter features across Android and iOS for a digital banking app,
+                                covering transfers, KYC onboarding, and real-time transaction history via RESTful
+                                API integration.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-3 text-primary mt-1.5">&bull;</span>
+                            <span>Shipped features on a two-week sprint cadence alongside designers, backend
+                                engineers, and QA; owned mobile-side API contracts and coordinated integration
+                                testing.</span>
+                        </li>
+                    </ul>
                 </div>
                 <!-- Exp 3 -->
-                <div class="relative">
-                    <div
-                        class="absolute -left-[54px] top-0 w-10 h-10 bg-white border-2 border-slate-200 rounded-full flex items-center justify-center z-10">
-                        <div class="w-2.5 h-2.5 bg-slate-300 rounded-full"></div>
-                    </div>
-                    <div>
-                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
+                <div class="ledger-table-row">
+                    <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-6">
+                        <div class="flex items-center gap-3">
+                            <span class="ledger-dot" aria-hidden="true"></span>
                             <h3 class="text-2xl font-bold text-slate-900">Flutter Developer</h3>
-                            <p class="text-slate-500 font-medium">Sisu Von | Nov 2022 -
-                                Apr 2024</p>
                         </div>
-                        <ul class="space-y-4 text-slate-600">
-                            <li class="flex items-start">
-                                <span class="mr-3 text-primary mt-1.5">•</span>
-                                <span>Built and shipped multiple production Flutter apps in healthcare and lifestyle
-                                    verticals; applied Clean Architecture and Test-Driven Development (TDD) across all
-                                    codebases for maintainable, testable delivery.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="mr-3 text-primary mt-1.5">•</span>
-                                <span>Integrated WebRTC-based in-app audio/video calls, real-time GPS tracking,
-                                    Text-to-Speech, and multilingual support (70+ languages) within a single
-                                    cross-platform Flutter codebase.</span>
-                            </li>
-                        </ul>
+                        <p class="font-mono text-sm text-slate-500 pl-6 md:pl-0">Sisu Von &middot; Nov 2022&ndash;Apr
+                            2024</p>
                     </div>
+                    <ul class="space-y-4 text-slate-600 pl-6">
+                        <li class="flex items-start">
+                            <span class="mr-3 text-primary mt-1.5">&bull;</span>
+                            <span>Built and shipped multiple production Flutter apps in healthcare and lifestyle
+                                verticals; applied Clean Architecture and Test-Driven Development (TDD) across all
+                                codebases for maintainable, testable delivery.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-3 text-primary mt-1.5">&bull;</span>
+                            <span>Integrated WebRTC-based in-app audio/video calls, real-time GPS tracking,
+                                Text-to-Speech, and multilingual support (70+ languages) within a single
+                                cross-platform Flutter codebase.</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Total -->
+                <div class="ledger-row ledger-row--total">
+                    <span class="font-mono uppercase tracking-wide text-xs text-slate-500">Total experience</span>
+                    <span class="leader" aria-hidden="true"></span>
+                    <span class="font-mono font-semibold">3+ yrs</span>
                 </div>
             </div>
         </div>
@@ -1027,20 +751,289 @@
         </div>
     </section> -->
     <!-- END: Open Source/Code -->
+    <!-- BEGIN: GitHub Apps -->
+    <section class="py-32 bg-[#EBE8D9] border-y border-hairline" id="github-apps">
+        <div class="section-container">
+            <div class="mb-20 text-center">
+                <p class="font-mono text-xs tracking-[0.28em] text-accent font-semibold uppercase mb-4">Side Projects
+                </p>
+                <h2 class="text-4xl font-bold tracking-tight mb-4">Apps Not in Production</h2>
+                <p class="text-slate-500 text-lg max-w-3xl mx-auto">
+                    These are personal and experimental apps I built and published on GitHub.
+                </p>
+            </div>
+
+            <div class="space-y-10">
+                <article class="unsettled-card overflow-hidden rounded-custom bg-white">
+                    <div class="grid grid-cols-1 lg:grid-cols-2">
+                        <div class="p-8 sm:p-10 lg:p-12">
+                            <div class="flex items-center justify-between mb-6">
+                                <span class="settled-tag settled-tag--rust">&#9675; Side Project</span>
+                                <span class="font-mono text-xs uppercase tracking-wide text-slate-400">Featured</span>
+                            </div>
+                            <div class="flex items-center space-x-4 mb-6">
+                                <div
+                                    class="w-12 h-12 rounded-custom shadow-sm overflow-hidden bg-white border border-slate-200 flex items-center justify-center">
+                                    <span class="text-accent font-black text-lg font-mono">D</span>
+                                </div>
+                                <h3 class="text-3xl font-bold">Delivery Live Tracking</h3>
+                            </div>
+                            <p class="app-description text-lg text-slate-600 mb-8 leading-relaxed">
+                                A live delivery tracking demo with smooth rider motion, OpenStreetMap routing,
+                                OSRM-based paths, ETA updates, and a responsive bottom sheet that keeps the rider
+                                visible above the UI.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span
+                                    class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">Flutter</span>
+                                <span
+                                    class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">Riverpod</span>
+                                <span
+                                    class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">flutter_map</span>
+                                <span
+                                    class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">OSRM</span>
+                                <span
+                                    class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">Clean
+                                    Architecture</span>
+                            </div>
+                            <ul class="space-y-3 text-slate-600 mb-8">
+                                <li class="flex items-start gap-3"><span
+                                        class="mt-2 h-2 w-2 rounded-full bg-accent shrink-0"></span><span>Smooth rider
+                                        marker rotation and interpolation to avoid jumpy map motion.</span></li>
+                                <li class="flex items-start gap-3"><span
+                                        class="mt-2 h-2 w-2 rounded-full bg-accent shrink-0"></span><span>OSRM route
+                                        generation with a fallback path when the API is unavailable.</span></li>
+                                <li class="flex items-start gap-3"><span
+                                        class="mt-2 h-2 w-2 rounded-full bg-accent shrink-0"></span><span>Gesture-aware
+                                        auto-follow logic that respects user map interactions.</span></li>
+                            </ul>
+                            <a class="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-white rounded-custom font-semibold hover:bg-slate-800 transition-colors"
+                                href="https://github.com/jabguru/delivery-live-tracking" rel="noopener noreferrer"
+                                target="_blank">
+                                <span>View on GitHub</span>
+                                <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor"
+                                    viewbox="0 0 24 24">
+                                    <path d="M7 17L17 7M17 7H8m9 0v9" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2"></path>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="bg-slate-100 p-6 sm:p-8 lg:p-10 flex items-center justify-center">
+                            <div
+                                class="w-full max-w-md rounded-custom bg-white border border-slate-200 overflow-hidden">
+                                <img alt="Delivery Live Tracking preview" class="w-full h-full object-cover"
+                                    src="https://github.com/jabguru/delivery-live-tracking/releases/download/v1.0.0/android_demo_trim.gif" />
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <div class="grid grid-cols-1 xl:grid-cols-2 gap-10">
+                    <article class="unsettled-card overflow-hidden rounded-custom bg-white">
+                        <div class="p-8 sm:p-10">
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="flex items-center space-x-4">
+                                    <div
+                                        class="w-12 h-12 rounded-custom shadow-sm overflow-hidden bg-slate-900 flex items-center justify-center">
+                                        <span class="text-white font-black text-lg font-mono">AI</span>
+                                    </div>
+                                    <h3 class="text-3xl font-bold">AI Chat App</h3>
+                                </div>
+                                <span class="settled-tag settled-tag--rust">&#9675; Side Project</span>
+                            </div>
+                            <p class="app-description text-lg text-slate-600 mb-8 leading-relaxed">
+                                A dark-themed AI chat experience with Groq/OpenAI support, Supabase auth,
+                                live streaming responses, voice input, and text-to-speech playback.
+                            </p>
+                            <div class="grid grid-cols-2 gap-3 mb-8">
+                                <img alt="AI Chat App welcome screen"
+                                    class="rounded-custom border border-slate-200 object-cover w-full h-36"
+                                    src="https://raw.githubusercontent.com/jabguru/AI-Chat-App/main/screenshots/welcome_screen.png" />
+                                <img alt="AI Chat App login screen"
+                                    class="rounded-custom border border-slate-200 object-cover w-full h-36"
+                                    src="https://raw.githubusercontent.com/jabguru/AI-Chat-App/main/screenshots/login_screen.png" />
+                                <img alt="AI Chat App chat screen"
+                                    class="rounded-custom border border-slate-200 object-cover w-full h-36"
+                                    src="https://raw.githubusercontent.com/jabguru/AI-Chat-App/main/screenshots/chat_screen.png" />
+                                <img alt="AI Chat App chat history"
+                                    class="rounded-custom border border-slate-200 object-cover w-full h-36"
+                                    src="https://raw.githubusercontent.com/jabguru/AI-Chat-App/main/screenshots/chat_history.png" />
+                            </div>
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span
+                                    class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">Flutter</span>
+                                <span
+                                    class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">Riverpod</span>
+                                <span
+                                    class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">Supabase</span>
+                                <span
+                                    class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">Groq</span>
+                                <span
+                                    class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">Voice
+                                    UI</span>
+                            </div>
+                            <a class="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-white rounded-custom font-semibold hover:bg-slate-800 transition-colors"
+                                href="https://github.com/jabguru/AI-Chat-App" rel="noopener noreferrer" target="_blank">
+                                <span>View on GitHub</span>
+                                <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor"
+                                    viewbox="0 0 24 24">
+                                    <path d="M7 17L17 7M17 7H8m9 0v9" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="unsettled-card overflow-hidden rounded-custom bg-white">
+                        <div class="p-8 sm:p-10">
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="flex items-center space-x-4">
+                                    <div
+                                        class="w-12 h-12 rounded-custom shadow-sm overflow-hidden bg-slate-900 flex items-center justify-center">
+                                        <span class="text-white font-black text-lg font-mono">FB</span>
+                                    </div>
+                                    <h3 class="text-3xl font-bold">Football Live Score App</h3>
+                                </div>
+                                <span class="settled-tag settled-tag--rust">&#9675; Side Project</span>
+                            </div>
+                            <p class="app-description text-lg text-slate-600 mb-8 leading-relaxed">
+                                A Flutter livescore app for fixtures, match status, and statistics, with a focus on
+                                clear match presentation and data-driven score updates.
+                            </p>
+                            <div class="app-media-shell mb-8 h-[260px] sm:h-[280px] overflow-hidden">
+                                <video class="app-media-frame app-media-video" controls playsinline preload="metadata"
+                                    src="https://github.com/jabguru/football_app/assets/48110023/3703d540-42c6-496c-9550-e496b98dc24c"></video>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span
+                                    class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">Flutter</span>
+                                <span
+                                    class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">BLoC</span>
+                                <span
+                                    class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">Dio</span>
+                                <span
+                                    class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">API
+                                    Sports</span>
+                            </div>
+                            <a class="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-white rounded-custom font-semibold hover:bg-slate-800 transition-colors"
+                                href="https://github.com/jabguru/football_app" rel="noopener noreferrer"
+                                target="_blank">
+                                <span>View on GitHub</span>
+                                <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor"
+                                    viewbox="0 0 24 24">
+                                    <path d="M7 17L17 7M17 7H8m9 0v9" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="grid grid-cols-1 xl:grid-cols-2 gap-10">
+                    <article class="unsettled-card overflow-hidden rounded-custom bg-white">
+                        <div class="p-8 sm:p-10">
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="flex items-center space-x-4">
+                                    <div
+                                        class="w-12 h-12 rounded-custom shadow-sm overflow-hidden bg-emerald-700 flex items-center justify-center">
+                                        <span class="text-white font-black text-lg font-mono">C</span>
+                                    </div>
+                                    <h3 class="text-3xl font-bold">Crypto App</h3>
+                                </div>
+                                <span class="settled-tag settled-tag--rust">&#9675; Side Project</span>
+                            </div>
+                            <p class="app-description text-lg text-slate-600 mb-8 leading-relaxed">
+                                A Flutter crypto mobile app that pulls market data through an API-backed flow and
+                                presents a clean finance-style interface for browsing digital assets.
+                            </p>
+                            <div class="app-media-shell mb-8 h-[260px] sm:h-[280px] overflow-hidden">
+                                <video class="app-media-frame app-media-video" controls playsinline preload="metadata"
+                                    src="https://github.com/jabguru/crypto_app/assets/48110023/dc31cf3d-0c64-45e2-b251-eb2a21356083"></video>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span
+                                    class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">Flutter</span>
+                                <span
+                                    class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">Riverpod</span>
+                                <span
+                                    class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">HTTP</span>
+                                <span
+                                    class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">CoinGecko</span>
+                            </div>
+                            <a class="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-white rounded-custom font-semibold hover:bg-slate-800 transition-colors"
+                                href="https://github.com/jabguru/crypto_app" rel="noopener noreferrer" target="_blank">
+                                <span>View on GitHub</span>
+                                <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor"
+                                    viewbox="0 0 24 24">
+                                    <path d="M7 17L17 7M17 7H8m9 0v9" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="unsettled-card overflow-hidden rounded-custom bg-white">
+                        <div class="p-8 sm:p-10">
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="flex items-center space-x-4">
+                                    <div
+                                        class="w-12 h-12 rounded-custom shadow-sm overflow-hidden bg-amber-600 flex items-center justify-center">
+                                        <span class="text-white font-black text-lg font-mono">B</span>
+                                    </div>
+                                    <h3 class="text-3xl font-bold">Bike Shopping App</h3>
+                                </div>
+                                <span class="settled-tag settled-tag--rust">&#9675; Side Project</span>
+                            </div>
+                            <p class="app-description text-lg text-slate-600 mb-8 leading-relaxed">
+                                A Flutter shopping concept focused on storefront presentation and product browsing,
+                                published as a GitHub project rather than a production release.
+                            </p>
+                            <div class="app-media-shell mb-8 h-[260px] sm:h-[280px]">
+                                <img alt="Bike Shopping app screenshot"
+                                    class="app-media-frame app-media-cover object-top"
+                                    src="https://raw.githubusercontent.com/jabguru/Bike-Shopping/main/assets/bike-app-screenshot.png" />
+                            </div>
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span
+                                    class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">Flutter</span>
+                                <span
+                                    class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">UI
+                                    Concept</span>
+                                <span
+                                    class="px-3 py-1 bg-transparent border border-hairline text-secondary/70 text-xs font-mono uppercase tracking-wide rounded-custom">Mobile
+                                    Commerce</span>
+                            </div>
+                            <a class="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-white rounded-custom font-semibold hover:bg-slate-800 transition-colors"
+                                href="https://github.com/jabguru/Bike-Shopping" rel="noopener noreferrer"
+                                target="_blank">
+                                <span>View on GitHub</span>
+                                <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor"
+                                    viewbox="0 0 24 24">
+                                    <path d="M7 17L17 7M17 7H8m9 0v9" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: GitHub Apps -->
     <!-- BEGIN: Contact Section -->
     <section class="py-32" id="contact">
         <div class="section-container">
-            <div class="bg-white rounded-[2rem] border border-slate-200 shadow-2xl overflow-hidden">
+            <div class="bg-white border border-slate-200 rounded-custom overflow-hidden">
                 <div class="grid grid-cols-1 lg:grid-cols-2">
                     <div class="p-8 sm:p-10 lg:p-14 bg-primary text-white">
                         <h2 class="text-4xl font-bold mb-8">Let's build something amazing together.</h2>
-                        <p class="text-blue-100 text-lg mb-12">I'm currently open to new opportunities and interesting
+                        <p class="text-white/75 text-lg mb-12">I'm currently open to new opportunities and interesting
                             mobile projects.</p>
                         <div class="space-y-6">
-                            <a class="flex flex-col sm:flex-row sm:items-center gap-3 sm:space-x-4 hover:text-blue-200 transition-colors"
+                            <a class="flex flex-col sm:flex-row sm:items-center gap-3 sm:space-x-4 hover:text-white/80 transition-colors"
                                 href="mailto:brownjulius980@gmail.com">
                                 <div
-                                    class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center shrink-0">
+                                    class="w-12 h-12 bg-white/10 rounded-custom flex items-center justify-center shrink-0">
                                     <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor"
                                         viewbox="0 0 24 24">
                                         <path
@@ -1052,7 +1045,7 @@
                             </a>
                             <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:space-x-4">
                                 <div
-                                    class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center shrink-0">
+                                    class="w-12 h-12 bg-white/10 rounded-custom flex items-center justify-center shrink-0">
                                     <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor"
                                         viewbox="0 0 24 24">
                                         <path
@@ -1067,7 +1060,7 @@
                         </div>
                         <div class="mt-20 flex space-x-6">
                             <a aria-label="Visit LinkedIn profile"
-                                class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
+                                class="w-12 h-12 bg-white/10 rounded-custom flex items-center justify-center hover:bg-white/20 transition-colors"
                                 href="https://linkedin.com/in/jabguru" rel="noopener noreferrer" target="_blank">
                                 <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
                                     <path
@@ -1076,7 +1069,7 @@
                                 </svg>
                             </a>
                             <a aria-label="Visit GitHub profile"
-                                class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
+                                class="w-12 h-12 bg-white/10 rounded-custom flex items-center justify-center hover:bg-white/20 transition-colors"
                                 href="https://github.com/jabguru" rel="noopener noreferrer" target="_blank">
                                 <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
                                     <path
@@ -1090,21 +1083,24 @@
                         <form action="https://formsubmit.co/brownjulius980@gmail.com" class="space-y-6"
                             id="contact-form" method="POST">
                             <div>
-                                <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide"
+                                <label
+                                    class="block font-mono text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide"
                                     for="name">Full Name</label>
                                 <input
                                     class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-custom focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
                                     id="name" name="name" placeholder="John Doe" required type="text" />
                             </div>
                             <div>
-                                <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide"
+                                <label
+                                    class="block font-mono text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide"
                                     for="email">Email Address</label>
                                 <input
                                     class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-custom focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
                                     id="email" name="email" placeholder="john@example.com" required type="email" />
                             </div>
                             <div>
-                                <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide"
+                                <label
+                                    class="block font-mono text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide"
                                     for="message">Your Message</label>
                                 <textarea
                                     class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-custom focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none resize-none"
@@ -1112,7 +1108,7 @@
                                     rows="5"></textarea>
                             </div>
                             <button
-                                class="w-full py-5 bg-secondary text-white font-bold rounded-custom hover:opacity-90 transition-all shadow-xl shadow-slate-200 uppercase tracking-widest"
+                                class="w-full py-5 bg-secondary text-white font-mono font-bold rounded-custom hover:opacity-90 transition-all uppercase tracking-widest"
                                 type="submit">Send Message</button>
                             <p aria-live="polite" class="text-sm text-slate-500 hidden" id="form-status"></p>
                         </form>
@@ -1123,13 +1119,11 @@
     </section>
     <!-- END: Contact Section -->
     <!-- BEGIN: Footer -->
-    <footer class="py-12 border-t border-slate-200 bg-white">
-        <div class="section-container flex flex-col md:flex-row justify-between items-center">
-            <p class="text-slate-500 text-sm mb-4 md:mb-0">© 2026 Julius Alibrown. All rights reserved.</p>
-            <div class="flex space-x-8 text-sm font-medium text-slate-600">
-                <!-- <a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
-                <a class="hover:text-primary transition-colors" href="#">Terms of Service</a> -->
-                <a class="hover:text-primary transition-colors" href="#hero">Back to Top</a>
+    <footer class="py-12 border-t border-hairline bg-white font-mono">
+        <div class="section-container flex flex-col md:flex-row justify-between items-center gap-2">
+            <p class="text-slate-500 text-xs tracking-wide">&copy; 2026 Julius Alibrown. All rights reserved.</p>
+            <div class="flex space-x-8 text-xs font-medium text-slate-600 tracking-wide">
+                <a class="hover:text-primary transition-colors" href="#hero">&uarr; Back to Top</a>
             </div>
         </div>
     </footer>
