@@ -165,7 +165,27 @@ attachTilt(document.getElementById('hero-stage'), document.getElementById('top')
 
 const desktopQuery = window.matchMedia('(min-width: 1024px)');
 
-/* Maps scroll progress through a tall pinned wrapper to a step index (desktop only) */
+/* Each step rests just past its start, so float rounding never floors to the step before */
+const STEP_REST = 0.002;
+/* Scrolls smaller than this (in steps) count as jitter, not intent */
+const STEP_JITTER = 0.01;
+
+/* Calls `onEnd` once each scroll gesture (including momentum) has finished */
+const onScrollEnd = (onEnd) => {
+    if ('onscrollend' in window) {
+        window.addEventListener('scrollend', onEnd);
+        return;
+    }
+    let timer = null;
+    window.addEventListener('scroll', () => {
+        clearTimeout(timer);
+        timer = setTimeout(onEnd, 140);
+    }, { passive: true });
+};
+
+/* Maps scroll progress through a tall pinned wrapper to a step index (desktop only).
+   When a gesture ends inside the pin, it glides on to the next step in the direction
+   travelled — so one light scroll always moves exactly one step. */
 const pinAndSwap = (wrap, count, onIndex) => {
     let ticking = false;
     const update = () => {
@@ -183,13 +203,56 @@ const pinAndSwap = (wrap, count, onIndex) => {
             requestAnimationFrame(update);
         }
     }, { passive: true });
+
+    let settledY = window.scrollY;
+    let glideY = null;
+    onScrollEnd(() => {
+        const fromY = settledY;
+        settledY = window.scrollY;
+        /* Ignore the end of our own glide */
+        if (glideY !== null && Math.abs(window.scrollY - glideY) < 2) {
+            glideY = null;
+            return;
+        }
+        glideY = null;
+        if (!desktopQuery.matches) return;
+        const range = wrap.offsetHeight - window.innerHeight;
+        if (range <= 0) return;
+        const wrapTop = wrap.getBoundingClientRect().top + window.scrollY;
+        const progress = (window.scrollY - wrapTop) / range;
+        const direction = Math.sign(window.scrollY - fromY);
+        if (!direction || progress <= 0) return;
+        /* Below the pin, only an upward scroll while the section is still on screen glides back in */
+        const tailEnd = wrap.offsetHeight / range;
+        if (progress >= 1 && (direction > 0 || progress >= tailEnd)) return;
+
+        /* Positions in step units: step k rests at k + STEP_REST */
+        const fromPos = ((fromY - wrapTop) / range) * count;
+        const pos = Math.min(progress, 1) * count;
+        if (Math.abs(pos - fromPos) < STEP_JITTER) return;
+        /* Tolerance absorbs sub-pixel offsets when a gesture starts right at a step's start */
+        const startStep = Math.floor(fromPos + STEP_JITTER);
+        const reached = Math.min(Math.floor(pos), count - 1);
+        /* A gesture that crossed into another step settles there (flings never skip past it);
+           one that stayed inside its step moves on by exactly one */
+        const target = reached !== startStep ? reached : startStep + direction;
+
+        /* Past the last step, glide straight out to the next section */
+        const top = target >= count
+            ? wrapTop + wrap.offsetHeight
+            : wrapTop + range * ((Math.max(target, 0) + STEP_REST) / count);
+        if (Math.abs(top - window.scrollY) < 2) return;
+        glideY = Math.round(top);
+        window.scrollTo({ top, behavior: reducedMotion ? 'auto' : 'smooth' });
+    });
+
     return update;
 };
 
-/* Scroll position that lands a pinned wrapper on the middle of step `index` */
+/* Scroll position where step `index` of a pinned wrapper rests */
 const pinnedStepTop = (wrap, count, index) => {
     const range = wrap.offsetHeight - window.innerHeight;
-    return wrap.getBoundingClientRect().top + window.scrollY + range * ((index + 0.5) / count);
+    return wrap.getBoundingClientRect().top + window.scrollY + range * ((index + STEP_REST) / count);
 };
 
 /* ---------- Apps showcase ---------- */
