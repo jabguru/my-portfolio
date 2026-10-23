@@ -129,14 +129,14 @@ if (heroShots.length > 1 && !reducedMotion) {
     }, 4200);
 }
 
-const heroStage = document.getElementById('hero-stage');
-const heroSection = document.getElementById('top');
-if (heroStage && heroSection && !reducedMotion && matchMedia('(pointer: fine)').matches) {
+/* Cursor-follow 3D tilt, eased with a lerp so it settles smoothly */
+const attachTilt = (stage, area) => {
+    if (!stage || !area || reducedMotion || !matchMedia('(pointer: fine)').matches) return;
     let targetX = 0, targetY = 0, currentX = 0, currentY = 0, tiltRaf = null;
     const lerpTilt = () => {
         currentX += (targetX - currentX) * 0.08;
         currentY += (targetY - currentY) * 0.08;
-        heroStage.style.transform = `perspective(1100px) rotateY(${currentX}deg) rotateX(${currentY}deg)`;
+        stage.style.transform = `perspective(1100px) rotateY(${currentX}deg) rotateX(${currentY}deg)`;
         if (Math.abs(targetX - currentX) > 0.01 || Math.abs(targetY - currentY) > 0.01) {
             tiltRaf = requestAnimationFrame(lerpTilt);
         } else {
@@ -144,28 +144,60 @@ if (heroStage && heroSection && !reducedMotion && matchMedia('(pointer: fine)').
         }
     };
     const kickTilt = () => { if (!tiltRaf) tiltRaf = requestAnimationFrame(lerpTilt); };
-    heroSection.addEventListener('mousemove', (e) => {
-        const rect = heroStage.getBoundingClientRect();
+    area.addEventListener('mousemove', (e) => {
+        const rect = stage.getBoundingClientRect();
         const dx = (e.clientX - (rect.left + rect.width / 2)) / rect.width;
         const dy = (e.clientY - (rect.top + rect.height / 2)) / rect.height;
         targetX = Math.max(-1, Math.min(1, dx)) * 7;
         targetY = Math.max(-1, Math.min(1, -dy)) * 5;
         kickTilt();
     });
-    heroSection.addEventListener('mouseleave', () => {
+    area.addEventListener('mouseleave', () => {
         targetX = 0;
         targetY = 0;
         kickTilt();
     });
-}
+};
 
-/* ---------- Apps showcase: pin and swap ---------- */
+attachTilt(document.getElementById('hero-stage'), document.getElementById('top'));
+
+/* ---------- Pinned sections: scroll progress picks the step ---------- */
+
+const desktopQuery = window.matchMedia('(min-width: 1024px)');
+
+/* Maps scroll progress through a tall pinned wrapper to a step index (desktop only) */
+const pinAndSwap = (wrap, count, onIndex) => {
+    let ticking = false;
+    const update = () => {
+        ticking = false;
+        if (!desktopQuery.matches) return;
+        const rect = wrap.getBoundingClientRect();
+        const range = wrap.offsetHeight - window.innerHeight;
+        if (range <= 0) return;
+        const progress = Math.min(Math.max(-rect.top / range, 0), 0.999);
+        onIndex(Math.floor(progress * count));
+    };
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(update);
+        }
+    }, { passive: true });
+    return update;
+};
+
+/* Scroll position that lands a pinned wrapper on the middle of step `index` */
+const pinnedStepTop = (wrap, count, index) => {
+    const range = wrap.offsetHeight - window.innerHeight;
+    return wrap.getBoundingClientRect().top + window.scrollY + range * ((index + 0.5) / count);
+};
+
+/* ---------- Apps showcase ---------- */
 
 const showcaseWrap = document.getElementById('apps');
 const showcasePanels = showcaseWrap ? [...showcaseWrap.querySelectorAll('.showcase-panel')] : [];
 const showcaseDots = showcaseWrap ? [...showcaseWrap.querySelectorAll('.showcase-dot')] : [];
 const showcaseCounter = document.getElementById('showcase-counter');
-const desktopQuery = window.matchMedia('(min-width: 1024px)');
 
 if (showcaseWrap && showcasePanels.length) {
     let activeIndex = 0;
@@ -180,22 +212,7 @@ if (showcaseWrap && showcasePanels.length) {
         if (showcaseCounter) showcaseCounter.textContent = `0${index + 1} / 0${showcasePanels.length}`;
     };
 
-    let showcaseTicking = false;
-    const onShowcaseScroll = () => {
-        showcaseTicking = false;
-        if (!desktopQuery.matches) return;
-        const rect = showcaseWrap.getBoundingClientRect();
-        const range = showcaseWrap.offsetHeight - window.innerHeight;
-        if (range <= 0) return;
-        const progress = Math.min(Math.max(-rect.top / range, 0), 0.999);
-        setActive(Math.floor(progress * showcasePanels.length));
-    };
-    window.addEventListener('scroll', () => {
-        if (!showcaseTicking) {
-            showcaseTicking = true;
-            requestAnimationFrame(onShowcaseScroll);
-        }
-    }, { passive: true });
+    const onShowcaseScroll = pinAndSwap(showcaseWrap, showcasePanels.length, setActive);
 
     const applyMode = () => {
         if (desktopQuery.matches) {
@@ -208,6 +225,107 @@ if (showcaseWrap && showcasePanels.length) {
     desktopQuery.addEventListener('change', applyMode);
     applyMode();
 }
+
+/* ---------- Swift spotlight: screen-recording tour ---------- */
+
+const spotWrap = document.getElementById('swift');
+const spotSteps = spotWrap ? [...spotWrap.querySelectorAll('.spot-step')] : [];
+const spotVideos = spotWrap ? [...spotWrap.querySelectorAll('.spot-video')] : [];
+
+if (spotWrap && spotSteps.length && spotSteps.length === spotVideos.length) {
+    let spotIndex = 0, inView = false, loaded = false, barRaf = null;
+
+    /* Desktop loops the clip while scroll holds the step; mobile plays through and advances */
+    const syncLoop = () => spotVideos.forEach((v) => { v.loop = desktopQuery.matches; });
+
+    const trackBar = () => {
+        const video = spotVideos[spotIndex];
+        const p = video.duration ? video.currentTime / video.duration : 0;
+        spotSteps[spotIndex].style.setProperty('--p', p.toFixed(4));
+        barRaf = requestAnimationFrame(trackBar);
+    };
+    const stopBar = () => {
+        if (barRaf) cancelAnimationFrame(barRaf);
+        barRaf = null;
+    };
+
+    const playActive = () => {
+        spotVideos.forEach((v, i) => { if (i !== spotIndex) v.pause(); });
+        if (!inView || !loaded || reducedMotion) {
+            spotVideos[spotIndex].pause();
+            stopBar();
+            return;
+        }
+        const video = spotVideos[spotIndex];
+        video.currentTime = 0;
+        video.play().catch(() => {});
+        if (!barRaf) barRaf = requestAnimationFrame(trackBar);
+    };
+
+    const setSpot = (index) => {
+        if (index === spotIndex) return;
+        spotSteps[spotIndex].style.setProperty('--p', 0);
+        spotIndex = index;
+        spotSteps.forEach((step, i) => step.classList.toggle('is-active', i === index));
+        spotVideos.forEach((video, i) => video.classList.toggle('is-active', i === index));
+        playActive();
+    };
+
+    spotVideos.forEach((video, i) => {
+        video.addEventListener('ended', () => {
+            if (i === spotIndex && !video.loop) setSpot((i + 1) % spotVideos.length);
+        });
+    });
+
+    spotSteps.forEach((step, i) => {
+        step.addEventListener('click', () => {
+            if (desktopQuery.matches) {
+                window.scrollTo({
+                    top: pinnedStepTop(spotWrap, spotSteps.length, i),
+                    behavior: reducedMotion ? 'auto' : 'smooth',
+                });
+            } else {
+                setSpot(i);
+            }
+        });
+    });
+
+    const onSpotScroll = pinAndSwap(spotWrap, spotSteps.length, setSpot);
+    desktopQuery.addEventListener('change', () => {
+        syncLoop();
+        onSpotScroll();
+    });
+    syncLoop();
+    onSpotScroll();
+
+    /* Clips and posters only download once the section is close, keeping the first load light */
+    const loadMedia = () => {
+        spotVideos.forEach((video) => {
+            video.poster = video.dataset.poster;
+            if (!reducedMotion) video.src = video.dataset.src;
+        });
+        loaded = true;
+        playActive();
+    };
+    if ('IntersectionObserver' in window) {
+        const loadObserver = new IntersectionObserver((entries) => {
+            if (!entries.some((entry) => entry.isIntersecting)) return;
+            loadObserver.disconnect();
+            loadMedia();
+        }, { rootMargin: '600px 0px' });
+        loadObserver.observe(spotWrap);
+
+        const viewObserver = new IntersectionObserver((entries) => {
+            inView = entries[0].isIntersecting;
+            playActive();
+        }, { threshold: 0.2 });
+        viewObserver.observe(spotWrap.querySelector('.spot-stage'));
+    } else {
+        loadMedia();
+    }
+}
+
+attachTilt(document.getElementById('spot-stage'), spotWrap);
 
 /* ---------- Experience timeline fill ---------- */
 

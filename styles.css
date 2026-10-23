@@ -77,6 +77,61 @@ body::after {
     transform: translateY(-2px);
 }
 
+/* Flutter + Swift stack pills in the hero */
+.stack-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    background: rgba(13, 13, 21, 0.7);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: #F5F4F0;
+    animation: stack-glow 6s ease-in-out infinite;
+}
+
+.stack-pill-flutter {
+    --stack-glow: rgba(84, 197, 248, 0.45);
+}
+
+.stack-pill-swift {
+    --stack-glow: rgba(240, 81, 56, 0.5);
+    animation-delay: -3s;
+    transition: border-color 250ms ease, transform 250ms ease;
+}
+
+.stack-pill-swift:hover {
+    border-color: rgba(240, 81, 56, 0.6);
+    transform: translateY(-2px);
+}
+
+.stack-pill-new {
+    padding: 0.1rem 0.45rem;
+    border-radius: 999px;
+    background: linear-gradient(100deg, #F4B860, #E76F8A);
+    color: #05050A;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+@keyframes stack-glow {
+    0%,
+    60%,
+    100% {
+        box-shadow: 0 0 0 0 transparent;
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    25% {
+        box-shadow: 0 0 28px -4px var(--stack-glow);
+        border-color: var(--stack-glow);
+    }
+}
+
 .pulse-dot {
     width: 8px;
     height: 8px;
@@ -439,6 +494,349 @@ body::after {
     .showcase-dot.is-active {
         width: 44px;
         background: linear-gradient(90deg, #7C6BFF, #FF7847);
+    }
+}
+
+/* ---------- Swift spotlight ---------- */
+
+/* Gold → pink comes from the Ghibli app's own night theme; scoped to this section only */
+.text-spot-gradient {
+    background: linear-gradient(100deg, #F4B860 10%, #E76F8A 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.spot-wrap {
+    position: relative;
+}
+
+.spot-sticky {
+    position: relative;
+    overflow: hidden;
+    padding: 7rem 0;
+}
+
+/* Fade the night sky into the page's black at both edges */
+.spot-sticky::before,
+.spot-sticky::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 22%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.spot-sticky::before {
+    top: 0;
+    background: linear-gradient(#05050A, transparent);
+}
+
+.spot-sticky::after {
+    bottom: 0;
+    background: linear-gradient(transparent, #05050A);
+}
+
+/* Drifting watercolor mesh, echoing the app's AnimatedBackground */
+.spot-mesh {
+    position: absolute;
+    inset: -20%;
+    background:
+        radial-gradient(36% 40% at 22% 30%, rgba(42, 27, 77, 0.95), transparent 70%),
+        radial-gradient(40% 44% at 78% 62%, rgba(27, 22, 64, 0.95), transparent 70%),
+        radial-gradient(30% 34% at 64% 22%, rgba(231, 111, 138, 0.16), transparent 70%),
+        radial-gradient(30% 30% at 30% 78%, rgba(244, 184, 96, 0.1), transparent 70%),
+        #0A0C18;
+    filter: blur(40px);
+    animation: spot-drift 26s ease-in-out infinite alternate;
+}
+
+@keyframes spot-drift {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate3d(3%, -2%, 0) scale(1.06);
+    }
+
+    100% {
+        transform: translate3d(-3%, 2%, 0) scale(1.02);
+    }
+}
+
+.spot-stars,
+.spot-stars::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: transparent;
+    animation: twinkle 4.5s ease-in-out infinite;
+}
+
+.spot-stars {
+    box-shadow:
+        8vw 14vh rgba(255, 255, 255, 0.7), 18vw 32vh rgba(255, 255, 255, 0.4), 27vw 9vh rgba(255, 255, 255, 0.55),
+        41vw 21vh rgba(255, 255, 255, 0.35), 52vw 6vh rgba(255, 255, 255, 0.6), 63vw 28vh rgba(255, 255, 255, 0.45),
+        74vw 12vh rgba(255, 255, 255, 0.7), 88vw 24vh rgba(255, 255, 255, 0.4), 94vw 8vh rgba(255, 255, 255, 0.55),
+        12vw 58vh rgba(255, 255, 255, 0.35), 34vw 72vh rgba(255, 255, 255, 0.5), 58vw 84vh rgba(255, 255, 255, 0.4),
+        82vw 66vh rgba(255, 255, 255, 0.6), 92vw 88vh rgba(255, 255, 255, 0.35), 5vw 90vh rgba(255, 255, 255, 0.5);
+}
+
+.spot-stars::after {
+    content: '';
+    animation-delay: -2.2s;
+    box-shadow:
+        14vw 22vh rgba(244, 184, 96, 0.6), 31vw 40vh rgba(255, 255, 255, 0.45), 46vw 13vh rgba(255, 255, 255, 0.6),
+        58vw 46vh rgba(231, 111, 138, 0.5), 69vw 18vh rgba(255, 255, 255, 0.4), 79vw 38vh rgba(255, 255, 255, 0.55),
+        23vw 64vh rgba(255, 255, 255, 0.4), 47vw 92vh rgba(255, 255, 255, 0.5), 71vw 78vh rgba(244, 184, 96, 0.5),
+        97vw 52vh rgba(255, 255, 255, 0.45);
+}
+
+@keyframes twinkle {
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.25;
+    }
+}
+
+/* Mobile: heading, phone, then the tour */
+.spot-grid {
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 'head' 'phone' 'body';
+    gap: 3rem;
+}
+
+.spot-head {
+    grid-area: head;
+}
+
+.spot-phone {
+    grid-area: phone;
+}
+
+.spot-body {
+    grid-area: body;
+}
+
+.spot-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.spot-step {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2.25rem 1fr;
+    align-items: start;
+    padding: 0.85rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 18px;
+    text-align: left;
+    color: #6E6E80;
+    overflow: hidden;
+    transition: background 400ms ease, border-color 400ms ease, color 400ms ease;
+}
+
+.spot-step:hover {
+    color: #A0A0B2;
+}
+
+.spot-step.is-active {
+    color: #F5F4F0;
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(244, 184, 96, 0.22);
+}
+
+.spot-step-num {
+    font-size: 0.75rem;
+    padding-top: 0.2rem;
+}
+
+.spot-step.is-active .spot-step-num {
+    background: linear-gradient(100deg, #F4B860, #E76F8A);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.spot-step-title {
+    display: block;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.spot-step-text {
+    display: block;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: #A0A0B2;
+    transition: max-height 500ms cubic-bezier(0.22, 1, 0.36, 1), opacity 400ms ease, margin 500ms ease;
+}
+
+.spot-step.is-active .spot-step-text {
+    max-height: 6rem;
+    opacity: 1;
+    margin-top: 0.3rem;
+}
+
+/* Fills over the length of the active clip; JS drives --p */
+.spot-step-bar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(90deg, #F4B860, #E76F8A);
+    transform-origin: left;
+    transform: scaleX(0);
+    opacity: 0;
+}
+
+.spot-step.is-active .spot-step-bar {
+    opacity: 1;
+    transform: scaleX(var(--p, 0));
+}
+
+.spot-link:hover {
+    color: #F4B860;
+}
+
+/* Phone */
+.spot-stage {
+    position: relative;
+    width: min(290px, 72vw);
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+.spot-stage-glow {
+    position: absolute;
+    inset: -14%;
+    background: radial-gradient(circle at 50% 45%, rgba(244, 184, 96, 0.28), rgba(231, 111, 138, 0.14) 50%, transparent 72%);
+    filter: blur(50px);
+    pointer-events: none;
+}
+
+.iphone {
+    position: relative;
+    padding: 4.2%;
+    border-radius: 17% / 7.8%;
+    background: linear-gradient(145deg, #4A4A55, #1B1B22 40%, #2E2E38 70%, #121218);
+    box-shadow:
+        inset 0 0 0 1.5px rgba(255, 255, 255, 0.18),
+        inset 0 0 0 5px #0A0A0F,
+        0 40px 80px -24px rgba(0, 0, 0, 0.85),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.iphone-screen {
+    position: relative;
+    aspect-ratio: 1206 / 2622;
+    border-radius: 13.5% / 6.2%;
+    overflow: hidden;
+    background: #0B0E1A;
+}
+
+.iphone-island {
+    position: absolute;
+    top: 1.6%;
+    left: 50%;
+    width: 31%;
+    height: 3.4%;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    background: #000;
+    z-index: 2;
+}
+
+.spot-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transform: scale(1.02);
+    transition: opacity 600ms ease, transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.spot-video.is-active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.spot-chip-tl {
+    top: 46%;
+    left: -8%;
+    animation: float-slow 6s ease-in-out infinite;
+    animation-delay: -1.2s;
+}
+
+.spot-chip-br {
+    bottom: 18%;
+    right: -8%;
+    color: #F4B860;
+    animation: float-slow 6.8s ease-in-out infinite;
+    animation-delay: -3.8s;
+}
+
+/* Desktop: pinned, scroll walks through the tour */
+@media (min-width: 1024px) {
+    .spot-wrap {
+        height: 420vh;
+    }
+
+    .spot-sticky {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        padding: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .spot-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+        grid-template-areas: 'head phone' 'body phone';
+        grid-template-rows: auto 1fr;
+        column-gap: 6rem;
+        row-gap: 1.75rem;
+        align-items: start;
+    }
+
+    .spot-phone {
+        align-self: center;
+        justify-self: center;
+    }
+
+    .spot-stage {
+        width: min(310px, 34vh);
+    }
+
+    .spot-chip-tl {
+        left: -24%;
+    }
+
+    .spot-chip-br {
+        right: -20%;
     }
 }
 
@@ -807,7 +1205,13 @@ body::after {
     .hero-chip-tl,
     .hero-chip-br,
     .pulse-dot,
-    .marquee-track {
+    .marquee-track,
+    .stack-pill,
+    .spot-mesh,
+    .spot-stars,
+    .spot-stars::after,
+    .spot-chip-tl,
+    .spot-chip-br {
         animation: none;
     }
 
@@ -819,7 +1223,13 @@ body::after {
         transition: none;
     }
 
-    .hero-stage {
+    .hero-stage,
+    .spot-stage {
         transform: none !important;
+    }
+
+    .spot-video,
+    .spot-step-text {
+        transition: none;
     }
 }
