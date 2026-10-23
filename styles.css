@@ -107,17 +107,6 @@ body::after {
     transform: translateY(-2px);
 }
 
-.stack-pill-new {
-    padding: 0.1rem 0.45rem;
-    border-radius: 999px;
-    background: linear-gradient(100deg, #F4B860, #E76F8A);
-    color: #05050A;
-    font-size: 0.6rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-}
-
 @keyframes stack-glow {
     0%,
     60%,
