@@ -45,7 +45,7 @@ const simApps = {
         screen: 'images/apps/tellerone-1.webp',
         alt: 'TellerOne home screen',
         what: 'A multi-currency digital bank with cards, savings goals and overdrafts.',
-        role: 'Flutter developer. I built transfers, onboarding and transaction history.',
+        role: 'Flutter developer on the mobile app.',
         status: 'Live',
         live: true,
     },
