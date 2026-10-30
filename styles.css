@@ -180,7 +180,7 @@ h4 {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 13px 20px;
+    padding: 11px 24px;
     border-radius: var(--radius);
     font-size: var(--step-small);
     font-weight: 500;
@@ -377,9 +377,11 @@ h4 {
 }
 
 .actions {
-    display: flex;
-    flex-wrap: wrap;
+    /* The pair shares one width, set by the longer label */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
+    width: max-content;
     margin-top: 40px;
 }
 
