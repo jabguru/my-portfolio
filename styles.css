@@ -168,8 +168,27 @@ h3 {
     width: 100%;
 }
 
+/* Official store badges, used unaltered and only for live listings */
+.store-badge {
+    display: block;
+    transition: opacity 160ms ease, transform 120ms ease;
+}
+
+.store-badge img {
+    height: 44px;
+    width: auto;
+}
+
+.store-badge:hover {
+    opacity: 0.85;
+}
+
+.store-badge:active {
+    transform: translateY(1px);
+}
+
 /* Text links that sit in running copy */
-.panel-links a,
+.panel-links a:not(.store-badge),
 .projects-list details a,
 .site-foot a {
     text-decoration: underline;
@@ -178,7 +197,7 @@ h3 {
     transition: text-underline-offset 160ms ease, color 160ms ease;
 }
 
-.panel-links a:hover,
+.panel-links a:not(.store-badge):hover,
 .projects-list details a:hover,
 .site-foot a:hover {
     text-underline-offset: 6px;
@@ -421,8 +440,10 @@ h3 {
 
 .panel-links {
     display: flex;
-    gap: 28px;
-    margin-top: 24px;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 16px;
+    margin-top: 32px;
     font-size: var(--step-small);
     font-weight: 500;
 }
