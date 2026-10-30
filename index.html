@@ -1,713 +1,391 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="en">
-
+<html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Julius Alibrown | Mobile Software Engineer</title>
-    <meta
-        content="Julius Alibrown, Flutter engineer. I build iOS and Android apps people bank on — fintech products trusted with over ₦1B in transactions."
-        name="description" />
-    <meta content="#05050A" name="theme-color" />
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap"
-        rel="stylesheet" />
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        base: '#05050A',
-                        surface: '#0D0D15',
-                        raised: '#131320',
-                        ink: '#F5F4F0',
-                        dim: '#A0A0B2',
-                        faint: '#6E6E80',
-                        violet: '#7C6BFF',
-                        coral: '#FF7847',
-                        mint: '#3DDC97',
-                        line: 'rgba(255,255,255,0.08)',
-                    },
-                    fontFamily: {
-                        display: ['"Bricolage Grotesque"', 'sans-serif'],
-                        sans: ['"Instrument Sans"', 'sans-serif'],
-                        mono: ['"JetBrains Mono"', 'monospace'],
-                    },
-                }
-            }
-        }
-    </script>
-    <link href="styles.css" rel="stylesheet" />
-    <link as="image" href="images/mockups/tellerone/1.webp" rel="preload" type="image/webp" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Julius Alibrown, mobile engineer in Lagos</title>
+    <meta name="description"
+        content="Julius Alibrown is a mobile engineer in Lagos who ships iOS and Android apps with Flutter, and native iPhone apps with Swift. Work includes Spendory, AjoCard, Save Simple, Contree, TellerOne and iJot." />
+    <meta name="theme-color" content="#0F1114" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preload" as="image" href="images/apps/sp-home.webp" type="image/webp" />
+    <script>document.documentElement.classList.add('js');</script>
 </head>
+<body>
+    <a class="skip-link" href="#apps">Skip to the apps</a>
 
-<body class="bg-base text-ink font-sans antialiased selection:bg-violet/40 selection:text-ink">
-    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
-
-    <!-- BEGIN: Top bar -->
-    <header class="topbar fixed top-0 inset-x-0 z-40" id="topbar">
-        <div class="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
-            <a class="font-display font-bold text-lg tracking-tight" href="#top">JAB<span
-                    class="text-glow-gradient">●</span></a>
-            <div class="flex items-center gap-5">
-                <p class="hidden sm:block font-mono text-xs text-dim" id="local-time" aria-label="Local time in Lagos">
-                </p>
-                <a class="magnetic px-5 py-2.5 rounded-full bg-ink text-[#05050A] text-sm font-semibold hover:bg-white transition-colors"
-                    href="#contact">Let's talk</a>
-            </div>
+    <!-- BEGIN: Header -->
+    <header class="site-head">
+        <div class="wrap site-head-inner">
+            <a class="wordmark" href="#top">Julius Alibrown</a>
+            <nav aria-label="Main">
+                <a href="#apps">Apps</a>
+                <a href="#how">How I build</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Side projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <p class="status status-live">Open to new work</p>
         </div>
     </header>
-    <!-- END: Top bar -->
+    <!-- END: Header -->
 
     <main>
         <!-- BEGIN: Hero -->
-        <section class="relative min-h-screen flex flex-col justify-center overflow-hidden pt-24 pb-10" id="top"
-            data-spy="top">
-            <div class="glow glow-violet" aria-hidden="true"></div>
-            <div class="glow glow-coral" aria-hidden="true"></div>
-            <div
-                class="max-w-7xl mx-auto px-5 sm:px-8 w-full grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-8 items-center">
-                <div class="max-w-2xl">
-                    <p class="inline-flex items-center gap-2.5 rounded-full border border-line bg-surface/60 px-4 py-2 font-mono text-xs text-dim mb-8"
-                        data-reveal>
-                        <span class="pulse-dot" aria-hidden="true"></span>
-                        Available for new projects
-                    </p>
-                    <h1 class="font-display font-extrabold text-[2.75rem] leading-[1.02] sm:text-6xl xl:text-7xl tracking-tight mb-7"
-                        data-reveal data-reveal-delay="80">
-                        I build mobile apps<br />people <span class="text-glow-gradient">bank on.</span>
-                    </h1>
-                    <p class="text-lg text-dim leading-relaxed mb-10 max-w-xl" data-reveal data-reveal-delay="160">
-                        I'm Julius Alibrown, a Flutter engineer. I take mobile products from first commit
-                        to the app stores — including fintech apps trusted with
-                        <span class="text-ink font-semibold">over ₦1B</span> in transactions.
-                    </p>
-                    <div class="flex flex-wrap items-center gap-4 mb-10" data-reveal data-reveal-delay="240">
-                        <a class="magnetic btn-signal px-8 py-4 rounded-full font-semibold" href="#apps">See
-                            the apps</a>
-                        <a class="magnetic px-8 py-4 rounded-full border border-line bg-surface/60 font-semibold text-ink hover:border-violet/60 transition-colors"
-                            href="#contact">Start a project</a>
-                    </div>
-                    <div class="flex flex-wrap items-center gap-6" data-reveal data-reveal-delay="320">
-                        <a aria-label="Visit GitHub profile" class="text-faint hover:text-ink transition-colors"
-                            href="https://github.com/jabguru" rel="noopener noreferrer" target="_blank" title="GitHub">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.041-1.412-4.041-1.412-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
-                                </path>
-                            </svg>
-                        </a>
-                        <a aria-label="Visit LinkedIn profile" class="text-faint hover:text-ink transition-colors"
-                            href="https://linkedin.com/in/jabguru" rel="noopener noreferrer" target="_blank"
-                            title="LinkedIn">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z">
-                                </path>
-                            </svg>
-                        </a>
-                        <a class="flex items-center gap-2 font-mono text-xs text-faint hover:text-ink transition-colors"
-                            href="https://drive.google.com/file/d/1GiCRpJ4y4slYvIouu8Mrq-16oKYgJNn5/view?usp=sharing"
-                            rel="noopener noreferrer" target="_blank">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-                            </svg>
-                            Download CV
-                        </a>
-                    </div>
+        <section class="hero wrap" id="top">
+            <div class="hero-intro">
+                <h1>I ship apps<br /> people bank on.</h1>
+                <p class="lead">Julius Alibrown, a mobile engineer in Lagos<br class="br-wide" /> working with Flutter &amp; Swift.</p>
+                <div class="actions">
+                    <a class="btn btn-primary" href="#contact">Start a project</a>
+                    <a class="btn btn-secondary" href="#apps">See the apps</a>
                 </div>
-                <div class="flex justify-center lg:justify-end" data-reveal data-reveal-delay="200">
-                    <div class="hero-stage" id="hero-stage">
-                        <div class="hero-stage-glow" aria-hidden="true"></div>
-                        <div class="hero-shots float-slow">
-                            <img alt="TellerOne app on iPhone" class="hero-shot is-active"
-                                src="images/mockups/tellerone/1.webp" width="700" height="1389" fetchpriority="high"
-                                decoding="async" />
-                            <img alt="Contree app on iPhone" class="hero-shot" src="images/mockups/contree/1.webp"
-                                width="700" height="1389" loading="lazy" decoding="async" />
-                            <img alt="iJot app on iPhone" class="hero-shot" src="images/mockups/ijot/1.webp" width="700"
-                                height="1326" loading="lazy" decoding="async" />
-                        </div>
-                        <span class="hero-chip hero-chip-tl font-mono" aria-hidden="true">iOS + Android</span>
-                        <span class="hero-chip hero-chip-br font-mono" aria-hidden="true">2,000+ users</span>
-                    </div>
-                </div>
+                <p class="stack-key">
+                    <span class="chip chip-flutter">Flutter</span>
+                    <span class="chip chip-swift">Swift</span>
+                    <span>Each app is tagged with what it’s built in.</span>
+                </p>
             </div>
-            <div class="max-w-7xl mx-auto px-5 sm:px-8 w-full mt-14 lg:mt-16" data-reveal data-reveal-delay="400">
-                <dl class="grid grid-cols-2 md:grid-cols-4 gap-y-8 border-t border-line pt-8">
-                    <div>
-                        <dt class="font-mono text-xs uppercase tracking-widest text-faint mb-1.5">Years shipping</dt>
-                        <dd class="font-display font-bold text-3xl sm:text-4xl"><span
-                                data-count-since="2022-11">0</span>+</dd>
+
+            <div class="sim">
+                <div class="sim-tabs" role="tablist" aria-label="Pick an app">
+                    <button role="tab" id="tab-spendory" aria-selected="true" aria-controls="sim-panel" data-app="spendory">Spendory</button>
+                    <button role="tab" id="tab-ajocard" aria-selected="false" aria-controls="sim-panel" tabindex="-1" data-app="ajocard">AjoCard</button>
+                    <button role="tab" id="tab-savesimple" aria-selected="false" aria-controls="sim-panel" tabindex="-1" data-app="savesimple">Save Simple</button>
+                    <button role="tab" id="tab-contree" aria-selected="false" aria-controls="sim-panel" tabindex="-1" data-app="contree">Contree</button>
+                    <button role="tab" id="tab-tellerone" aria-selected="false" aria-controls="sim-panel" tabindex="-1" data-app="tellerone">TellerOne</button>
+                    <button role="tab" id="tab-ijot" aria-selected="false" aria-controls="sim-panel" tabindex="-1" data-app="ijot">iJot</button>
+                </div>
+                <div class="sim-body" id="sim-panel" role="tabpanel" aria-labelledby="tab-spendory">
+                    <div class="sim-device">
+                        <div class="phone">
+                            <img data-sim="screen" src="images/apps/sp-home.webp" width="750" height="1624"
+                                alt="Spendory home screen" fetchpriority="high" />
+                        </div>
                     </div>
-                    <div>
-                        <dt class="font-mono text-xs uppercase tracking-widest text-faint mb-1.5">Apps in production
-                        </dt>
-                        <dd class="font-display font-bold text-3xl sm:text-4xl"><span data-count="3">0</span></dd>
+                    <div class="sim-inspector">
+                        <h2 class="sim-name" data-sim="name">Spendory</h2>
+                        <p class="sim-what" data-sim="what">An expense tracker that fills itself in.</p>
+                        <dl class="kv">
+                            <div><dt>My role</dt><dd data-sim="role">My product. I built the Flutter app and the email parser behind it on Supabase.</dd></div>
+                            <div><dt>Built with</dt><dd><span class="chip chip-flutter">Flutter</span></dd></div>
+                            <div><dt>Platforms</dt><dd>iOS and Android</dd></div>
+                            <div><dt>Status</dt><dd><span class="status" data-sim="status">Coming soon</span></dd></div>
+                        </dl>
+                        <p class="sim-hint">Pick an app above to see it running.</p>
                     </div>
-                    <div>
-                        <dt class="font-mono text-xs uppercase tracking-widest text-faint mb-1.5">Active users</dt>
-                        <dd class="font-display font-bold text-3xl sm:text-4xl"><span data-count="2000">0</span>+</dd>
-                    </div>
-                    <div>
-                        <dt class="font-mono text-xs uppercase tracking-widest text-faint mb-1.5">Moved through my apps
-                        </dt>
-                        <dd class="font-display font-bold text-3xl sm:text-4xl">₦<span data-count="1"
-                                data-count-suffix="B">0</span>+</dd>
-                    </div>
-                </dl>
+                </div>
             </div>
         </section>
         <!-- END: Hero -->
 
-        <!-- BEGIN: Marquee -->
-        <div class="marquee border-y border-line py-4" aria-hidden="true">
-            <div class="marquee-track font-mono text-xs uppercase tracking-widest text-faint">
-                <span>Flutter · Dart · BLoC · Riverpod · Firebase · Supabase · Clean Architecture · WebRTC · REST APIs ·
-                    Kotlin · Swift · CI/CD ·&nbsp;</span>
-                <span>Flutter · Dart · BLoC · Riverpod · Firebase · Supabase · Clean Architecture · WebRTC · REST APIs ·
-                    Kotlin · Swift · CI/CD ·&nbsp;</span>
+        <!-- BEGIN: Apps -->
+        <section class="section wrap" id="apps" aria-labelledby="apps-title">
+            <div class="section-head">
+                <h2 id="apps-title">Apps I’ve built</h2>
+                <p class="lead">Three are live. Three launch soon.</p>
             </div>
-        </div>
-        <!-- END: Marquee -->
 
-        <!-- BEGIN: Apps showcase -->
-        <section class="showcase-wrap" id="apps" data-spy="apps">
-            <div class="showcase-sticky">
-                <div class="max-w-7xl mx-auto px-5 sm:px-8 pt-20 lg:pt-[4.5rem] pb-4 lg:pb-0 w-full">
-                    <p class="font-mono text-xs uppercase tracking-widest text-mint mb-3" data-reveal>
-                        <span class="pulse-dot pulse-dot-inline" aria-hidden="true"></span> Live in production
-                    </p>
-                    <h2 class="font-display font-bold text-4xl tracking-tight" data-reveal data-reveal-delay="80">Apps
-                        I've built</h2>
+            <div class="board">
+                <div class="board-cols" aria-hidden="true">
+                    <span>App</span><span>What it is</span><span>My role</span><span>Built with</span><span>Status</span>
                 </div>
-                <div class="showcase-panels">
-                    <!-- TellerOne -->
-                    <article class="showcase-panel is-active" style="--panel-glow: #5B8CFF;">
-                        <div
-                            class="max-w-7xl mx-auto px-5 sm:px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-6 items-center">
-                            <div class="showcase-copy max-w-xl">
-                                <div class="flex items-center gap-4 mb-6">
-                                    <img alt="TellerOne logo"
-                                        class="w-12 h-12 rounded-2xl border border-line object-cover"
-                                        src="images/logos/tellerone.webp" width="256" height="256" loading="lazy"
-                                        decoding="async" />
-                                    <div>
-                                        <h3 class="font-display font-bold text-3xl sm:text-4xl">TellerOne</h3>
-                                        <p class="font-mono text-xs text-mint mt-1">● App Store &amp; Google Play</p>
-                                    </div>
-                                </div>
-                                <p class="text-dim leading-relaxed mb-7">
-                                    A cross-border digital neo-bank where users hold, save, spend, and send or
-                                    receive money across multiple currencies — with crypto transfers, overdrafts,
-                                    goal-based savings with interest, and physical or virtual cards.
-                                </p>
-                                <div class="flex flex-wrap gap-2 mb-8">
-                                    <span class="chip">Flutter</span>
-                                    <span class="chip">BLoC</span>
-                                    <span class="chip">Clean Architecture</span>
-                                </div>
-                                <div class="flex flex-wrap gap-3">
-                                    <a class="store-btn" href="https://apps.apple.com/ng/app/tellerone/id1671370158"
-                                        rel="noopener noreferrer" target="_blank">
-                                        <svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24"
-                                            aria-hidden="true">
-                                            <path
-                                                d="M16.365 1.43c0 1.14-.463 2.273-1.206 3.062-.777.827-2.06 1.466-3.162 1.38-.14-1.105.355-2.29 1.096-3.085.79-.85 2.158-1.46 3.272-1.357zm3.997 14.11c-.508 1.135-.75 1.643-1.403 2.64-.91 1.38-2.19 3.1-3.78 3.115-1.41.015-1.773-.913-3.69-.902-1.916.01-2.316.92-3.726.904-1.59-.015-2.8-1.568-3.71-2.95-2.547-3.866-2.816-8.4-1.242-10.82 1.12-1.72 2.89-2.728 4.552-2.728 1.695 0 2.76.932 4.16.932 1.36 0 2.19-.934 4.146-.934 1.48 0 3.05.807 4.17 2.2-3.67 2.02-3.08 7.26.523 8.543z">
-                                            </path>
-                                        </svg>
-                                        App Store
-                                    </a>
-                                    <a class="store-btn"
-                                        href="https://play.google.com/store/apps/details?id=co.tellerone.app"
-                                        rel="noopener noreferrer" target="_blank">
-                                        <svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24"
-                                            aria-hidden="true">
-                                            <path
-                                                d="M3.61 1.814L13.792 12 3.61 22.186A2.372 2.372 0 013 20.5v-17c0-.688.234-1.322.61-1.686zm10.89 10.894l2.096 2.096-9.85 5.516 7.754-7.612zm7.89-1.065c.743.412.743 1.48 0 1.892l-4.868 2.725L15.208 12l2.314-4.26 4.868 2.903zM6.746 3.68l9.85 5.516-2.096 2.096L6.746 3.68z">
-                                            </path>
-                                        </svg>
-                                        Google Play
-                                    </a>
-                                </div>
+                <ol class="releases">
+                    <li class="release">
+                        <div class="release-row">
+                            <h3><button class="release-toggle" aria-expanded="true" aria-controls="detail-spendory">Spendory</button></h3>
+                            <p>An expense tracker that fills itself in.</p>
+                            <p class="muted">My product</p>
+                            <p><span class="chip chip-flutter">Flutter</span></p>
+                            <div class="release-status"><span class="status">Coming soon to both stores</span></div>
+                        </div>
+                        <div class="release-detail" id="detail-spendory">
+                            <div class="release-phones">
+                                <div class="phone"><img src="images/apps/sp-home.webp" width="750" height="1624" alt="Spendory home screen, with this month’s spending and recent transactions" loading="lazy" /></div>
+                                <div class="phone"><img src="images/apps/sp-inbox.webp" width="750" height="1624" alt="Spendory review screen, with transactions captured from bank alerts waiting to be confirmed" loading="lazy" /></div>
                             </div>
-                            <div class="showcase-stage">
-                                <div class="stage-glow" aria-hidden="true"></div>
-                                <img alt="TellerOne secondary screen" class="stage-shot stage-shot-back"
-                                    src="images/mockups/tellerone/2.webp" width="700" height="1389" loading="lazy"
-                                    decoding="async" />
-                                <img alt="TellerOne main screen" class="stage-shot stage-shot-front"
-                                    src="images/mockups/tellerone/1.webp" width="700" height="1389" loading="lazy"
-                                    decoding="async" />
+                            <div class="release-notes">
+                                <h4>How it works</h4>
+                                <p>Forward your bank’s alert emails and each one arrives as a transaction to confirm, so the record keeps itself. I built the Flutter app and the email parser behind it on Supabase.</p>
+                                <p>The app unlocks with Face ID or a fingerprint, keeps its keys in secure storage, reports crashes to Sentry and sends push alerts through Firebase.</p>
+                                <h4 class="small-head">Built on</h4>
+                                <ul class="packages">
+                                    <li>flutter_riverpod</li><li>supabase_flutter</li><li>auto_route</li><li>local_auth</li><li>flutter_secure_storage</li><li>sentry_flutter</li><li>firebase_messaging</li>
+                                </ul>
                             </div>
                         </div>
-                    </article>
-                    <!-- Contree -->
-                    <article class="showcase-panel" style="--panel-glow: #3DDC97;">
-                        <div
-                            class="max-w-7xl mx-auto px-5 sm:px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-6 items-center">
-                            <div class="showcase-copy max-w-xl">
-                                <div class="flex items-center gap-4 mb-6">
-                                    <img alt="Contree logo"
-                                        class="w-12 h-12 rounded-2xl border border-line object-cover"
-                                        src="images/logos/contree.webp" width="256" height="256" loading="lazy"
-                                        decoding="async" />
-                                    <div>
-                                        <h3 class="font-display font-bold text-3xl sm:text-4xl">Contree</h3>
-                                        <p class="font-mono text-xs text-mint mt-1">● App Store &amp; Google Play</p>
-                                    </div>
-                                </div>
-                                <p class="text-dim leading-relaxed mb-7">
-                                    A fintech platform for community contributions and transparent financial tracking
-                                    for groups and organizations. I built the entire mobile product solo — zero to
-                                    production, now processing ₦1B+ in transactions.
-                                </p>
-                                <div class="flex flex-wrap gap-2 mb-8">
-                                    <span class="chip">Flutter</span>
-                                    <span class="chip">BLoC</span>
-                                    <span class="chip">Clean Architecture</span>
-                                </div>
-                                <div class="flex flex-wrap gap-3">
-                                    <a class="store-btn" href="https://apps.apple.com/ng/app/contree/id6756983455"
-                                        rel="noopener noreferrer" target="_blank">
-                                        <svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24"
-                                            aria-hidden="true">
-                                            <path
-                                                d="M16.365 1.43c0 1.14-.463 2.273-1.206 3.062-.777.827-2.06 1.466-3.162 1.38-.14-1.105.355-2.29 1.096-3.085.79-.85 2.158-1.46 3.272-1.357zm3.997 14.11c-.508 1.135-.75 1.643-1.403 2.64-.91 1.38-2.19 3.1-3.78 3.115-1.41.015-1.773-.913-3.69-.902-1.916.01-2.316.92-3.726.904-1.59-.015-2.8-1.568-3.71-2.95-2.547-3.866-2.816-8.4-1.242-10.82 1.12-1.72 2.89-2.728 4.552-2.728 1.695 0 2.76.932 4.16.932 1.36 0 2.19-.934 4.146-.934 1.48 0 3.05.807 4.17 2.2-3.67 2.02-3.08 7.26.523 8.543z">
-                                            </path>
-                                        </svg>
-                                        App Store
-                                    </a>
-                                    <a class="store-btn"
-                                        href="https://play.google.com/store/apps/details?id=com.contreeapp.app&pcampaignid=web_share"
-                                        rel="noopener noreferrer" target="_blank">
-                                        <svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24"
-                                            aria-hidden="true">
-                                            <path
-                                                d="M3.61 1.814L13.792 12 3.61 22.186A2.372 2.372 0 013 20.5v-17c0-.688.234-1.322.61-1.686zm10.89 10.894l2.096 2.096-9.85 5.516 7.754-7.612zm7.89-1.065c.743.412.743 1.48 0 1.892l-4.868 2.725L15.208 12l2.314-4.26 4.868 2.903zM6.746 3.68l9.85 5.516-2.096 2.096L6.746 3.68z">
-                                            </path>
-                                        </svg>
-                                        Google Play
-                                    </a>
-                                </div>
+                    </li>
+
+                    <li class="release">
+                        <div class="release-row">
+                            <h3><button class="release-toggle" aria-expanded="true" aria-controls="detail-ajocard">AjoCard</button></h3>
+                            <p>A banking app for personal bankers who serve customers face to face.</p>
+                            <p class="muted">Mobile engineer at AjoCard Limited</p>
+                            <p><span class="chip chip-flutter">Flutter</span></p>
+                            <div class="release-status"><span class="status">Coming soon to both stores</span></div>
+                        </div>
+                        <div class="release-detail" id="detail-ajocard">
+                            <div class="release-phones">
+                                <div class="phone"><img src="images/apps/aj-home.webp" width="750" height="1624" alt="AjoCard home screen for a personal banker" loading="lazy" /></div>
+                                <div class="phone"><img src="images/apps/aj-transfer.webp" width="750" height="1624" alt="AjoCard transfer screen" loading="lazy" /></div>
                             </div>
-                            <div class="showcase-stage">
-                                <div class="stage-glow" aria-hidden="true"></div>
-                                <img alt="Contree secondary screen" class="stage-shot stage-shot-back"
-                                    src="images/mockups/contree/2.webp" width="700" height="1389" loading="lazy"
-                                    decoding="async" />
-                                <img alt="Contree main screen" class="stage-shot stage-shot-front"
-                                    src="images/mockups/contree/1.webp" width="700" height="1389" loading="lazy"
-                                    decoding="async" />
+                            <div class="release-notes">
+                                <h4>How it works</h4>
+                                <p>A personal banker taps a customer’s card to take savings, send transfers, sell airtime and pay bills, then shares the receipt on WhatsApp.</p>
                             </div>
                         </div>
-                    </article>
-                    <!-- iJot -->
-                    <article class="showcase-panel" style="--panel-glow: #B36BFF;">
-                        <div
-                            class="max-w-7xl mx-auto px-5 sm:px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-6 items-center">
-                            <div class="showcase-copy max-w-xl">
-                                <div class="flex items-center gap-4 mb-6">
-                                    <img alt="iJot logo" class="w-12 h-12 rounded-2xl border border-line object-cover"
-                                        src="images/logos/iJot.webp" width="256" height="256" loading="lazy"
-                                        decoding="async" />
-                                    <div>
-                                        <h3 class="font-display font-bold text-3xl sm:text-4xl">iJot</h3>
-                                        <p class="font-mono text-xs text-mint mt-1">● Google Play &amp; Web</p>
-                                    </div>
-                                </div>
-                                <p class="text-dim leading-relaxed mb-7">
-                                    A lightning-fast note-taking app designed for productivity hackers — offline
-                                    support, instantaneous cloud sync, and a web companion that stays in step with
-                                    your phone.
-                                </p>
-                                <div class="flex flex-wrap gap-2 mb-8">
-                                    <span class="chip">Flutter</span>
-                                    <span class="chip">Firebase</span>
-                                    <span class="chip">Riverpod</span>
-                                </div>
-                                <div class="flex flex-wrap gap-3">
-                                    <a class="store-btn"
-                                        href="https://play.google.com/store/apps/details?id=com.jabguru.iJot&hl=en"
-                                        rel="noopener noreferrer" target="_blank">
-                                        <svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24"
-                                            aria-hidden="true">
-                                            <path
-                                                d="M3.61 1.814L13.792 12 3.61 22.186A2.372 2.372 0 013 20.5v-17c0-.688.234-1.322.61-1.686zm10.89 10.894l2.096 2.096-9.85 5.516 7.754-7.612zm7.89-1.065c.743.412.743 1.48 0 1.892l-4.868 2.725L15.208 12l2.314-4.26 4.868 2.903zM6.746 3.68l9.85 5.516-2.096 2.096L6.746 3.68z">
-                                            </path>
-                                        </svg>
-                                        Google Play
-                                    </a>
-                                    <a class="store-btn" href="https://ijot-1da7a.web.app/" rel="noopener noreferrer"
-                                        target="_blank">
-                                        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24" aria-hidden="true">
-                                            <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round"
-                                                stroke-linejoin="round" stroke-width="2"></path>
-                                            <path d="M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 010 18M12 3a15 15 0 000 18"
-                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-                                        </svg>
-                                        Web App
-                                    </a>
-                                </div>
+                    </li>
+
+                    <li class="release">
+                        <div class="release-row">
+                            <h3><button class="release-toggle" aria-expanded="true" aria-controls="detail-savesimple">Save Simple</button></h3>
+                            <p>Lending for personal bankers, from onboarding to repayment.</p>
+                            <p class="muted">Mobile engineer at AjoCard Limited</p>
+                            <p><span class="chip chip-flutter">Flutter</span></p>
+                            <div class="release-status"><span class="status">Coming soon to both stores</span></div>
+                        </div>
+                        <div class="release-detail" id="detail-savesimple">
+                            <div class="release-phones">
+                                <div class="phone"><img src="images/apps/ss-home.webp" width="750" height="1624" alt="Save Simple home screen" loading="lazy" /></div>
+                                <div class="phone"><img src="images/apps/ss-lending.webp" width="750" height="1624" alt="Save Simple lending screen" loading="lazy" /></div>
                             </div>
-                            <div class="showcase-stage">
-                                <div class="stage-glow" aria-hidden="true"></div>
-                                <img alt="iJot secondary screen" class="stage-shot stage-shot-back"
-                                    src="images/mockups/ijot/2.webp" width="700" height="1326" loading="lazy"
-                                    decoding="async" />
-                                <img alt="iJot main screen" class="stage-shot stage-shot-front"
-                                    src="images/mockups/ijot/1.webp" width="700" height="1326" loading="lazy"
-                                    decoding="async" />
+                            <div class="release-notes">
+                                <h4>How it works</h4>
+                                <p>The lending side of the same idea. Personal bankers onboard customers in minutes, take savings with a card tap, and run each loan from application to repayment.</p>
                             </div>
                         </div>
-                    </article>
-                </div>
-                <div class="showcase-progress" aria-hidden="true">
-                    <span class="showcase-dot is-active" data-dot="0"></span>
-                    <span class="showcase-dot" data-dot="1"></span>
-                    <span class="showcase-dot" data-dot="2"></span>
-                    <span class="font-mono text-xs text-faint ml-3" id="showcase-counter">01 / 03</span>
-                </div>
+                    </li>
+
+                    <li class="release">
+                        <div class="release-row">
+                            <h3><button class="release-toggle" aria-expanded="true" aria-controls="detail-contree">Contree</button></h3>
+                            <p>Group contributions with a clear record for everyone in the group.</p>
+                            <p class="muted">Founding mobile engineer</p>
+                            <p><span class="chip chip-flutter">Flutter</span></p>
+                            <div class="release-status">
+                                <span class="status status-live">Live</span>
+                                <div class="badges">
+                                    <a class="store-badge" href="https://apps.apple.com/ng/app/contree/id6756983455" rel="noopener noreferrer" target="_blank"><img src="images/badges/app-store.svg" width="108" height="36" alt="Download Contree on the App Store" /></a>
+                                    <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.contreeapp.app" rel="noopener noreferrer" target="_blank"><img src="images/badges/google-play.svg" width="119" height="36" alt="Get Contree on Google Play" /></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="release-detail" id="detail-contree">
+                            <div class="release-phones">
+                                <div class="phone"><img src="images/apps/contree-1.webp" width="750" height="1624" alt="Contree group screen" loading="lazy" /></div>
+                                <div class="phone"><img src="images/apps/contree-2.webp" width="750" height="1624" alt="Contree contributions screen" loading="lazy" /></div>
+                            </div>
+                            <div class="release-notes">
+                                <h4>How it works</h4>
+                                <p>Group contributions with a clear record for everyone in the group. I built the whole mobile app on my own, from the first commit to both stores.</p>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="release">
+                        <div class="release-row">
+                            <h3><button class="release-toggle" aria-expanded="true" aria-controls="detail-tellerone">TellerOne</button></h3>
+                            <p>A multi-currency digital bank with cards, savings goals and overdrafts.</p>
+                            <p class="muted">Flutter developer</p>
+                            <p><span class="chip chip-flutter">Flutter</span></p>
+                            <div class="release-status">
+                                <span class="status status-live">Live</span>
+                                <div class="badges">
+                                    <a class="store-badge" href="https://apps.apple.com/ng/app/tellerone/id1671370158" rel="noopener noreferrer" target="_blank"><img src="images/badges/app-store.svg" width="108" height="36" alt="Download TellerOne on the App Store" /></a>
+                                    <a class="store-badge" href="https://play.google.com/store/apps/details?id=co.tellerone.app" rel="noopener noreferrer" target="_blank"><img src="images/badges/google-play.svg" width="119" height="36" alt="Get TellerOne on Google Play" /></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="release-detail" id="detail-tellerone">
+                            <div class="release-phones">
+                                <div class="phone"><img src="images/apps/tellerone-1.webp" width="750" height="1624" alt="TellerOne home screen with balances in several currencies" loading="lazy" /></div>
+                                <div class="phone"><img src="images/apps/tellerone-2.webp" width="750" height="1624" alt="TellerOne transfer screen" loading="lazy" /></div>
+                            </div>
+                            <div class="release-notes">
+                                <h4>How it works</h4>
+                                <p>A digital bank for holding, saving, spending and sending money in several currencies. I built transfers, onboarding and transaction history.</p>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="release">
+                        <div class="release-row">
+                            <h3><button class="release-toggle" aria-expanded="true" aria-controls="detail-ijot">iJot</button></h3>
+                            <p>Notes that work offline and sync the moment you’re back online.</p>
+                            <p class="muted">My product</p>
+                            <p><span class="chip chip-flutter">Flutter</span></p>
+                            <div class="release-status">
+                                <span class="status status-live">Live</span>
+                                <div class="badges">
+                                    <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.jabguru.iJot&amp;hl=en" rel="noopener noreferrer" target="_blank"><img src="images/badges/google-play.svg" width="119" height="36" alt="Get iJot on Google Play" /></a>
+                                    <a class="text-link" href="https://ijot-1da7a.web.app/" rel="noopener noreferrer" target="_blank">Open the web app</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="release-detail" id="detail-ijot">
+                            <div class="release-phones">
+                                <div class="phone"><img src="images/apps/ijot-1.webp" width="750" height="1624" alt="iJot notes list" loading="lazy" /></div>
+                                <div class="phone"><img src="images/apps/ijot-2.webp" width="750" height="1624" alt="iJot note editor" loading="lazy" /></div>
+                            </div>
+                            <div class="release-notes">
+                                <h4>How it works</h4>
+                                <p>A quick notes app that works offline and syncs the moment you’re back online, with a web version that stays in step with your phone. The App Store version is on the way.</p>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
             </div>
         </section>
-        <!-- END: Apps showcase -->
+        <!-- END: Apps -->
 
-        <!-- BEGIN: Process -->
-        <section class="py-28 lg:py-36 relative overflow-hidden" id="process" data-spy="process">
-            <div class="max-w-7xl mx-auto px-5 sm:px-8">
-                <p class="font-mono text-xs uppercase tracking-widest text-violet mb-3" data-reveal>Process</p>
-                <h2 class="font-display font-bold text-4xl sm:text-5xl tracking-tight mb-4" data-reveal
-                    data-reveal-delay="80">How your app gets built</h2>
-                <p class="text-dim text-lg max-w-xl mb-16" data-reveal data-reveal-delay="140">
-                    Every project runs through the same four layers — the architecture that keeps
-                    a codebase fast to ship and easy to grow.
-                </p>
-                <div class="process-grid" id="process-grid">
-                    <div class="process-line" aria-hidden="true"></div>
-                    <div class="process-card" data-reveal>
-                        <p class="font-mono font-semibold text-glow-gradient text-sm mb-4">01</p>
-                        <h3 class="font-display font-bold text-xl mb-2">Interface</h3>
-                        <p class="text-dim text-sm leading-relaxed">Design systems and pixel-perfect widgets that feel
-                            native on both platforms.</p>
-                    </div>
-                    <div class="process-card" data-reveal data-reveal-delay="120">
-                        <p class="font-mono font-semibold text-glow-gradient text-sm mb-4">02</p>
-                        <h3 class="font-display font-bold text-xl mb-2">State</h3>
-                        <p class="text-dim text-sm leading-relaxed">Predictable app logic with BLoC or Riverpod —
-                            testable, modular, no surprises.</p>
-                    </div>
-                    <div class="process-card" data-reveal data-reveal-delay="240">
-                        <p class="font-mono font-semibold text-glow-gradient text-sm mb-4">03</p>
-                        <h3 class="font-display font-bold text-xl mb-2">Data</h3>
-                        <p class="text-dim text-sm leading-relaxed">Clean repositories with offline-ready caching, so
-                            the app works even when the network doesn't.</p>
-                    </div>
-                    <div class="process-card" data-reveal data-reveal-delay="360">
-                        <p class="font-mono font-semibold text-glow-gradient text-sm mb-4">04</p>
-                        <h3 class="font-display font-bold text-xl mb-2">Backend</h3>
-                        <p class="text-dim text-sm leading-relaxed">REST, Firebase or Supabase — integrated with crash
-                            reporting and analytics from day one.</p>
-                    </div>
+        <!-- BEGIN: How I build -->
+        <section class="section wrap split" id="how" aria-labelledby="how-title">
+            <div class="split-lead">
+                <h2 id="how-title">Shipped is the only<br class="br-wide" /> finish line.</h2>
+                <p class="lead">I turn designs into production apps and see them all the way to the App Store and Google Play. Most of my work moves money, which taught me to plan for what goes wrong.</p>
+            </div>
+            <div class="run">
+                <div class="run-head">
+                    <p><span class="hide-sm">Checked before</span><span class="show-sm">Before</span> every release</p>
+                    <p class="mono muted">6 of 6 passing</p>
                 </div>
+                <ul class="checks">
+                    <li><strong>Failed payments are handled</strong><span>The app says what went wrong and what to do next, and money is never left in limbo on screen.</span></li>
+                    <li><strong>It holds up on a weak network</strong><span>Requests retry, and nothing the user typed is lost when the signal drops.</span></li>
+                    <li><strong>Sessions expire safely</strong><span>Sign-in runs out without losing the user’s place.</span></li>
+                    <li><strong>One codebase for iOS and Android</strong><span>Flutter, when both platforms should ship together.</span></li>
+                    <li><strong>Native where it should be</strong><span>Swift, when an iPhone app should feel fully native.</span></li>
+                    <li><strong>Released to both stores</strong><span>I see every app through review on the App Store and Google Play.</span></li>
+                </ul>
             </div>
         </section>
-        <!-- END: Process -->
+        <!-- END: How I build -->
 
         <!-- BEGIN: Experience -->
-        <section class="py-28 lg:py-36 relative" id="experience" data-spy="experience">
-            <div class="max-w-3xl mx-auto px-5 sm:px-8">
-                <p class="font-mono text-xs uppercase tracking-widest text-violet mb-3" data-reveal>Track record</p>
-                <h2 class="font-display font-bold text-4xl sm:text-5xl tracking-tight mb-16" data-reveal
-                    data-reveal-delay="80">Where I've worked</h2>
-                <div class="timeline" id="timeline">
-                    <div class="timeline-fill" id="timeline-fill" aria-hidden="true"></div>
-                    <article class="timeline-entry" data-reveal>
-                        <span class="timeline-dot timeline-dot-live" aria-hidden="true"></span>
-                        <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-5">
-                            <h3 class="font-display font-bold text-2xl">Founding Mobile Engineer</h3>
-                            <p class="font-mono text-xs text-dim"><a
-                                    class="text-mint hover:underline underline-offset-4"
-                                    href="https://www.contreeapp.com/" rel="noopener noreferrer"
-                                    target="_blank">Contree</a> · Nov 2025–Present</p>
-                        </div>
-                        <ul class="space-y-3.5 text-dim leading-relaxed">
-                            <li>Sole mobile engineer for a fintech platform processing ₦1B+ in transactions;
-                                architected and shipped the entire Android and iOS product from zero to production.</li>
-                            <li>Built and maintain the Flutter app on clean architecture and BLoC/Cubit, keeping
-                                features modular, testable, and scalable across a rapidly growing codebase.</li>
-                            <li>Implemented secure authentication and session controls — OTP flows, deep-link handling,
-                                biometric gating, inactivity and expired-session handling.</li>
-                            <li>Wired in production readiness tooling: crash reporting, user-context attachment,
-                                analytics funnels, and route-based screen tracking.</li>
-                        </ul>
-                    </article>
-                    <article class="timeline-entry" data-reveal>
-                        <span class="timeline-dot" aria-hidden="true"></span>
-                        <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-5">
-                            <h3 class="font-display font-bold text-2xl">Flutter Developer</h3>
-                            <p class="font-mono text-xs text-dim"><a
-                                    class="text-mint hover:underline underline-offset-4" href="https://tellerone.com"
-                                    rel="noopener noreferrer" target="_blank">TellerOne</a> · Apr 2024–Nov 2025</p>
-                        </div>
-                        <ul class="space-y-3.5 text-dim leading-relaxed">
-                            <li>Delivered Flutter features across Android and iOS for a digital banking app — transfers,
-                                KYC onboarding, and real-time transaction history over RESTful APIs.</li>
-                            <li>Shipped on a two-week sprint cadence alongside designers, backend engineers, and QA;
-                                owned mobile-side API contracts and coordinated integration testing.</li>
-                        </ul>
-                    </article>
-                    <article class="timeline-entry" data-reveal>
-                        <span class="timeline-dot" aria-hidden="true"></span>
-                        <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-5">
-                            <h3 class="font-display font-bold text-2xl">Flutter Developer</h3>
-                            <p class="font-mono text-xs text-dim">Sisu Von · Nov 2022–Apr 2024</p>
-                        </div>
-                        <ul class="space-y-3.5 text-dim leading-relaxed">
-                            <li>Built and shipped multiple production Flutter apps in healthcare and lifestyle
-                                verticals, applying Clean Architecture and TDD across all codebases.</li>
-                            <li>Integrated WebRTC audio/video calls, real-time GPS tracking, text-to-speech, and
-                                multilingual support for 70+ languages in a single cross-platform codebase.</li>
-                        </ul>
-                    </article>
-                </div>
+        <section class="section wrap split" id="experience" aria-labelledby="experience-title">
+            <div class="split-lead">
+                <h2 id="experience-title">Where I’ve worked</h2>
+                <img class="portrait" src="images/julius.webp" width="640" height="853" alt="Julius Alibrown" loading="lazy" />
+                <a class="btn btn-secondary" href="https://drive.google.com/file/d/1GiCRpJ4y4slYvIouu8Mrq-16oKYgJNn5/view?usp=sharing" rel="noopener noreferrer" target="_blank">Download my CV</a>
             </div>
+            <ol class="graph">
+                <li class="is-current">
+                    <div class="graph-top"><h3>AjoCard Limited</h3><time class="mono muted">Aug 2026–now</time></div>
+                    <p class="muted">Mobile engineer</p>
+                    <p class="small">AjoCard and Save Simple</p>
+                </li>
+                <li>
+                    <div class="graph-top"><h3>Contree</h3><time class="mono muted">Nov 2025–Aug 2026</time></div>
+                    <p class="muted">Founding mobile engineer</p>
+                    <p class="small">Contree, from the first commit to both stores</p>
+                </li>
+                <li>
+                    <div class="graph-top"><h3>TellerOne</h3><time class="mono muted">Apr 2024–Nov 2025</time></div>
+                    <p class="muted">Flutter developer</p>
+                    <p class="small">Transfers, onboarding and transaction history</p>
+                </li>
+                <li>
+                    <div class="graph-top"><h3>Sisu Von</h3><time class="mono muted">Nov 2022–Apr 2024</time></div>
+                    <p class="muted">Flutter developer</p>
+                </li>
+            </ol>
         </section>
         <!-- END: Experience -->
 
         <!-- BEGIN: Side projects -->
-        <section class="py-28 lg:py-36 overflow-hidden" id="lab">
-            <div class="max-w-7xl mx-auto px-5 sm:px-8 flex flex-wrap items-end justify-between gap-4 mb-12">
-                <div>
-                    <p class="font-mono text-xs uppercase tracking-widest text-coral mb-3" data-reveal>From my GitHub
-                    </p>
-                    <h2 class="font-display font-bold text-4xl sm:text-5xl tracking-tight" data-reveal
-                        data-reveal-delay="80">Side projects &amp; experiments</h2>
-                </div>
-                <p class="font-mono text-xs text-faint" data-reveal data-reveal-delay="140" aria-hidden="true">drag to
-                    explore →</p>
+        <section class="section wrap" id="projects" aria-labelledby="projects-title">
+            <div class="section-head">
+                <h2 id="projects-title">Side projects</h2>
+                <p class="lead">Smaller apps I build to try new things. New Swift apps land here.</p>
             </div>
-            <div class="carousel" id="carousel" data-reveal data-reveal-delay="200">
-                <div class="carousel-track">
-                    <article class="lab-card">
-                        <div class="lab-media">
-                            <img alt="Delivery Live Tracking live map screen"
-                                class="w-full h-full object-cover object-top" src="images/lab/delivery-tracking.webp"
-                                width="720" height="1558" loading="lazy" decoding="async" />
-                        </div>
-                        <div class="p-6">
-                            <h3 class="font-display font-bold text-xl mb-2">Delivery Live Tracking</h3>
-                            <p class="text-dim text-sm leading-relaxed mb-5">Smooth rider motion on OpenStreetMap —
-                                OSRM routing, live ETA updates, and gesture-aware auto-follow that respects the user's
-                                map interactions.</p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="chip">Flutter</span>
-                                <span class="chip">Riverpod</span>
-                                <span class="chip">flutter_map</span>
-                                <span class="chip">OSRM</span>
-                            </div>
-                            <a class="lab-link" href="https://github.com/jabguru/delivery-live-tracking"
-                                rel="noopener noreferrer" target="_blank">View on GitHub
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path d="M7 17L17 7M17 7H8m9 0v9" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </article>
-                    <article class="lab-card">
-                        <div class="lab-media grid grid-cols-2 gap-1 p-1">
-                            <img alt="AI Chat App welcome screen" class="w-full h-full object-cover rounded-xl"
-                                src="images/lab/ai-chat-welcome.webp" width="400" height="867" loading="lazy"
-                                decoding="async" />
-                            <img alt="AI Chat App login screen" class="w-full h-full object-cover rounded-xl"
-                                src="images/lab/ai-chat-login.webp" width="400" height="867" loading="lazy"
-                                decoding="async" />
-                            <img alt="AI Chat App chat screen" class="w-full h-full object-cover rounded-xl"
-                                src="images/lab/ai-chat-chat.webp" width="400" height="867" loading="lazy"
-                                decoding="async" />
-                            <img alt="AI Chat App chat history" class="w-full h-full object-cover rounded-xl"
-                                src="images/lab/ai-chat-history.webp" width="400" height="867" loading="lazy"
-                                decoding="async" />
-                        </div>
-                        <div class="p-6">
-                            <h3 class="font-display font-bold text-xl mb-2">AI Chat App</h3>
-                            <p class="text-dim text-sm leading-relaxed mb-5">Dark-themed AI chat with Groq/OpenAI,
-                                Supabase auth, live streaming responses, voice input, and text-to-speech playback.</p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="chip">Flutter</span>
-                                <span class="chip">Riverpod</span>
-                                <span class="chip">Supabase</span>
-                                <span class="chip">Groq</span>
-                            </div>
-                            <a class="lab-link" href="https://github.com/jabguru/AI-Chat-App" rel="noopener noreferrer"
-                                target="_blank">View on GitHub
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path d="M7 17L17 7M17 7H8m9 0v9" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </article>
-                    <article class="lab-card">
-                        <div class="lab-media">
-                            <video class="w-full h-full object-cover" controls playsinline preload="none"
-                                src="images/lab/football.mp4" poster="images/lab/football-poster.webp"></video>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="font-display font-bold text-xl mb-2">Football Live Score</h3>
-                            <p class="text-dim text-sm leading-relaxed mb-5">Fixtures, match status, and statistics with
-                                clear presentation and data-driven score updates.</p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="chip">Flutter</span>
-                                <span class="chip">BLoC</span>
-                                <span class="chip">Dio</span>
-                                <span class="chip">API Sports</span>
-                            </div>
-                            <a class="lab-link" href="https://github.com/jabguru/football_app" rel="noopener noreferrer"
-                                target="_blank">View on GitHub
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path d="M7 17L17 7M17 7H8m9 0v9" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </article>
-                    <article class="lab-card">
-                        <div class="lab-media">
-                            <video class="w-full h-full object-cover" controls playsinline preload="none"
-                                src="images/lab/crypto.mp4" poster="images/lab/crypto-poster.webp"></video>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="font-display font-bold text-xl mb-2">Crypto App</h3>
-                            <p class="text-dim text-sm leading-relaxed mb-5">Market data through an API-backed flow with
-                                a clean, finance-style interface for browsing digital assets.</p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="chip">Flutter</span>
-                                <span class="chip">Riverpod</span>
-                                <span class="chip">CoinGecko</span>
-                            </div>
-                            <a class="lab-link" href="https://github.com/jabguru/crypto_app" rel="noopener noreferrer"
-                                target="_blank">View on GitHub
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path d="M7 17L17 7M17 7H8m9 0v9" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </article>
-                    <article class="lab-card">
-                        <div class="lab-media">
-                            <img alt="Bike Shopping app screenshot" class="w-full h-full object-cover object-top"
-                                src="images/lab/bike-shopping.webp" width="720" height="450" loading="lazy"
-                                decoding="async" />
-                        </div>
-                        <div class="p-6">
-                            <h3 class="font-display font-bold text-xl mb-2">Bike Shopping</h3>
-                            <p class="text-dim text-sm leading-relaxed mb-5">A shopping UI concept focused on storefront
-                                presentation and product browsing.</p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="chip">Flutter</span>
-                                <span class="chip">UI Concept</span>
-                            </div>
-                            <a class="lab-link" href="https://github.com/jabguru/Bike-Shopping"
-                                rel="noopener noreferrer" target="_blank">View on GitHub
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path d="M7 17L17 7M17 7H8m9 0v9" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </article>
-                </div>
-            </div>
+            <ul class="repos">
+                <li class="repo">
+                    <img src="images/swift/ghibli/carousel.webp" width="64" height="64" alt="" loading="lazy" />
+                    <div class="repo-text">
+                        <h3>Ghibli Films</h3>
+                        <p>A native iPhone app for browsing every Studio Ghibli film, saving favourites and searching the collection, built on Liquid Glass.</p>
+                    </div>
+                    <p class="repo-stack"><span class="chip chip-swift">Swift</span><span class="mono muted">SwiftUI</span></p>
+                    <a class="repo-link mono" href="https://github.com/jabguru/GhibliSwiftUIApp" rel="noopener noreferrer" target="_blank">jabguru/GhibliSwiftUIApp</a>
+                </li>
+                <li class="repo">
+                    <img src="images/lab/delivery-tracking.webp" width="64" height="64" alt="" loading="lazy" />
+                    <div class="repo-text">
+                        <h3>Delivery Live Tracking</h3>
+                        <p>A rider moving smoothly across a live map, with route planning and an ETA that updates as they go.</p>
+                    </div>
+                    <p class="repo-stack"><span class="chip chip-flutter">Flutter</span><span class="mono muted">Riverpod</span></p>
+                    <a class="repo-link mono" href="https://github.com/jabguru/delivery-live-tracking" rel="noopener noreferrer" target="_blank">jabguru/delivery-live-tracking</a>
+                </li>
+                <li class="repo">
+                    <img src="images/lab/ai-chat-chat.webp" width="64" height="64" alt="" loading="lazy" />
+                    <div class="repo-text">
+                        <h3>AI Chat</h3>
+                        <p>Replies that stream in as they’re written, voice input, read-aloud answers and Supabase sign-in.</p>
+                    </div>
+                    <p class="repo-stack"><span class="chip chip-flutter">Flutter</span><span class="mono muted">Supabase</span></p>
+                    <a class="repo-link mono" href="https://github.com/jabguru/AI-Chat-App" rel="noopener noreferrer" target="_blank">jabguru/AI-Chat-App</a>
+                </li>
+                <li class="repo">
+                    <img src="images/lab/football-poster.webp" width="64" height="64" alt="" loading="lazy" />
+                    <div class="repo-text">
+                        <h3>Football Live Score</h3>
+                        <p>Fixtures, match status and statistics, with scores that update during the game.</p>
+                    </div>
+                    <p class="repo-stack"><span class="chip chip-flutter">Flutter</span><span class="mono muted">BLoC</span></p>
+                    <a class="repo-link mono" href="https://github.com/jabguru/football_app" rel="noopener noreferrer" target="_blank">jabguru/football_app</a>
+                </li>
+                <li class="repo">
+                    <img src="images/lab/crypto-poster.webp" width="64" height="64" alt="" loading="lazy" />
+                    <div class="repo-text">
+                        <h3>Crypto Prices</h3>
+                        <p>Live market prices for digital currencies in a calm, finance-style interface.</p>
+                    </div>
+                    <p class="repo-stack"><span class="chip chip-flutter">Flutter</span><span class="mono muted">Riverpod</span></p>
+                    <a class="repo-link mono" href="https://github.com/jabguru/crypto_app" rel="noopener noreferrer" target="_blank">jabguru/crypto_app</a>
+                </li>
+                <li class="repo">
+                    <img src="images/lab/bike-shopping.webp" width="64" height="64" alt="" loading="lazy" />
+                    <div class="repo-text">
+                        <h3>Bike Shop</h3>
+                        <p>A storefront concept for browsing and choosing bikes.</p>
+                    </div>
+                    <p class="repo-stack"><span class="chip chip-flutter">Flutter</span><span class="mono muted">UI concept</span></p>
+                    <a class="repo-link mono" href="https://github.com/jabguru/Bike-Shopping" rel="noopener noreferrer" target="_blank">jabguru/Bike-Shopping</a>
+                </li>
+            </ul>
         </section>
         <!-- END: Side projects -->
 
         <!-- BEGIN: Contact -->
-        <section class="py-28 lg:py-36 relative overflow-hidden" id="contact" data-spy="contact">
-            <div class="glow glow-contact" aria-hidden="true"></div>
-            <div class="max-w-2xl mx-auto px-5 sm:px-8 relative">
-                <p class="font-mono text-xs uppercase tracking-widest text-violet mb-3 text-center" data-reveal>Start a
-                    conversation</p>
-                <h2 class="font-display font-bold text-4xl sm:text-5xl tracking-tight mb-14 text-center" data-reveal
-                    data-reveal-delay="80">Let's build yours next</h2>
-                <div class="chat-card" data-reveal data-reveal-delay="160">
-                    <div class="flex items-center gap-3.5 px-6 py-4 border-b border-line">
-                        <img alt="Julius Alibrown" class="w-10 h-10 rounded-full object-cover object-[50%_18%]"
-                            src="images/julius.webp" width="640" height="853" loading="lazy" decoding="async" />
-                        <div>
-                            <p class="font-semibold text-sm">Julius Alibrown</p>
-                            <p class="font-mono text-[11px] text-mint flex items-center gap-1.5">
-                                <span class="pulse-dot pulse-dot-inline" aria-hidden="true"></span> Open to new projects
-                            </p>
-                        </div>
-                    </div>
-                    <div class="px-6 pt-6 space-y-3">
-                        <p class="chat-bubble" data-reveal data-reveal-delay="280">Hey! 👋 Planning a mobile app?</p>
-                        <p class="chat-bubble" data-reveal data-reveal-delay="420">Tell me what you're building and I'll
-                            reply with how I'd approach it — architecture, timeline, the works.</p>
-                    </div>
-                    <form action="https://formsubmit.co/brownjulius980@gmail.com" class="p-6 space-y-3"
-                        id="contact-form" method="POST">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            <div>
-                                <label class="sr-only" for="name">Your name</label>
-                                <input class="chat-input" id="name" name="name" placeholder="Your name" required
-                                    type="text" />
-                            </div>
-                            <div>
-                                <label class="sr-only" for="email">Your email</label>
-                                <input class="chat-input" id="email" name="email" placeholder="Your email" required
-                                    type="email" />
-                            </div>
-                        </div>
-                        <div class="chat-composer">
-                            <label class="sr-only" for="message">Your message</label>
-                            <textarea class="chat-input chat-textarea" id="message" name="message"
-                                placeholder="Tell me about your project…" required rows="3"></textarea>
-                            <button aria-label="Send message" class="chat-send magnetic" type="submit">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 19V5m0 0l-6 6m6-6l6 6" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2.2"></path>
-                                </svg>
-                            </button>
-                        </div>
-                        <p aria-live="polite" class="text-sm text-dim hidden" id="form-status"></p>
-                    </form>
+        <section class="contact wrap" id="contact" aria-labelledby="contact-title">
+            <picture class="contact-photo">
+                <source media="(max-width: 767px)" srcset="images/lagos-bridge-960.webp" />
+                <img src="images/lagos-bridge.webp" width="1920" height="1064"
+                    alt="The Lekki–Ikoyi Link Bridge in Lagos, lit up at night" loading="lazy" />
+            </picture>
+            <div class="split">
+                <div class="split-lead">
+                    <h2 id="contact-title">Let’s build something.</h2>
+                    <p class="lead">Tell me about the app and where it is today. Lagos-based, working with teams anywhere.</p>
                 </div>
-                <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-x-8 gap-y-3 text-sm text-dim"
-                    data-reveal data-reveal-delay="240">
-                    <a class="hover:text-ink transition-colors" href="mailto:brownjulius980@gmail.com">
-                        brownjulius980@gmail.com</a>
-                    <span class="hidden sm:block text-faint" aria-hidden="true">·</span>
-                    <p>Lagos, Nigeria — remote worldwide</p>
-                    <span class="hidden sm:block text-faint" aria-hidden="true">·</span>
-                    <div class="flex items-center gap-5">
-                        <a aria-label="Visit GitHub profile" class="text-faint hover:text-ink transition-colors"
-                            href="https://github.com/jabguru" rel="noopener noreferrer" target="_blank">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.041-1.412-4.041-1.412-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
-                                </path>
-                            </svg>
-                        </a>
-                        <a aria-label="Visit LinkedIn profile" class="text-faint hover:text-ink transition-colors"
-                            href="https://linkedin.com/in/jabguru" rel="noopener noreferrer" target="_blank">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z">
-                                </path>
-                            </svg>
-                        </a>
-                    </div>
+                <div>
+                    <dl class="kv kv-contact">
+                        <div>
+                            <dt>Email</dt>
+                            <dd class="mono"><a href="mailto:brownjulius980@gmail.com">brownjulius980@gmail.com</a></dd>
+                            <dd class="kv-action"><button class="btn btn-secondary btn-small" type="button" data-copy="brownjulius980@gmail.com" hidden>Copy email</button></dd>
+                        </div>
+                        <div><dt>Time in Lagos</dt><dd><span data-clock></span>WAT, UTC+1.</dd></div>
+                        <div><dt>Replies</dt><dd>Within a day</dd></div>
+                        <div><dt>Open to</dt><dd>Contract and full-time</dd></div>
+                    </dl>
+                    <a class="btn btn-primary contact-cta"
+                        href="mailto:brownjulius980@gmail.com?subject=Project%20enquiry&amp;body=Hi%20Julius%2C%0A%0AI'm%20working%20on%20...">Email me</a>
                 </div>
             </div>
         </section>
@@ -715,57 +393,21 @@
     </main>
 
     <!-- BEGIN: Footer -->
-    <footer class="border-t border-line pb-32 pt-10">
-        <div class="max-w-7xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <p class="font-mono text-xs text-faint">© 2026 Julius Alibrown — Lagos, Nigeria</p>
-            <a class="font-mono text-xs text-faint hover:text-ink transition-colors" href="#top">Back to top ↑</a>
+    <footer class="site-foot">
+        <div class="wrap site-foot-inner">
+            <p class="muted">Julius Alibrown, mobile engineer</p>
+            <nav aria-label="Elsewhere">
+                <a href="https://github.com/jabguru" rel="noopener noreferrer" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/jabguru" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+                <a href="https://drive.google.com/file/d/1GiCRpJ4y4slYvIouu8Mrq-16oKYgJNn5/view?usp=sharing" rel="noopener noreferrer" target="_blank">CV</a>
+                <a href="mailto:brownjulius980@gmail.com">Email</a>
+            </nav>
+            <p class="muted">Photo: <a href="https://commons.wikimedia.org/wiki/File:Night-view-of-lekki-link-bridge.jpg"
+                    rel="noopener noreferrer" target="_blank">S. Aderogba</a>, CC BY-SA 4.0 · © 2026</p>
         </div>
     </footer>
     <!-- END: Footer -->
 
-    <!-- BEGIN: Dock -->
-    <nav aria-label="Section navigation" class="dock" id="dock">
-        <span class="dock-indicator" id="dock-indicator" aria-hidden="true"></span>
-        <a class="dock-item is-active" data-dock="top" href="#top">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path d="M3 10.5L12 3l9 7.5M5 9.5V21h5v-6h4v6h5V9.5" stroke-linecap="round" stroke-linejoin="round"
-                    stroke-width="1.8"></path>
-            </svg>
-            <span>Home</span>
-        </a>
-        <a class="dock-item" data-dock="apps" href="#apps">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <rect height="18" rx="3.5" stroke-width="1.8" width="12" x="6" y="3"></rect>
-                <path d="M10.5 18.5h3" stroke-linecap="round" stroke-width="1.8"></path>
-            </svg>
-            <span>Apps</span>
-        </a>
-        <a class="dock-item" data-dock="process" href="#process">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path d="M4 17l6-6-6-6M12 19h8" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8">
-                </path>
-            </svg>
-            <span>Process</span>
-        </a>
-        <a class="dock-item" data-dock="experience" href="#experience">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <rect height="13" rx="2.5" stroke-width="1.8" width="18" x="3" y="7"></rect>
-                <path d="M8 7V5.5A2.5 2.5 0 0110.5 3h3A2.5 2.5 0 0116 5.5V7" stroke-width="1.8"></path>
-            </svg>
-            <span>Work</span>
-        </a>
-        <a class="dock-item" data-dock="contact" href="#contact">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                    d="M21 11.5a8.38 8.38 0 01-9 8.35 8.5 8.5 0 01-3.4-.7L3 21l1.85-5.6a8.38 8.38 0 01-.85-3.9 8.5 8.5 0 018.5-8.5 8.38 8.38 0 018.5 8.5z"
-                    stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
-            </svg>
-            <span>Chat</span>
-        </a>
-    </nav>
-    <!-- END: Dock -->
-
-    <script defer src="script.js"></script>
+    <script src="script.js"></script>
 </body>
-
 </html>
