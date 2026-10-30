@@ -383,139 +383,99 @@ h3 {
 }
 
 /* ==========================================================================
-   Work panels: each one slides over the last
+   Work panels: text on the left, two whole phones at about hand size
    ========================================================================== */
 .panel {
-    position: relative;
-    height: 100svh;
-    min-height: 640px;
-    overflow: hidden;
-    background: var(--panel-bg);
-}
-
-.panel-phones {
-    position: absolute;
-    inset: 0;
-}
-
-.panel-phones .phone {
-    position: absolute;
-}
-
-.panel-phones .phone-front {
-    left: 52.8%;
-    top: 22%;
-    width: min(37.3vw, 66svh);
-}
-
-.panel-phones .phone-back {
-    left: 79.9%;
-    top: 13%;
-    width: min(30.7vw, 55svh);
-}
-
-/* The row never moves, so scrolling reads like turning plates */
-.panel-band {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    margin-top: -48px;
+    --phone-w: clamp(220px, min(20.8vw, 34svh), 320px);
     display: grid;
-    grid-template-columns: 38.9% 1fr auto;
+    grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
-    min-height: 96px;
-    padding: 0 var(--margin);
+    gap: 48px;
+    min-height: 100svh;
+    padding: 64px var(--margin);
     background: var(--panel-bg);
 }
 
-.panel-band h3 {
+.panel-text {
+    max-width: 460px;
+}
+
+.panel-text h3 {
     font-size: var(--step-head);
     font-weight: 300;
     line-height: 1;
     letter-spacing: -0.015em;
 }
 
-.panel-role,
-.panel-fact {
+.panel-meta {
+    display: grid;
+    gap: 4px;
+    margin: 20px 0 32px;
     font-size: var(--step-small);
-}
-
-.panel-role {
     color: var(--muted);
 }
 
 .panel-fact {
     color: var(--panel-accent);
-    text-align: right;
-}
-
-.panel-body {
-    position: absolute;
-    left: var(--margin);
-    top: calc(50% + 112px);
-    max-width: min(460px, 46%);
-    display: grid;
-    gap: 24px;
 }
 
 .panel-links {
     display: flex;
     gap: 28px;
+    margin-top: 24px;
     font-size: var(--step-small);
     font-weight: 500;
 }
 
-@media (max-width: 767px) {
+/* The second phone sits a step lower, so the pair reads as one composition */
+.panel-phones {
+    display: flex;
+    align-items: flex-start;
+    gap: 36px;
+}
+
+.panel-phones .phone {
+    flex: none;
+    width: var(--phone-w);
+}
+
+.panel-phones .phone-front {
+    order: -1;
+}
+
+.panel-phones .phone-back {
+    margin-top: calc(var(--phone-w) * 0.2);
+}
+
+@media (max-width: 899px) {
     .panel {
-        position: relative;
-        height: auto;
+        grid-template-columns: 1fr;
+        gap: 36px;
         min-height: 0;
-        padding-bottom: 56px;
+        padding: 48px var(--margin) 64px;
     }
 
     .panel-phones {
-        height: 412px;
-        position: relative;
-        overflow: hidden;
+        order: -1;
+        justify-content: center;
     }
 
-    .panel-phones .phone-back {
-        display: none;
+    .panel-phones .phone {
+        width: 250px;
     }
 
-    .panel-phones .phone-front {
-        left: 50%;
-        top: 48px;
-        width: 324px;
-        transform: translateX(-50%);
-    }
-
-    .panel-band,
-    .panel-body {
-        position: static;
-        margin-top: 0;
-    }
-
-    .panel-band {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-        padding-top: 30px;
-    }
-
-    .panel-band h3 {
+    .panel-text h3 {
         font-size: 2.5rem;
     }
 
-    .panel-fact {
-        text-align: left;
+    .panel-meta {
+        margin: 12px 0 16px;
     }
+}
 
-    .panel-body {
-        max-width: none;
-        padding: 12px var(--margin) 0;
+@media (max-width: 599px) {
+    .panel-phones .phone-back {
+        display: none;
     }
 }
 
