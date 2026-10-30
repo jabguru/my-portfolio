@@ -202,13 +202,15 @@ h4 {
     background: #fff;
 }
 
+/* A filled surface, so it reads at the same size as the primary beside it */
 .btn-secondary {
-    box-shadow: inset 0 0 0 1px var(--line);
+    background: var(--raised);
+    box-shadow: inset 0 0 0 1px #343943;
 }
 
 .btn-secondary:hover {
-    background: var(--raised);
-    box-shadow: inset 0 0 0 1px #3A3F48;
+    background: #252A31;
+    box-shadow: inset 0 0 0 1px #454B56;
 }
 
 .btn-small {
