@@ -1,13 +1,56 @@
 // ---------------------------------------------------------------------------
-// Hero: the size tag reports the photo's real rendered size, as debug paint does
+// Hero: the size tag measures the canvas, as debug paint does. On load it
+// counts up from 0 × 0 while the canvas opens; after that it tracks resizes.
 // ---------------------------------------------------------------------------
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const sizeTag = document.querySelector('[data-size]');
-const photo = document.querySelector('.inspect-photo');
-if (sizeTag && photo && 'ResizeObserver' in window) {
-    new ResizeObserver(([entry]) => {
-        const { width, height } = entry.contentRect;
-        sizeTag.textContent = `${Math.round(width)} × ${Math.round(height)}`;
-    }).observe(photo);
+const canvas = document.querySelector('.inspect-canvas');
+const frame = document.querySelector('.inspect-frame');
+
+if (sizeTag && canvas) {
+    let size = { w: canvas.offsetWidth, h: canvas.offsetHeight };
+    let counting = !reducedMotion;
+    const show = (w, h) => {
+        sizeTag.textContent = `${Math.round(w)} × ${Math.round(h)}`;
+    };
+
+    if ('ResizeObserver' in window) {
+        new ResizeObserver(() => {
+            size = { w: canvas.offsetWidth, h: canvas.offsetHeight };
+            if (!counting) show(size.w, size.h);
+        }).observe(canvas);
+    }
+
+    if (counting) {
+        // Matches the canvas opening: 150ms in, over 800ms, easing out
+        const start = performance.now() + 150;
+        const step = (now) => {
+            const t = Math.min(Math.max((now - start) / 800, 0), 1);
+            const eased = 1 - Math.pow(1 - t, 3);
+            show(size.w * eased, size.h * eased);
+            if (t < 1) requestAnimationFrame(step);
+            else counting = false;
+        };
+        show(0, 0);
+        requestAnimationFrame(step);
+    } else {
+        show(size.w, size.h);
+    }
+}
+
+// Julius drifts a few pixels with the pointer, against the still grid
+if (frame && !reducedMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    const hero = document.querySelector('.hero');
+    hero.addEventListener('pointermove', (e) => {
+        const r = frame.getBoundingClientRect();
+        const clamp = (v) => Math.max(-1, Math.min(1, v));
+        frame.style.setProperty('--mx', clamp((e.clientX - (r.left + r.width / 2)) / (r.width * 1.5)).toFixed(3));
+        frame.style.setProperty('--my', clamp((e.clientY - (r.top + r.height / 2)) / r.height).toFixed(3));
+    });
+    hero.addEventListener('pointerleave', () => {
+        frame.style.setProperty('--mx', '0');
+        frame.style.setProperty('--my', '0');
+    });
 }
 
 // ---------------------------------------------------------------------------

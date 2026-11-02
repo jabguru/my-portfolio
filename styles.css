@@ -439,9 +439,10 @@ h4 {
 
 /* The portrait, inspected: phone-screen proportions inside dashed widget bounds */
 .inspect {
+    --grid: 24px;
     position: relative;
     z-index: 1;
-    padding: 40px 250px 12px 12px;
+    padding: 48px 250px 48px 12px;
 }
 
 .inspect-frame {
@@ -450,12 +451,45 @@ h4 {
     aspect-ratio: 296 / 640;
 }
 
-.inspect-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+/* Julius, lifted out of his photo, on an off-white canvas with a faint layout grid */
+.inspect-canvas {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
     border-radius: calc(var(--pw) * 0.15);
-    filter: brightness(0.94) saturate(0.85) contrast(1.06);
+    background-color: var(--ink);
+    background-image:
+        linear-gradient(to right, color-mix(in srgb, var(--flutter) 12%, transparent) 1px, transparent 1px),
+        linear-gradient(to bottom, color-mix(in srgb, var(--flutter) 12%, transparent) 1px, transparent 1px);
+    background-size: var(--grid) var(--grid);
+    background-position: calc(var(--grid) - 1px) calc(var(--grid) - 1px);
+}
+
+/* The head rises past the canvas's top edge; this layer shows only that part */
+.inspect-overflow {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    height: calc(var(--pw) * 0.16);
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* Sized so the head breaks the top edge and the shoulders fill the frame */
+.cutout {
+    position: absolute;
+    width: calc(var(--pw) * 1.486);
+    max-width: none;
+    height: auto;
+    left: calc(var(--pw) * (0.5 - 0.565 * 1.486));
+    top: calc(var(--pw) * -0.135);
+    transform: translate(calc(var(--mx, 0) * 6px), calc(var(--my, 0) * 4px));
+    transition: transform 600ms var(--ease-out);
+}
+
+.inspect-overflow .cutout {
+    top: calc(var(--pw) * (0.16 - 0.135));
 }
 
 .inspect-bounds {
@@ -508,6 +542,7 @@ h4 {
 }
 
 .inspect-widget { left: 0; }
+.inspect-clip { top: auto; bottom: -38px; left: -12px; opacity: 0.85; }
 .inspect-size { right: 0; }
 
 /* Facts pinned to the bounds, as the widget inspector shows properties */
@@ -546,6 +581,13 @@ h4 {
     display: block;
 }
 
+/* Labels sit above any guide that runs behind them */
+.pins li > span,
+.pins li > strong {
+    background: var(--ground);
+    box-shadow: 0 0 0 3px var(--ground);
+}
+
 .pins li > span {
     position: absolute;
     left: 50px;
@@ -566,20 +608,42 @@ h4 {
     line-height: 1.47;
 }
 
-/* One moment on load: the guides draw in over content that is already there */
+/* The load sequence, one orchestrated moment:
+   the name settles, the canvas opens upward, Julius rises through its top edge,
+   then the debug guides trace around him and the facts pin on */
+.js .hero-name {
+    animation: name-settle 1100ms var(--ease-out) both;
+}
+
+.js .hero-intro > :not(.hero-name) {
+    animation: rise 700ms var(--ease-out) both;
+}
+
+.js .hero-promise { animation-delay: 350ms; }
+.js .hero .lead { animation-delay: 450ms; }
+.js .hero .actions { animation-delay: 550ms; }
+
+.js .inspect-canvas {
+    animation: canvas-open 800ms var(--ease-out) 150ms both;
+}
+
+.js .cutout {
+    animation: subject-rise 1000ms var(--ease-out) 450ms both;
+}
+
 .js .baseline-mark::before {
     transform-origin: 33.3% 0;
-    animation: guide-x 900ms var(--ease-out) 150ms both;
+    animation: guide-x 900ms var(--ease-out) 300ms both;
+}
+
+.js .inspect-bounds {
+    animation: guide-trace 800ms var(--ease-out) 1050ms both;
 }
 
 .js .baseline-mark::after,
 .js .inspect-tag,
 .js .tick {
-    animation: guide-fade 400ms ease 900ms both;
-}
-
-.js .inspect-bounds {
-    animation: guide-trace 800ms var(--ease-out) 400ms both;
+    animation: guide-fade 400ms ease 1500ms both;
 }
 
 .js .pins li::before {
@@ -592,12 +656,42 @@ h4 {
     animation: guide-fade 400ms ease both;
 }
 
-.js .pins li:nth-child(1)::before { animation-delay: 1000ms; }
-.js .pins li:nth-child(2)::before { animation-delay: 1120ms; }
-.js .pins li:nth-child(3)::before { animation-delay: 1240ms; }
-.js .pins li:nth-child(1)::after, .js .pins li:nth-child(1) > * { animation-delay: 1250ms; }
-.js .pins li:nth-child(2)::after, .js .pins li:nth-child(2) > * { animation-delay: 1370ms; }
-.js .pins li:nth-child(3)::after, .js .pins li:nth-child(3) > * { animation-delay: 1490ms; }
+.js .pins li:nth-child(1)::before { animation-delay: 1550ms; }
+.js .pins li:nth-child(2)::before { animation-delay: 1670ms; }
+.js .pins li:nth-child(3)::before { animation-delay: 1790ms; }
+.js .pins li:nth-child(1)::after, .js .pins li:nth-child(1) > * { animation-delay: 1800ms; }
+.js .pins li:nth-child(2)::after, .js .pins li:nth-child(2) > * { animation-delay: 1920ms; }
+.js .pins li:nth-child(3)::after, .js .pins li:nth-child(3) > * { animation-delay: 2040ms; }
+
+@keyframes name-settle {
+    from {
+        opacity: 0;
+        letter-spacing: 0;
+    }
+}
+
+@keyframes rise {
+    from {
+        opacity: 0;
+        translate: 0 14px;
+    }
+}
+
+@keyframes canvas-open {
+    from { clip-path: inset(100% 0 0 0 round 60px); }
+    to { clip-path: inset(0 0 0 0 round 0); }
+}
+
+/* Uses `translate`, so the pointer drift on `transform` composes with it */
+@keyframes subject-rise {
+    from {
+        opacity: 0;
+        translate: 0 22%;
+    }
+    40% {
+        opacity: 1;
+    }
+}
 
 @keyframes guide-x {
     from { transform: scaleX(0); }
@@ -660,7 +754,14 @@ h4 {
     }
 
     .inspect {
-        padding: 30px 0 10px 10px;
+        --grid: 16px;
+        padding: 40px 0 40px 10px;
+    }
+
+    .inspect-tag.inspect-clip {
+        top: auto;
+        left: -10px;
+        bottom: -32px;
     }
 
     .inspect-bounds {

@@ -12,7 +12,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap" />
     <link rel="stylesheet" href="styles.css" />
-    <link rel="preload" as="image" href="images/julius.webp" type="image/webp" />
+    <link rel="preload" as="image" href="images/julius-cutout.webp" type="image/webp" />
     <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -50,7 +50,13 @@
 
             <figure class="inspect">
                 <div class="inspect-frame">
-                    <img class="inspect-photo" src="images/julius.webp" width="640" height="853" alt="Julius Alibrown" fetchpriority="high" />
+                    <div class="inspect-canvas">
+                        <img class="cutout" src="images/julius-cutout.webp" width="900" height="1446" alt="Julius Alibrown" fetchpriority="high" />
+                    </div>
+                    <!-- The head draws outside the panel's bounds -->
+                    <div class="inspect-overflow" aria-hidden="true">
+                        <img class="cutout" src="images/julius-cutout.webp" width="900" height="1446" alt="" />
+                    </div>
                     <div class="inspect-bounds" aria-hidden="true">
                         <span class="tick tick-tl"></span><span class="tick tick-tr"></span><span class="tick tick-bl"></span><span class="tick tick-br"></span>
                         <span class="inspect-tag inspect-widget">Julius()</span>
@@ -61,6 +67,7 @@
                         <li><span>Experience</span><strong>4 years, 6 production apps</strong></li>
                         <li><span>Based in</span><strong data-lagos>Lagos, Nigeria</strong></li>
                     </ul>
+                    <span class="inspect-tag inspect-clip" aria-hidden="true">clipBehavior: Clip.none</span>
                 </div>
             </figure>
         </section>
