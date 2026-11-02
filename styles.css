@@ -273,6 +273,7 @@ h4 {
 /* The bezel is sized in container units so it scales with the phone itself */
 .phone {
     position: relative;
+    align-self: flex-start;
     container-type: inline-size;
     aspect-ratio: 395 / 832;
     border-radius: 14.7% / 7%;
@@ -356,24 +357,75 @@ h4 {
 }
 
 /* ==========================================================================
-   Hero: headline beside a device simulator
+   Hero: Flutter's debug paint, applied to Julius
    ========================================================================== */
 .hero {
+    --pw: 296px;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 680px;
+    grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
     gap: 56px;
-    padding-block: 72px 96px;
+    padding-block: 64px 96px;
+    overflow-x: clip;
 }
 
-.hero h1 {
-    font-size: var(--step-display);
-    line-height: 1.055;
-    letter-spacing: -0.035em;
+.hero-intro {
+    position: relative;
+}
+
+.hero-name {
+    position: relative;
+    font-size: clamp(4.75rem, 1rem + 9.2vw, 9.25rem);
+    line-height: 0.92;
+    letter-spacing: -0.05em;
+    margin-left: -0.04em;
+}
+
+/* An empty inline box sits on the baseline, so the guide lands exactly on it */
+.baseline-mark {
+    position: relative;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: baseline;
+}
+
+.baseline-mark::before {
+    content: '';
+    position: absolute;
+    left: -100vw;
+    top: 0;
+    width: 300vw;
+    border-top: 1px dashed color-mix(in srgb, var(--flutter) 60%, transparent);
+    z-index: -1;
+}
+
+.baseline-mark::after {
+    content: 'baseline';
+    position: absolute;
+    left: 0.06em;
+    top: 10px;
+    font-family: var(--mono);
+    font-size: var(--step-mono);
+    line-height: 1;
+    letter-spacing: 0;
+    color: var(--flutter);
+    opacity: 0.8;
+}
+
+.hero-promise {
+    margin-top: 64px;
+    font-size: var(--step-head);
+    line-height: 1.08;
+    letter-spacing: -0.025em;
 }
 
 .hero .lead {
-    margin-top: 28px;
+    margin-top: 20px;
+}
+
+.br-sm {
+    display: none;
 }
 
 .actions {
@@ -385,99 +437,264 @@ h4 {
     margin-top: 40px;
 }
 
-.stack-key {
+/* The portrait, inspected: phone-screen proportions inside dashed widget bounds */
+.inspect {
+    position: relative;
+    z-index: 1;
+    padding: 40px 250px 12px 12px;
+}
+
+.inspect-frame {
+    position: relative;
+    width: var(--pw);
+    aspect-ratio: 296 / 640;
+}
+
+.inspect-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: calc(var(--pw) * 0.15);
+    filter: brightness(0.94) saturate(0.85) contrast(1.06);
+}
+
+.inspect-bounds {
+    position: absolute;
+    inset: -12px;
+    border: 1px dashed color-mix(in srgb, var(--flutter) 75%, transparent);
+    border-radius: calc(var(--pw) * 0.15 + 12px);
+}
+
+.tick {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+}
+
+.tick::before,
+.tick::after {
+    content: '';
+    position: absolute;
+    background: var(--flutter);
+}
+
+.tick::before {
+    left: 0;
+    top: 6.5px;
+    width: 14px;
+    height: 1px;
+}
+
+.tick::after {
+    left: 6.5px;
+    top: 0;
+    width: 1px;
+    height: 14px;
+}
+
+.tick-tl { left: -7.5px; top: -7.5px; }
+.tick-tr { right: -7.5px; top: -7.5px; }
+.tick-bl { left: -7.5px; bottom: -7.5px; }
+.tick-br { right: -7.5px; bottom: -7.5px; }
+
+.inspect-tag {
+    position: absolute;
+    top: -30px;
+    font-family: var(--mono);
+    font-size: var(--step-mono);
+    line-height: 1;
+    color: var(--flutter);
+    white-space: nowrap;
+}
+
+.inspect-widget { left: 0; }
+.inspect-size { right: 0; }
+
+/* Facts pinned to the bounds, as the widget inspector shows properties */
+.pins li {
+    position: absolute;
+    left: calc(100% + 12px);
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    gap: 12px;
-    margin-top: 72px;
-    font-size: var(--step-small);
-    color: var(--muted);
+    transform: translateY(-50%);
 }
 
-.sim {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    overflow: hidden;
-}
+.pins li:nth-child(1) { top: 23%; }
+.pins li:nth-child(2) { top: 52%; }
+.pins li:nth-child(3) { top: 80%; }
 
-.sim-tabs {
-    display: none;
-    padding-inline: 12px;
-    border-bottom: 1px solid var(--line);
-    overflow-x: auto;
-    scrollbar-width: none;
-}
-
-.sim-tabs.has-more {
-    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 48px), transparent);
-    mask-image: linear-gradient(to right, #000 calc(100% - 48px), transparent);
-}
-
-.sim-tabs::-webkit-scrollbar {
-    display: none;
-}
-
-.js .sim-tabs {
-    display: flex;
-}
-
-.sim-tabs [role='tab'] {
+.pins li::before {
+    content: '';
     flex: none;
-    padding: 14px 14px 12px;
-    border-bottom: 2px solid transparent;
+    width: 34px;
+    height: 1px;
+    background: color-mix(in srgb, var(--flutter) 75%, transparent);
+}
+
+.pins li::after {
+    content: '';
+    position: absolute;
+    left: 32px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--flutter);
+}
+
+.pins span,
+.pins strong {
+    display: block;
+}
+
+.pins li > span {
+    position: absolute;
+    left: 50px;
+    bottom: calc(50% + 1px);
     font-size: var(--step-small);
+    line-height: 1.47;
     color: var(--muted);
-    transition: color 160ms ease, border-color 160ms ease;
+    white-space: nowrap;
 }
 
-.sim-tabs [role='tab']:hover {
-    color: var(--ink);
+.pins strong {
+    position: absolute;
+    left: 50px;
+    top: calc(50% + 1px);
+    width: 190px;
+    font-size: var(--step-small);
+    font-weight: 500;
+    line-height: 1.47;
 }
 
-.sim-tabs [role='tab'][aria-selected='true'] {
-    color: var(--ink);
-    border-bottom-color: var(--flutter);
+/* One moment on load: the guides draw in over content that is already there */
+.js .baseline-mark::before {
+    transform-origin: 33.3% 0;
+    animation: guide-x 900ms var(--ease-out) 150ms both;
 }
 
-.sim-tabs [role='tab']:focus-visible {
-    outline-offset: -4px;
+.js .baseline-mark::after,
+.js .inspect-tag,
+.js .tick {
+    animation: guide-fade 400ms ease 900ms both;
 }
 
-.sim-body {
-    display: grid;
-    grid-template-columns: 290px minmax(0, 1fr);
-    gap: 32px;
-    padding: 36px 32px;
-    background: color-mix(in srgb, var(--ground) 40%, var(--surface));
+.js .inspect-bounds {
+    animation: guide-trace 800ms var(--ease-out) 400ms both;
 }
 
-.sim-device .phone img {
-    transition: opacity 200ms ease;
+.js .pins li::before {
+    transform-origin: left;
+    animation: guide-x 400ms var(--ease-out) both;
 }
 
-.sim-device .phone img.is-swapping {
-    opacity: 0;
+.js .pins li::after,
+.js .pins li > * {
+    animation: guide-fade 400ms ease both;
 }
 
-.sim-inspector {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
+.js .pins li:nth-child(1)::before { animation-delay: 1000ms; }
+.js .pins li:nth-child(2)::before { animation-delay: 1120ms; }
+.js .pins li:nth-child(3)::before { animation-delay: 1240ms; }
+.js .pins li:nth-child(1)::after, .js .pins li:nth-child(1) > * { animation-delay: 1250ms; }
+.js .pins li:nth-child(2)::after, .js .pins li:nth-child(2) > * { animation-delay: 1370ms; }
+.js .pins li:nth-child(3)::after, .js .pins li:nth-child(3) > * { animation-delay: 1490ms; }
+
+@keyframes guide-x {
+    from { transform: scaleX(0); }
 }
 
-.sim-name {
-    font-size: var(--step-head);
-    line-height: 1.08;
-    letter-spacing: -0.025em;
+@keyframes guide-fade {
+    from { opacity: 0; }
 }
 
-.sim-what {
-    margin: 8px 0 28px;
-    color: var(--muted);
+/* Ends well outside the box, so the tags and crosshairs beyond its edge stay visible */
+@keyframes guide-trace {
+    from { clip-path: inset(-40px 100% 100% -40px); }
+    to { clip-path: inset(-40px -40px -40px -40px); }
 }
 
+@media (max-width: 1240px) {
+    .hero {
+        --pw: 264px;
+        gap: 40px;
+    }
+
+    .inspect {
+        padding-right: 228px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .hero {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 64px;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero {
+        --pw: 190px;
+        padding-block: 40px 56px;
+        gap: 56px;
+    }
+
+    .hero-name {
+        font-size: 4.75rem;
+        line-height: 0.95;
+    }
+
+    .hero-promise {
+        margin-top: 44px;
+    }
+
+    .br-sm {
+        display: inline;
+    }
+
+    .hero .lead {
+        margin-top: 16px;
+    }
+
+    .actions {
+        margin-top: 28px;
+    }
+
+    .inspect {
+        padding: 30px 0 10px 10px;
+    }
+
+    .inspect-bounds {
+        inset: -10px;
+        border-radius: calc(var(--pw) * 0.15 + 10px);
+    }
+
+    .inspect-tag {
+        top: -26px;
+    }
+
+    .pins li {
+        left: calc(100% + 10px);
+    }
+
+    .pins li::before {
+        width: 18px;
+    }
+
+    .pins li::after {
+        left: 16px;
+    }
+
+    .pins li > span,
+    .pins strong {
+        left: 28px;
+    }
+
+    .pins strong {
+        width: 112px;
+    }
+}
+
+/* Key-value lists (contact details) */
 .kv > div {
     display: grid;
     grid-template-columns: 104px minmax(0, 1fr);
@@ -497,126 +714,6 @@ h4 {
     color: var(--muted);
 }
 
-.sim-hint {
-    display: none;
-    margin-top: auto;
-    padding-top: 24px;
-    font-size: var(--step-small);
-    color: var(--muted);
-}
-
-.js .sim-hint {
-    display: block;
-}
-
-/* One entrance for the whole page: the hero settles in */
-.js .hero-intro > *,
-.js .sim {
-    animation: rise 700ms var(--ease-out) both;
-}
-
-.js .hero-intro > :nth-child(2) { animation-delay: 60ms; }
-.js .hero-intro > :nth-child(3) { animation-delay: 120ms; }
-.js .hero-intro > :nth-child(4) { animation-delay: 180ms; }
-.js .sim { animation-delay: 160ms; }
-
-@keyframes rise {
-    from {
-        opacity: 0;
-        transform: translateY(16px);
-    }
-}
-
-@media (max-width: 1240px) {
-    .hero {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 56px;
-    }
-
-    .sim {
-        max-width: 760px;
-    }
-
-    .stack-key {
-        margin-top: 40px;
-    }
-}
-
-@media (max-width: 640px) {
-    .br-wide {
-        display: none;
-    }
-
-    .hero {
-        padding-block: 48px 64px;
-        gap: 40px;
-    }
-
-    .hero .lead {
-        margin-top: 20px;
-    }
-
-    .actions {
-        margin-top: 28px;
-    }
-
-    .stack-key {
-        display: none;
-    }
-
-    .sim-tabs {
-        padding-inline: 6px;
-    }
-
-    .sim-tabs [role='tab'] {
-        padding: 12px 12px 10px;
-    }
-
-    .sim-body {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 0;
-        padding: 0;
-    }
-
-    .sim-device {
-        padding-block: 28px;
-    }
-
-    .sim-device .phone {
-        width: 230px;
-        margin-inline: auto;
-    }
-
-    .sim-inspector {
-        padding: 20px 16px 16px;
-        border-top: 1px solid var(--line);
-        background: var(--surface);
-    }
-
-    .sim-name {
-        font-size: var(--step-title);
-    }
-
-    .sim-what {
-        margin: 4px 0 12px;
-        font-size: var(--step-small);
-    }
-
-    .kv > div {
-        grid-template-columns: 84px minmax(0, 1fr);
-        gap: 12px;
-        padding-block: 12px;
-    }
-
-    .kv > div:last-child {
-        border-bottom: 0;
-    }
-
-    .sim-hint {
-        display: none !important;
-    }
-}
-
 /* ==========================================================================
    Sections
    ========================================================================== */
@@ -630,6 +727,16 @@ h4 {
     font-size: var(--step-head);
     line-height: 1.08;
     letter-spacing: -0.025em;
+}
+
+.stack-key {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin: -24px 0 32px;
+    font-size: var(--step-small);
+    color: var(--muted);
 }
 
 .section-head {
@@ -669,6 +776,10 @@ h4 {
     .section-head {
         flex-direction: column;
         margin-bottom: 32px;
+    }
+
+    .stack-key {
+        margin: -12px 0 24px;
     }
 
     .split-lead {
@@ -763,12 +874,14 @@ h4 {
 
 .release-detail {
     display: flex;
+    align-items: flex-start;
     gap: 32px;
     padding: 8px 0 48px 244px;
 }
 
 .release-phones {
     display: flex;
+    align-items: flex-start;
     gap: 32px;
 }
 
@@ -872,6 +985,7 @@ h4 {
 
     .release-detail {
         flex-direction: column;
+        align-items: stretch;
         gap: 20px;
         padding: 0 0 28px;
     }
@@ -987,14 +1101,6 @@ h4 {
 /* ==========================================================================
    Experience: a commit graph
    ========================================================================== */
-.portrait {
-    width: 300px;
-    height: auto;
-    aspect-ratio: 5 / 6;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
 .graph li {
     position: relative;
     padding: 0 0 48px 42px;
@@ -1054,12 +1160,6 @@ h4 {
 
 .graph .small {
     margin-top: 4px;
-}
-
-@media (max-width: 1100px) {
-    .portrait {
-        width: 160px;
-    }
 }
 
 @media (max-width: 640px) {

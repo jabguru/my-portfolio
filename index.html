@@ -12,7 +12,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap" />
     <link rel="stylesheet" href="styles.css" />
-    <link rel="preload" as="image" href="images/apps/sp-home.webp" type="image/webp" />
+    <link rel="preload" as="image" href="images/julius.webp" type="image/webp" />
     <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -28,6 +28,7 @@
                 <a href="#experience">Experience</a>
                 <a href="#projects">Side projects</a>
                 <a href="#contact">Contact</a>
+                <a href="https://drive.google.com/file/d/1GiCRpJ4y4slYvIouu8Mrq-16oKYgJNn5/view?usp=sharing" rel="noopener noreferrer" target="_blank">CV</a>
             </nav>
             <p class="status status-live">Open to new work</p>
         </div>
@@ -38,48 +39,30 @@
         <!-- BEGIN: Hero -->
         <section class="hero wrap" id="top">
             <div class="hero-intro">
-                <h1>I ship apps<br /> people bank on.</h1>
-                <p class="lead">Julius Alibrown, a mobile engineer in Lagos<br class="br-wide" /> working with Flutter &amp; Swift.</p>
+                <h1 class="hero-name">Julius<br /> <span class="baseline-mark" aria-hidden="true"></span>Alibrown</h1>
+                <p class="hero-promise">I ship apps<br class="br-sm" /> people bank on.</p>
+                <p class="lead">Mobile engineer. From first commit to the App Store and Google Play.</p>
                 <div class="actions">
                     <a class="btn btn-primary" href="#contact">Start a project</a>
                     <a class="btn btn-secondary" href="#apps">See the apps</a>
                 </div>
-                <p class="stack-key">
-                    <span class="chip chip-flutter">Flutter</span>
-                    <span class="chip chip-swift">Swift</span>
-                    <span>Each app is tagged with what it’s built in.</span>
-                </p>
             </div>
 
-            <div class="sim">
-                <div class="sim-tabs" role="tablist" aria-label="Pick an app">
-                    <button role="tab" id="tab-spendory" aria-selected="true" aria-controls="sim-panel" data-app="spendory">Spendory</button>
-                    <button role="tab" id="tab-ajocard" aria-selected="false" aria-controls="sim-panel" tabindex="-1" data-app="ajocard">AjoCard</button>
-                    <button role="tab" id="tab-savesimple" aria-selected="false" aria-controls="sim-panel" tabindex="-1" data-app="savesimple">Save Simple</button>
-                    <button role="tab" id="tab-contree" aria-selected="false" aria-controls="sim-panel" tabindex="-1" data-app="contree">Contree</button>
-                    <button role="tab" id="tab-tellerone" aria-selected="false" aria-controls="sim-panel" tabindex="-1" data-app="tellerone">TellerOne</button>
-                    <button role="tab" id="tab-ijot" aria-selected="false" aria-controls="sim-panel" tabindex="-1" data-app="ijot">iJot</button>
-                </div>
-                <div class="sim-body" id="sim-panel" role="tabpanel" aria-labelledby="tab-spendory">
-                    <div class="sim-device">
-                        <div class="phone">
-                            <img data-sim="screen" src="images/apps/sp-home.webp" width="750" height="1624"
-                                alt="Spendory home screen" fetchpriority="high" />
-                        </div>
+            <figure class="inspect">
+                <div class="inspect-frame">
+                    <img class="inspect-photo" src="images/julius.webp" width="640" height="853" alt="Julius Alibrown" fetchpriority="high" />
+                    <div class="inspect-bounds" aria-hidden="true">
+                        <span class="tick tick-tl"></span><span class="tick tick-tr"></span><span class="tick tick-bl"></span><span class="tick tick-br"></span>
+                        <span class="inspect-tag inspect-widget">Julius()</span>
+                        <span class="inspect-tag inspect-size" data-size>296 × 640</span>
                     </div>
-                    <div class="sim-inspector">
-                        <h2 class="sim-name" data-sim="name">Spendory</h2>
-                        <p class="sim-what" data-sim="what">An expense tracker that fills itself in.</p>
-                        <dl class="kv">
-                            <div><dt>My role</dt><dd data-sim="role">My product. I built the Flutter app and the email parser behind it on Supabase.</dd></div>
-                            <div><dt>Built with</dt><dd><span class="chip chip-flutter">Flutter</span></dd></div>
-                            <div><dt>Platforms</dt><dd>iOS and Android</dd></div>
-                            <div><dt>Status</dt><dd><span class="status" data-sim="status">Coming soon</span></dd></div>
-                        </dl>
-                        <p class="sim-hint">Pick an app above to see it running.</p>
-                    </div>
+                    <ul class="pins">
+                        <li><span>Builds with</span><strong>Flutter &amp; Swift</strong></li>
+                        <li><span>Experience</span><strong>4 years, 6 production apps</strong></li>
+                        <li><span>Based in</span><strong data-lagos>Lagos, Nigeria</strong></li>
+                    </ul>
                 </div>
-            </div>
+            </figure>
         </section>
         <!-- END: Hero -->
 
@@ -89,91 +72,17 @@
                 <h2 id="apps-title">Apps I’ve built</h2>
                 <p class="lead">Three are live. Three launch soon.</p>
             </div>
+            <p class="stack-key">
+                <span class="chip chip-flutter">Flutter</span>
+                <span class="chip chip-swift">Swift</span>
+                <span>Each app is tagged with what it’s built in.</span>
+            </p>
 
             <div class="board">
                 <div class="board-cols" aria-hidden="true">
                     <span>App</span><span>What it is</span><span>My role</span><span>Built with</span><span>Status</span>
                 </div>
                 <ol class="releases">
-                    <li class="release">
-                        <div class="release-row">
-                            <h3><button class="release-toggle" aria-expanded="true" aria-controls="detail-spendory">Spendory</button></h3>
-                            <p>An expense tracker that fills itself in.</p>
-                            <p class="muted">My product</p>
-                            <p><span class="chip chip-flutter">Flutter</span></p>
-                            <div class="release-status"><span class="status">Coming soon to both stores</span></div>
-                        </div>
-                        <div class="release-detail" id="detail-spendory">
-                            <div class="release-phones">
-                                <div class="phone"><img src="images/apps/sp-home.webp" width="750" height="1624" alt="Spendory home screen, with this month’s spending and recent transactions" loading="lazy" /></div>
-                                <div class="phone"><img src="images/apps/sp-inbox.webp" width="750" height="1624" alt="Spendory review screen, with transactions captured from bank alerts waiting to be confirmed" loading="lazy" /></div>
-                            </div>
-                            <div class="release-notes">
-                                <h4>How it works</h4>
-                                <p>Forward your bank’s alert emails and each one arrives as a transaction to confirm, so the record keeps itself. I built the Flutter app and the email parser behind it on Supabase.</p>
-                                <p>The app unlocks with Face ID or a fingerprint, keeps its keys in secure storage, reports crashes to Sentry and sends push alerts through Firebase.</p>
-                                <h4 class="small-head">Under the hood</h4>
-                                <div class="stack">
-                                    <dl><div><dt>Architecture</dt><dd>Clean architecture, feature-first</dd></div></dl>
-                                    <dl><div><dt>State</dt><dd>Riverpod</dd></div><div><dt>Navigation</dt><dd>AutoRoute</dd></div><div><dt>Data</dt><dd>Supabase</dd></div></dl>
-                                    <dl><div><dt>Monitoring</dt><dd>Sentry</dd></div><div><dt>Analytics</dt><dd>Mixpanel</dd></div></dl>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="release">
-                        <div class="release-row">
-                            <h3><button class="release-toggle" aria-expanded="true" aria-controls="detail-ajocard">AjoCard</button></h3>
-                            <p>A banking app for personal bankers who serve customers face to face.</p>
-                            <p class="muted">Mobile engineer at AjoCard Limited</p>
-                            <p><span class="chip chip-flutter">Flutter</span></p>
-                            <div class="release-status"><span class="status">Coming soon to both stores</span></div>
-                        </div>
-                        <div class="release-detail" id="detail-ajocard">
-                            <div class="release-phones">
-                                <div class="phone"><img src="images/apps/aj-home.webp" width="750" height="1624" alt="AjoCard home screen for a personal banker" loading="lazy" /></div>
-                                <div class="phone"><img src="images/apps/aj-transfer.webp" width="750" height="1624" alt="AjoCard transfer screen" loading="lazy" /></div>
-                            </div>
-                            <div class="release-notes">
-                                <h4>How it works</h4>
-                                <p>A personal banker taps a customer’s card to take savings, send transfers, sell airtime and pay bills, then shares the receipt on WhatsApp.</p>
-                                <h4 class="small-head">Under the hood</h4>
-                                <div class="stack">
-                                    <dl><div><dt>Architecture</dt><dd>Dart workspace (monorepo) shared with Save Simple</dd></div></dl>
-                                    <dl><div><dt>State</dt><dd>BLoC</dd></div><div><dt>Navigation</dt><dd>AutoRoute</dd></div><div><dt>Data</dt><dd>Dio (REST)</dd></div></dl>
-                                    <dl><div><dt>Monitoring</dt><dd>Sentry</dd></div><div><dt>Analytics</dt><dd>Mixpanel</dd></div><div><dt>Hardware</dt><dd>NFC card reading</dd></div></dl>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="release">
-                        <div class="release-row">
-                            <h3><button class="release-toggle" aria-expanded="true" aria-controls="detail-savesimple">Save Simple</button></h3>
-                            <p>Lending for personal bankers, from onboarding to repayment.</p>
-                            <p class="muted">Mobile engineer at AjoCard Limited</p>
-                            <p><span class="chip chip-flutter">Flutter</span></p>
-                            <div class="release-status"><span class="status">Coming soon to both stores</span></div>
-                        </div>
-                        <div class="release-detail" id="detail-savesimple">
-                            <div class="release-phones">
-                                <div class="phone"><img src="images/apps/ss-home.webp" width="750" height="1624" alt="Save Simple home screen" loading="lazy" /></div>
-                                <div class="phone"><img src="images/apps/ss-lending.webp" width="750" height="1624" alt="Save Simple lending screen" loading="lazy" /></div>
-                            </div>
-                            <div class="release-notes">
-                                <h4>How it works</h4>
-                                <p>The lending side of the same idea. Personal bankers onboard customers in minutes, take savings with a card tap, and run each loan from application to repayment.</p>
-                                <h4 class="small-head">Under the hood</h4>
-                                <div class="stack">
-                                    <dl><div><dt>Architecture</dt><dd>Dart workspace (monorepo) shared with AjoCard</dd></div></dl>
-                                    <dl><div><dt>State</dt><dd>BLoC</dd></div><div><dt>Navigation</dt><dd>AutoRoute</dd></div><div><dt>Data</dt><dd>Dio (REST)</dd></div></dl>
-                                    <dl><div><dt>Monitoring</dt><dd>Sentry</dd></div><div><dt>Analytics</dt><dd>Mixpanel</dd></div><div><dt>Hardware</dt><dd>NFC card reading</dd></div></dl>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
                     <li class="release">
                         <div class="release-row">
                             <h3><button class="release-toggle" aria-expanded="true" aria-controls="detail-contree">Contree</button></h3>
@@ -240,6 +149,84 @@
 
                     <li class="release">
                         <div class="release-row">
+                            <h3><button class="release-toggle" aria-expanded="true" aria-controls="detail-ajocard">AjoCard</button></h3>
+                            <p>A banking app for personal bankers who serve customers face to face.</p>
+                            <p class="muted">Mobile engineer at AjoCard Limited</p>
+                            <p><span class="chip chip-flutter">Flutter</span></p>
+                            <div class="release-status"><span class="status">Coming soon to both stores</span></div>
+                        </div>
+                        <div class="release-detail" id="detail-ajocard">
+                            <div class="release-phones">
+                                <div class="phone"><img src="images/apps/aj-home.webp" width="750" height="1624" alt="AjoCard home screen for a personal banker" loading="lazy" /></div>
+                                <div class="phone"><img src="images/apps/aj-transfer.webp" width="750" height="1624" alt="AjoCard transfer screen" loading="lazy" /></div>
+                            </div>
+                            <div class="release-notes">
+                                <h4>How it works</h4>
+                                <p>A personal banker taps a customer’s card to take savings, send transfers, sell airtime and pay bills, then shares the receipt on WhatsApp.</p>
+                                <h4 class="small-head">Under the hood</h4>
+                                <div class="stack">
+                                    <dl><div><dt>Architecture</dt><dd>Dart workspace (monorepo) shared with Save Simple</dd></div></dl>
+                                    <dl><div><dt>State</dt><dd>BLoC</dd></div><div><dt>Navigation</dt><dd>AutoRoute</dd></div><div><dt>Data</dt><dd>Dio (REST)</dd></div></dl>
+                                    <dl><div><dt>Monitoring</dt><dd>Sentry</dd></div><div><dt>Analytics</dt><dd>Mixpanel</dd></div><div><dt>Hardware</dt><dd>NFC card reading</dd></div></dl>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="release">
+                        <div class="release-row">
+                            <h3><button class="release-toggle" aria-expanded="true" aria-controls="detail-savesimple">Save Simple</button></h3>
+                            <p>Lending for personal bankers, from onboarding to repayment.</p>
+                            <p class="muted">Mobile engineer at AjoCard Limited</p>
+                            <p><span class="chip chip-flutter">Flutter</span></p>
+                            <div class="release-status"><span class="status">Coming soon to both stores</span></div>
+                        </div>
+                        <div class="release-detail" id="detail-savesimple">
+                            <div class="release-phones">
+                                <div class="phone"><img src="images/apps/ss-home.webp" width="750" height="1624" alt="Save Simple home screen" loading="lazy" /></div>
+                                <div class="phone"><img src="images/apps/ss-lending.webp" width="750" height="1624" alt="Save Simple lending screen" loading="lazy" /></div>
+                            </div>
+                            <div class="release-notes">
+                                <h4>How it works</h4>
+                                <p>The lending side of the same idea. Personal bankers onboard customers in minutes, take savings with a card tap, and run each loan from application to repayment.</p>
+                                <h4 class="small-head">Under the hood</h4>
+                                <div class="stack">
+                                    <dl><div><dt>Architecture</dt><dd>Dart workspace (monorepo) shared with AjoCard</dd></div></dl>
+                                    <dl><div><dt>State</dt><dd>BLoC</dd></div><div><dt>Navigation</dt><dd>AutoRoute</dd></div><div><dt>Data</dt><dd>Dio (REST)</dd></div></dl>
+                                    <dl><div><dt>Monitoring</dt><dd>Sentry</dd></div><div><dt>Analytics</dt><dd>Mixpanel</dd></div><div><dt>Hardware</dt><dd>NFC card reading</dd></div></dl>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="release">
+                        <div class="release-row">
+                            <h3><button class="release-toggle" aria-expanded="true" aria-controls="detail-spendory">Spendory</button></h3>
+                            <p>An expense tracker that fills itself in.</p>
+                            <p class="muted">My product</p>
+                            <p><span class="chip chip-flutter">Flutter</span></p>
+                            <div class="release-status"><span class="status">Coming soon to both stores</span></div>
+                        </div>
+                        <div class="release-detail" id="detail-spendory">
+                            <div class="release-phones">
+                                <div class="phone"><img src="images/apps/sp-home.webp" width="750" height="1624" alt="Spendory home screen, with this month’s spending and recent transactions" loading="lazy" /></div>
+                                <div class="phone"><img src="images/apps/sp-inbox.webp" width="750" height="1624" alt="Spendory review screen, with transactions captured from bank alerts waiting to be confirmed" loading="lazy" /></div>
+                            </div>
+                            <div class="release-notes">
+                                <h4>How it works</h4>
+                                <p>Forward your bank’s alert emails and each one arrives as a transaction to confirm, so the record keeps itself. I built the Flutter app and the email parser behind it on Supabase.</p>
+                                <p>The app unlocks with Face ID or a fingerprint, keeps its keys in secure storage, reports crashes to Sentry and sends push alerts through Firebase.</p>
+                                <h4 class="small-head">Under the hood</h4>
+                                <div class="stack">
+                                    <dl><div><dt>Architecture</dt><dd>Clean architecture, feature-first</dd></div></dl>
+                                    <dl><div><dt>State</dt><dd>Riverpod</dd></div><div><dt>Navigation</dt><dd>AutoRoute</dd></div><div><dt>Data</dt><dd>Supabase</dd></div></dl>
+                                    <dl><div><dt>Monitoring</dt><dd>Sentry</dd></div><div><dt>Analytics</dt><dd>Mixpanel</dd></div></dl>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="release">
+                        <div class="release-row">
                             <h3><button class="release-toggle" aria-expanded="true" aria-controls="detail-ijot">iJot</button></h3>
                             <p>Notes that work offline and sync the moment you’re back online.</p>
                             <p class="muted">My product</p>
@@ -291,7 +278,7 @@
                     <li><strong>Sessions expire safely</strong><span>Sign-in runs out without losing the user’s place.</span></li>
                     <li><strong>One codebase for iOS and Android</strong><span>Flutter, when both platforms should ship together.</span></li>
                     <li><strong>Native where it should be</strong><span>Swift, when an iPhone app should feel fully native.</span></li>
-                    <li><strong>Released to both stores</strong><span>I see every app through review on the App Store and Google Play.</span></li>
+                    <li><strong>Covered by tests</strong><span>Unit and widget tests, with CI building each release.</span></li>
                 </ul>
             </div>
         </section>
@@ -301,7 +288,6 @@
         <section class="section wrap split" id="experience" aria-labelledby="experience-title">
             <div class="split-lead">
                 <h2 id="experience-title">Where I’ve worked</h2>
-                <img class="portrait" src="images/julius.webp" width="640" height="853" alt="Julius Alibrown" loading="lazy" />
                 <a class="btn btn-secondary" href="https://drive.google.com/file/d/1GiCRpJ4y4slYvIouu8Mrq-16oKYgJNn5/view?usp=sharing" rel="noopener noreferrer" target="_blank">Download my CV</a>
             </div>
             <ol class="graph">
@@ -415,6 +401,7 @@
                         <div><dt>Time in Lagos</dt><dd><span data-clock></span>WAT, UTC+1.</dd></div>
                         <div><dt>Replies</dt><dd>Within a day</dd></div>
                         <div><dt>Open to</dt><dd>Contract and full-time</dd></div>
+                        <div><dt>Elsewhere</dt><dd><a href="https://linkedin.com/in/jabguru" rel="noopener noreferrer" target="_blank">LinkedIn</a>&nbsp;&nbsp; <a href="https://drive.google.com/file/d/1GiCRpJ4y4slYvIouu8Mrq-16oKYgJNn5/view?usp=sharing" rel="noopener noreferrer" target="_blank">CV</a></dd></div>
                     </dl>
                     <a class="btn btn-primary contact-cta"
                         href="mailto:brownjulius980@gmail.com?subject=Project%20enquiry&amp;body=Hi%20Julius%2C%0A%0AI'm%20working%20on%20...">Email me</a>
