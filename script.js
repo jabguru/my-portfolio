@@ -1,92 +1,22 @@
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // ---------------------------------------------------------------------------
-// Hero: the divider between "how it's built" and "what you get".
-// --split is how far across the screen the divider sits, as a percentage.
+// Hero: the pieces around the name lean toward the pointer, each by its own
+// depth, so the nearer ones move more. Touch screens just get the slow drift.
 // ---------------------------------------------------------------------------
-const screen = document.querySelector('[data-split]');
-const handle = screen?.querySelector('.handle');
-
-if (screen && handle) {
-    const MIN = 4;
-    const MAX = 96;
-    let split = 50;
-
-    const describe = (v) => {
-        if (v <= 10) return 'Finished view';
-        if (v >= 90) return 'Construction view';
-        return `${Math.round(v)}% construction, ${Math.round(100 - v)}% finished`;
-    };
-
-    const setSplit = (value) => {
-        split = Math.min(MAX, Math.max(MIN, value));
-        screen.style.setProperty('--split', `${split}%`);
-        handle.setAttribute('aria-valuenow', String(Math.round(split)));
-        handle.setAttribute('aria-valuetext', describe(split));
-    };
-
-    // Tween used by the load sweep, double-click and the keyboard
-    let tween;
-    const animateTo = (target, duration = 500, from = split) => {
-        cancelAnimationFrame(tween);
-        if (reducedMotion) return setSplit(target);
-        const start = performance.now();
-        const step = (now) => {
-            const t = Math.min((now - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - t, 4);
-            screen.style.setProperty('--split', `${from + (target - from) * eased}%`);
-            if (t < 1) tween = requestAnimationFrame(step);
-            else setSplit(target);
-        };
-        tween = requestAnimationFrame(step);
-    };
-
-    // Drag with a mouse, pen or finger
-    const fromPointer = (e) => {
-        const rect = screen.getBoundingClientRect();
-        setSplit(((e.clientX - rect.left) / rect.width) * 100);
-    };
-    let dragging = false;
-    handle.addEventListener('pointerdown', (e) => {
-        cancelAnimationFrame(tween);
-        dragging = true;
-        try { handle.setPointerCapture(e.pointerId); } catch { /* capture is a nicety, not a requirement */ }
-        screen.classList.add('dragging');
-        screen.classList.remove('hint');
+const drift = document.querySelector('[data-drift]');
+if (drift && !reducedMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    const hero = drift.closest('.hero');
+    hero.addEventListener('pointermove', (e) => {
+        const r = drift.getBoundingClientRect();
+        const clamp = (v) => Math.max(-1, Math.min(1, v));
+        drift.style.setProperty('--px', clamp((e.clientX - (r.left + r.width / 2)) / (r.width / 2)).toFixed(3));
+        drift.style.setProperty('--py', clamp((e.clientY - (r.top + r.height / 2)) / (r.height / 2)).toFixed(3));
     });
-    handle.addEventListener('pointermove', (e) => {
-        if (dragging) fromPointer(e);
+    hero.addEventListener('pointerleave', () => {
+        drift.style.setProperty('--px', '0');
+        drift.style.setProperty('--py', '0');
     });
-    const release = () => {
-        dragging = false;
-        screen.classList.remove('dragging');
-    };
-    handle.addEventListener('pointerup', release);
-    handle.addEventListener('pointercancel', release);
-    handle.addEventListener('lostpointercapture', release);
-    handle.addEventListener('dblclick', () => animateTo(50));
-
-    // Keyboard
-    handle.addEventListener('keydown', (e) => {
-        const keys = { ArrowLeft: split - 5, ArrowRight: split + 5, Home: MIN, End: MAX };
-        if (!(e.key in keys)) return;
-        e.preventDefault();
-        screen.classList.remove('hint');
-        animateTo(keys[e.key], 180);
-    });
-
-    // On load the whole screen starts as construction, then the divider
-    // sweeps across and settles in the middle, so the page builds itself.
-    if (reducedMotion) {
-        setSplit(50);
-    } else {
-        screen.style.setProperty('--split', `${MAX}%`);
-        split = MAX;
-        setTimeout(() => {
-            animateTo(50, 1400, MAX);
-            setTimeout(() => screen.classList.add('hint'), 1500);
-        }, 1150);
-    }
 }
 
 // The time in the phone's corner is the real time in Lagos

@@ -35,58 +35,34 @@
     <!-- END: Header -->
 
     <main>
-        <!-- BEGIN: Hero. One phone, bigger than the screen, split into how it's built and what you get. -->
+        <!-- BEGIN: Hero. One phone, bigger than the screen, with the name on it and the tools of the job drifting around it. -->
         <section class="hero" id="top">
             <div class="wrap">
                 <div class="phone">
-                    <div class="screen" data-split>
-                        <!-- Construction view: the same hero as outlines and the Flutter that makes it -->
-                        <div class="layer build" aria-hidden="true">
-                            <div class="status"><span data-lagos-time>14:32</span><span class="status-icons"></span></div>
-                            <p class="side-label">How it’s built</p>
-                            <p class="name">
-                                <span class="box" data-tag="Text('Julius')">Julius</span>
-                                <span class="box tag-below" data-tag="Text('Alibrown')">Alibrown</span>
-                            </p>
-                            <div class="intro">
-                                <p class="box" data-tag="Text">Mobile engineer in Lagos, working with Flutter &amp; Swift. I ship apps people bank on, from first commit to the App Store and Google Play.</p>
-                                <div class="actions">
-                                    <span class="btn box" data-tag="OutlinedButton">See the apps</span>
-                                    <span class="btn box" data-tag="FilledButton">Start a project</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Finished view -->
-                        <div class="layer done">
-                            <div class="status" aria-hidden="true"><span data-lagos-time>14:32</span><span class="status-icons"></span></div>
-                            <p class="side-label" aria-hidden="true">What you get</p>
-                            <h1 class="name"><span>Julius</span> <span>Alibrown</span></h1>
-                            <div class="intro">
-                                <p>Mobile engineer in Lagos, working with Flutter &amp; Swift. I ship apps people bank on, from first commit to the App Store and Google Play.</p>
-                                <div class="actions">
-                                    <a class="btn btn-outline" href="#apps">See the apps</a>
-                                    <a class="btn btn-primary" href="#contact">Start a project</a>
-                                </div>
-                            </div>
-                        </div>
-
+                    <div class="screen" data-drift>
+                        <div class="status" aria-hidden="true"><span data-lagos-time>14:32</span><span class="status-icons"></span></div>
                         <div class="island" aria-hidden="true"></div>
-                        <div class="divider">
-                            <button class="handle" type="button" role="slider" aria-label="Drag to see how this page is built"
-                                aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="Half built, half finished">
-                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- On a phone the sentence and buttons sit under the big phone -->
-                <div class="hero-below">
-                    <p>Mobile engineer in Lagos, working with Flutter &amp; Swift. I ship apps people bank on, from first commit to the App Store and Google Play.</p>
-                    <div class="actions">
-                        <a class="btn btn-primary" href="#contact">Start a project</a>
-                        <a class="btn btn-outline" href="#apps">See the apps</a>
+                        <!-- Drifting pieces: where the apps go, and what they're made of -->
+                        <div class="floaters" aria-hidden="true">
+                            <span class="float f-apple"><span class="ftile ftile-apple"><img src="images/icons/apple.svg" alt="" /></span></span>
+                            <span class="float f-play"><span class="ftile ftile-play"><img src="images/icons/google-play.svg" alt="" /></span></span>
+                            <span class="float f-flutter"><span class="ftile ftile-flutter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.314 0 2.3 12 6 15.7 21.684.013h-7.357zm.014 11.072L7.857 17.53l6.47 6.47H21.7l-6.46-6.468 6.46-6.46h-7.37z" /></svg></span></span>
+                            <span class="float f-code"><span class="ftile ftile-code">&lt;/&gt;</span></span>
+                            <span class="float f-braces"><span class="ftile ftile-braces">{ }</span></span>
+                            <span class="float f-build"><span class="chip chip-lime">build()</span></span>
+                            <span class="float f-swift"><span class="chip">.swift</span></span>
+                            <span class="float f-async"><span class="chip chip-blue">async</span></span>
+                        </div>
+
+                        <h1 class="name"><span>Julius</span> <span>Alibrown</span></h1>
+                        <div class="intro">
+                            <p>Mobile engineer in Lagos, working with Flutter &amp; Swift. I ship apps people bank on, from first commit to the App Store and Google Play.</p>
+                            <div class="actions">
+                                <a class="btn btn-primary" href="#contact">Start a project</a>
+                                <a class="btn btn-outline" href="#apps">See the apps</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

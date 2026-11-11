@@ -113,36 +113,29 @@ h2.display {
 .menu-toggle { display: none; background: none; border: 0; color: inherit; font: 500 17px var(--text); padding: 8px 0; cursor: pointer; }
 
 /* --------------------------------------------------------------------------
-   Hero: one phone, bigger than the screen
+   Hero: one phone, bigger than the screen. Everything on it fits the first screen.
    -------------------------------------------------------------------------- */
-.hero { padding-top: 32px; overflow: hidden; }
+.hero { padding-top: 24px; overflow: hidden; }
 
 .phone {
+    /* Sized from the window height so the name, sentence and buttons are all in view */
+    width: min(100%, (100svh - 270px) * 2.07);
+    margin-inline: auto;
     padding: 12px 12px 0;
     background: #1b1d21;
     box-shadow: 0 0 0 2px #4a4e57;
     border-radius: 112px 112px 0 0;
 }
 .screen {
-    --split: 50%;
+    --px: 0; --py: 0;
     position: relative; overflow: hidden;
+    padding-bottom: 4cqw;
     border-radius: 100px 100px 0 0;
-    background: var(--build-bg);
     container-type: inline-size;
-    touch-action: pan-y;
-}
-
-.layer { padding-bottom: 6cqw; }
-.layer.build {
-    color: var(--ink);
     background:
         linear-gradient(rgba(242, 240, 235, 0.05) 1px, transparent 1px) 0 0 / 4.46cqw 4.46cqw,
         linear-gradient(90deg, rgba(242, 240, 235, 0.05) 1px, transparent 1px) 0 0 / 4.46cqw 4.46cqw,
         var(--build-bg);
-}
-.layer.done {
-    position: absolute; inset: 0; color: var(--dark); background: var(--done-bg);
-    clip-path: inset(0 0 0 var(--split));
 }
 
 .status {
@@ -151,94 +144,87 @@ h2.display {
 }
 .status-icons {
     width: 4.9em; height: 1.25em; background: currentColor;
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 78 20'%3E%3Crect y='12' width='4' height='6' rx='1'/%3E%3Crect x='7' y='9' width='4' height='9' rx='1'/%3E%3Crect x='14' y='5' width='4' height='13' rx='1'/%3E%3Crect x='21' y='2' width='4' height='16' rx='1'/%3E%3Cpath fill-rule='evenodd' d='M43 3h23a5 5 0 0 1 5 5v5a5 5 0 0 1-5 5H43a5 5 0 0 1-5-5V8a5 5 0 0 1 5-5Zm0 1a4 4 0 0 0-4 4v5a4 4 0 0 0 4 4h23a4 4 0 0 0 4-4V8a4 4 0 0 0-4-4H43Z'/%3E%3Crect x='41' y='6' width='24' height='9' rx='2.5'/%3E%3Crect x='72.5' y='8' width='3' height='5' rx='1.5'/%3E%3C/svg%3E") center / contain no-repeat;
-    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 78 20'%3E%3Crect y='12' width='4' height='6' rx='1'/%3E%3Crect x='7' y='9' width='4' height='9' rx='1'/%3E%3Crect x='14' y='5' width='4' height='13' rx='1'/%3E%3Crect x='21' y='2' width='4' height='16' rx='1'/%3E%3Cpath fill-rule='evenodd' d='M43 3h23a5 5 0 0 1 5 5v5a5 5 0 0 1-5 5H43a5 5 0 0 1-5-5V8a5 5 0 0 1 5-5Zm0 1a4 4 0 0 0-4 4v5a4 4 0 0 0 4 4h23a4 4 0 0 0 4-4V8a4 4 0 0 0-4-4H43Z'/%3E%3Crect x='41' y='6' width='24' height='9' rx='2.5'/%3E%3Crect x='72.5' y='8' width='3' height='5' rx='1.5'/%3E%3C/svg%3E") center / contain no-repeat;
+    -webkit-mask: var(--status-icons) center / contain no-repeat; mask: var(--status-icons) center / contain no-repeat;
+    --status-icons: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 78 20'%3E%3Crect y='12' width='4' height='6' rx='1'/%3E%3Crect x='7' y='9' width='4' height='9' rx='1'/%3E%3Crect x='14' y='5' width='4' height='13' rx='1'/%3E%3Crect x='21' y='2' width='4' height='16' rx='1'/%3E%3Cpath fill-rule='evenodd' d='M43 3h23a5 5 0 0 1 5 5v5a5 5 0 0 1-5 5H43a5 5 0 0 1-5-5V8a5 5 0 0 1 5-5Zm0 1a4 4 0 0 0-4 4v5a4 4 0 0 0 4 4h23a4 4 0 0 0 4-4V8a4 4 0 0 0-4-4H43Z'/%3E%3Crect x='41' y='6' width='24' height='9' rx='2.5'/%3E%3Crect x='72.5' y='8' width='3' height='5' rx='1.5'/%3E%3C/svg%3E");
 }
-
-.side-label {
-    position: absolute; top: 3cqw; font: 500 clamp(12px, 1.28cqw, 16px)/1.2 var(--text); opacity: 0.8; white-space: nowrap;
-}
-.build .side-label { right: calc(50% + 12cqw); }
-.done .side-label { left: calc(50% + 12cqw); }
-
 .island {
     position: absolute; top: 1.75cqw; left: 50%; translate: -50% 0;
-    width: 18.3cqw; height: 4.8cqw; border-radius: 99px; background: #050506; z-index: 2;
+    width: 18.3cqw; height: 4.8cqw; border-radius: 99px; background: #050506;
 }
 
 .name {
-    margin-top: 6.6cqw; text-align: center;
-    font: 800 23.25cqw/0.925 var(--display); text-transform: uppercase; letter-spacing: -0.005em;
+    position: relative; z-index: 1;
+    margin-top: 6cqw; text-align: center; color: var(--ink);
+    font: 800 17cqw/0.925 var(--display); text-transform: uppercase; letter-spacing: -0.005em;
     white-space: nowrap;
 }
-.name > span { display: block; width: max-content; margin-inline: auto; }
-.build .name { color: transparent; -webkit-text-stroke: max(1.25px, 0.16cqw) var(--ink); }
+.name > span { display: block; }
 
-/* Dashed bounds with the widget's name */
-.box { position: relative; outline: 1.5px dashed color-mix(in srgb, var(--mark) 90%, transparent); }
-.box::before {
-    content: attr(data-tag); position: absolute; left: 0; bottom: calc(100% + 6px);
-    font: 500 clamp(10px, 1.04cqw, 13px)/1 var(--mono); letter-spacing: 0; text-transform: none;
-    color: var(--mark); -webkit-text-stroke: 0; white-space: nowrap;
-}
-.build .name .box { outline-offset: -1.2cqw; padding-inline: 1.1cqw; }
-.build .name .box::before { bottom: calc(100% - 0.6cqw); }
-.build .name .box.tag-below::before { bottom: auto; top: calc(100% - 0.6cqw); }
-
-.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 2.2cqw; }
-
-
-/* Divider and its handle */
-.divider {
-    position: absolute; top: 6.9cqw; bottom: 0; left: var(--split); width: 4px; margin-left: -2px;
-    background: var(--contree); z-index: 3;
-}
-.handle {
-    position: absolute; left: 50%; top: 2.1cqw; translate: -50% -50%;
-    width: clamp(44px, 4.5cqw, 56px); aspect-ratio: 1; border-radius: 50%; border: 0; padding: 0;
-    display: grid; place-items: center; background: var(--contree); color: #fff;
-    cursor: ew-resize; touch-action: none;
-    transition: scale 0.2s var(--ease), background-color 0.2s;
-}
-.handle svg { width: 44%; height: 44%; }
-.handle:hover, .dragging .handle { scale: 1.1; background: #2b82ff; }
-.handle::after {
-    content: ''; position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--contree); opacity: 0; pointer-events: none;
-}
-.hint .handle::after { animation: ring 1.4s var(--ease) 2; }
-@keyframes ring { from { opacity: 0.9; scale: 1; } to { opacity: 0; scale: 2.1; } }
-.dragging, .dragging * { cursor: ew-resize; user-select: none; }
-
-.hero-below { display: none; }
-
-/* Under the name, centred: who I am and what to do next. Both views share the same
-   geometry so the sentence reads straight across the divider. */
-.intro { margin-top: 2.4cqw; text-align: center; }
-.intro p {
-    max-width: 35em; margin-inline: auto; padding: 0.7em 1em;
-    font-size: clamp(14px, 1.45cqw, 18px); line-height: 1.5;
-}
-.intro .actions { justify-content: center; margin-top: 1.6cqw; }
+.intro { position: relative; z-index: 1; margin-top: 2.4cqw; text-align: center; }
+.intro p { max-width: 35em; margin-inline: auto; padding-inline: 1em; font-size: clamp(15px, 1.45cqw, 18px); line-height: 1.5; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.intro .actions { justify-content: center; margin-top: max(20px, 1.9cqw); }
 .intro .btn { min-width: 11.5em; }
-.build .intro .btn { background: none; border-color: transparent; color: var(--ink); cursor: default; }
-.build .intro .btn::before { bottom: auto; top: calc(100% + 6px); }
-.hero .wrap { position: relative; }
+.intro .btn-outline:hover { background: var(--ink); color: var(--dark); border-color: var(--ink); }
 
-/* Load sequence: the phone rises, the outline is drawn, then the divider sweeps across (script.js) */
+/* Drifting pieces. Each sits at --x/--y, leans by --r, and moves with the pointer by --depth. */
+.float {
+    position: absolute; left: var(--x); top: var(--y);
+    translate: calc(var(--px) * var(--depth, 12) * 1px) calc(var(--py) * var(--depth, 12) * 1px);
+    transition: translate 0.6s var(--ease);
+}
+.ftile, .chip { display: grid; place-items: center; rotate: var(--r, 0deg); }
+.ftile {
+    width: max(40px, 5cqw); aspect-ratio: 1; border-radius: 27%;
+    background: var(--raised); color: var(--ink); box-shadow: inset 0 0 0 1px rgba(242, 240, 235, 0.1);
+    font: 500 max(13px, 1.5cqw)/1 var(--mono);
+}
+.ftile img, .ftile svg { width: 48%; height: 48%; object-fit: contain; }
+.ftile-apple { background: #000; }
+.ftile-apple img { width: 40%; height: 52%; translate: 0 -3%; }
+.ftile-play img { translate: 6% 0; }
+.ftile-flutter { color: var(--mark); }
+.ftile-code { background: var(--contree); color: #fff; box-shadow: none; }
+.ftile-braces { background: var(--ajocard); color: var(--dark); box-shadow: none; width: max(34px, 3.9cqw); }
+.chip {
+    padding: 0.55em 0.95em; border-radius: 99px; background: var(--raised); color: var(--ink);
+    box-shadow: inset 0 0 0 1px rgba(242, 240, 235, 0.1); font: 500 max(12px, 1.1cqw)/1 var(--mono); white-space: nowrap;
+}
+.chip-lime { color: var(--spendory); }
+.chip-blue { color: var(--savesimple); }
+
+.f-apple   { --x: 10.5%; --y: 12.5cqw; --r: -9deg; --depth: 22; --dur: 7s;   --i: 0; }
+.f-play    { --x: 83%;   --y: 10.5cqw; --r: 8deg;  --depth: 26; --dur: 8.5s; --i: 1; }
+.f-flutter { --x: 88.5%; --y: 29cqw;   --r: -6deg; --depth: 14; --dur: 6.5s; --i: 2; }
+.f-code    { --x: 5.5%;  --y: 30cqw;   --r: 7deg;  --depth: 16; --dur: 9s;   --i: 3; }
+.f-braces  { --x: 76.5%; --y: 20.5cqw; --r: 12deg; --depth: 34; --dur: 6s;   --i: 4; }
+.f-build   { --x: 13%;   --y: 23.5cqw; --r: 5deg;  --depth: 30; --dur: 7.5s; --i: 5; }
+.f-swift   { --x: 81%;   --y: 43cqw;   --r: -5deg; --depth: 20; --dur: 8s;   --i: 6; }
+.f-async   { --x: 10%;   --y: 44cqw;   --r: -7deg; --depth: 24; --dur: 6.8s; --i: 7; }
+
+/* Load: the phone rises, the name comes up line by line, then the pieces pop in and start to drift */
 @media (prefers-reduced-motion: no-preference) {
     .js .phone { animation: rise 0.9s var(--ease) both; }
-    .js .build .name .box { animation: draw 0.7s var(--ease) both; }
-    .js .build .name .box:nth-child(1) { animation-delay: 0.35s; }
-    .js .build .name .box:nth-child(2) { animation-delay: 0.5s; }
-    .js .hero-below { animation: rise-small 0.8s 1.3s var(--ease) both; }
-    .js .build .intro .box { animation: fade 0.6s 0.75s ease both; }
-    .js .build .side-label, .js .build .status { animation: fade 0.6s 0.3s ease both; }
-    .js .divider { animation: fade 0.3s 0.9s ease both; }
+    .js .name > span { animation: line-up 0.9s var(--ease) both; }
+    .js .name > span:nth-child(1) { animation-delay: 0.25s; }
+    .js .name > span:nth-child(2) { animation-delay: 0.36s; }
+    .js .intro { animation: line-up 0.8s 0.6s var(--ease) both; }
+    .ftile, .chip {
+        animation: drift var(--dur, 7s) ease-in-out calc(1.5s + var(--i, 0) * 0.09s) infinite alternate;
+    }
+    .js .ftile, .js .chip {
+        animation:
+            pop 0.7s var(--ease) calc(0.75s + var(--i, 0) * 0.09s) both,
+            drift var(--dur, 7s) ease-in-out calc(1.5s + var(--i, 0) * 0.09s) infinite alternate;
+    }
 }
 @keyframes rise { from { opacity: 0; transform: translateY(8%); } }
-@keyframes draw { from { opacity: 0; clip-path: inset(-3cqw 100% -3cqw -1cqw); } to { opacity: 1; clip-path: inset(-3cqw -1cqw -3cqw -1cqw); } }
-@keyframes fade { from { opacity: 0; } }
-@keyframes rise-small { from { opacity: 0; transform: translateY(16px); } }
+@keyframes line-up { from { opacity: 0; transform: translateY(0.18em); } }
+@keyframes pop { from { opacity: 0; scale: 0.3; } }
+@keyframes drift {
+    from { translate: 0 0; rotate: var(--r, 0deg); }
+    to { translate: 0.5cqw -1.1cqw; rotate: calc(var(--r, 0deg) + 5deg); }
+}
 
 /* --------------------------------------------------------------------------
    Apps
@@ -337,8 +323,8 @@ h2.display {
    -------------------------------------------------------------------------- */
 @media (max-width: 1100px) {
     :root { --margin: 40px; }
-    .phone { border-radius: 9vw 9vw 0 0; }
-    .screen { border-radius: 8vw 8vw 0 0; }
+    .phone { border-radius: 9cqw 9cqw 0 0; }
+    .screen { border-radius: 8cqw 8cqw 0 0; }
     .app-inner { gap: 48px; }
     .app-screens img { width: 220px; border-radius: 24px; }
     .stack-rows dt { flex-basis: 280px; }
@@ -370,21 +356,24 @@ h2.display {
     .top nav a { padding: 12px 20px; }
 
     .hero { padding-top: 12px; }
-    .phone { width: 100%; padding: 8px 8px 0; border-radius: 52px 52px 0 0; }
-    .screen { border-radius: 44px 44px 0 0; }
-    .layer { padding-bottom: 30cqw; }
+    .phone { width: min(100%, (100svh - 290px) * 1.2); padding: 8px 8px 0; border-radius: 52px 52px 0 0; }
+    .screen { padding-bottom: 7cqw; border-radius: 44px 44px 0 0; }
     .status { padding: 5.4cqw 7.8cqw 0; }
     .island { top: 3.6cqw; width: 28.7cqw; height: 8.4cqw; }
-    .side-label { top: 20cqw; }
-    .build .side-label { right: calc(50% + 4cqw); }
-    .done .side-label { left: calc(50% + 4cqw); }
-    .name { margin-top: 24cqw; font-size: 26.3cqw; }
-    .divider { top: 15.5cqw; width: 3px; }
-    .handle { top: 76cqw; }
-    .intro { display: none; }
-    .hero-below { display: block; padding-top: 32px; font-size: 19px; line-height: 1.38; }
-    .hero-below .actions { margin-top: 24px; gap: 10px; }
-    .hero-below .btn { flex: 1; padding-inline: 12px; }
+    .name { margin-top: 27cqw; font-size: 26.3cqw; }
+    .intro { margin-top: 4.5cqw; }
+    .intro p { font-size: 16px; padding-inline: 5cqw; }
+    .intro .actions { gap: 10px; padding-inline: 5cqw; flex-wrap: nowrap; }
+    .intro .btn { flex: 1; min-width: 0; padding-inline: 8px; font-size: 16px; }
+    .ftile { width: 11.5cqw; font-size: 4cqw; }
+    .ftile-braces { width: 9.5cqw; }
+    .chip { font-size: 3.4cqw; }
+    .f-apple   { --x: 7%;    --y: 19cqw; }
+    .f-play    { --x: 80.5%; --y: 18.5cqw; }
+    .f-flutter { --x: 61%;   --y: 22cqw; }
+    .f-code    { --x: 26%;   --y: 22.5cqw; }
+    .f-braces  { --x: 45%; --y: 17.5cqw; }
+    .f-build, .f-swift, .f-async { display: none; }
 
     .app-inner, .app:nth-of-type(even) .app-inner { display: flex; flex-direction: column; gap: 20px; min-height: 0; padding-block: 44px 48px; }
     .app-text { display: contents; }
