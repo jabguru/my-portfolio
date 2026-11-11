@@ -167,7 +167,7 @@ h2.display {
 }
 
 .name {
-    margin-top: 5.6cqw; text-align: center;
+    margin-top: 6.6cqw; text-align: center;
     font: 800 23.25cqw/0.925 var(--display); text-transform: uppercase; letter-spacing: -0.005em;
     white-space: nowrap;
 }
@@ -190,11 +190,11 @@ h2.display {
 
 /* Divider and its handle */
 .divider {
-    position: absolute; top: 7.6cqw; bottom: 0; left: var(--split); width: 4px; margin-left: -2px;
+    position: absolute; top: 6.9cqw; bottom: 0; left: var(--split); width: 4px; margin-left: -2px;
     background: var(--contree); z-index: 3;
 }
 .handle {
-    position: absolute; left: 50%; top: 49.4cqw; translate: -50% -50%;
+    position: absolute; left: 50%; top: 2.1cqw; translate: -50% -50%;
     width: clamp(44px, 4.5cqw, 56px); aspect-ratio: 1; border-radius: 50%; border: 0; padding: 0;
     display: grid; place-items: center; background: var(--contree); color: #fff;
     cursor: ew-resize; touch-action: none;
@@ -213,7 +213,7 @@ h2.display {
 
 /* Under the name, centred: who I am and what to do next. Both views share the same
    geometry so the sentence reads straight across the divider. */
-.intro { margin-top: 7.4cqw; text-align: center; }
+.intro { margin-top: 2.4cqw; text-align: center; }
 .intro p {
     max-width: 35em; margin-inline: auto; padding: 0.7em 1em;
     font-size: clamp(14px, 1.45cqw, 18px); line-height: 1.5;
