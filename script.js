@@ -1,95 +1,141 @@
-// ---------------------------------------------------------------------------
-// Hero: the size tag measures the canvas, as debug paint does. On load it
-// counts up from 0 × 0 while the canvas opens; after that it tracks resizes.
-// ---------------------------------------------------------------------------
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const sizeTag = document.querySelector('[data-size]');
-const canvas = document.querySelector('.inspect-canvas');
-const frame = document.querySelector('.inspect-frame');
 
-if (sizeTag && canvas) {
-    let size = { w: canvas.offsetWidth, h: canvas.offsetHeight };
-    let counting = !reducedMotion;
-    const show = (w, h) => {
-        sizeTag.textContent = `${Math.round(w)} × ${Math.round(h)}`;
+// ---------------------------------------------------------------------------
+// Hero: the divider between "how it's built" and "what you get".
+// --split is how far across the screen the divider sits, as a percentage.
+// ---------------------------------------------------------------------------
+const screen = document.querySelector('[data-split]');
+const handle = screen?.querySelector('.handle');
+
+if (screen && handle) {
+    const MIN = 4;
+    const MAX = 96;
+    let split = 50;
+
+    const describe = (v) => {
+        if (v <= 10) return 'Finished view';
+        if (v >= 90) return 'Construction view';
+        return `${Math.round(v)}% construction, ${Math.round(100 - v)}% finished`;
     };
 
-    if ('ResizeObserver' in window) {
-        new ResizeObserver(() => {
-            size = { w: canvas.offsetWidth, h: canvas.offsetHeight };
-            if (!counting) show(size.w, size.h);
-        }).observe(canvas);
-    }
+    const setSplit = (value) => {
+        split = Math.min(MAX, Math.max(MIN, value));
+        screen.style.setProperty('--split', `${split}%`);
+        handle.setAttribute('aria-valuenow', String(Math.round(split)));
+        handle.setAttribute('aria-valuetext', describe(split));
+    };
 
-    if (counting) {
-        // Matches the canvas opening: 150ms in, over 800ms, easing out
-        const start = performance.now() + 150;
+    // Tween used by the load sweep, double-click and the keyboard
+    let tween;
+    const animateTo = (target, duration = 500, from = split) => {
+        cancelAnimationFrame(tween);
+        if (reducedMotion) return setSplit(target);
+        const start = performance.now();
         const step = (now) => {
-            const t = Math.min(Math.max((now - start) / 800, 0), 1);
-            const eased = 1 - Math.pow(1 - t, 3);
-            show(size.w * eased, size.h * eased);
-            if (t < 1) requestAnimationFrame(step);
-            else counting = false;
+            const t = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - t, 4);
+            screen.style.setProperty('--split', `${from + (target - from) * eased}%`);
+            if (t < 1) tween = requestAnimationFrame(step);
+            else setSplit(target);
         };
-        show(0, 0);
-        requestAnimationFrame(step);
+        tween = requestAnimationFrame(step);
+    };
+
+    // Drag with a mouse, pen or finger
+    const fromPointer = (e) => {
+        const rect = screen.getBoundingClientRect();
+        setSplit(((e.clientX - rect.left) / rect.width) * 100);
+    };
+    let dragging = false;
+    handle.addEventListener('pointerdown', (e) => {
+        cancelAnimationFrame(tween);
+        dragging = true;
+        try { handle.setPointerCapture(e.pointerId); } catch { /* capture is a nicety, not a requirement */ }
+        screen.classList.add('dragging');
+        screen.classList.remove('hint');
+    });
+    handle.addEventListener('pointermove', (e) => {
+        if (dragging) fromPointer(e);
+    });
+    const release = () => {
+        dragging = false;
+        screen.classList.remove('dragging');
+    };
+    handle.addEventListener('pointerup', release);
+    handle.addEventListener('pointercancel', release);
+    handle.addEventListener('lostpointercapture', release);
+    handle.addEventListener('dblclick', () => animateTo(50));
+
+    // Keyboard
+    handle.addEventListener('keydown', (e) => {
+        const keys = { ArrowLeft: split - 5, ArrowRight: split + 5, Home: MIN, End: MAX };
+        if (!(e.key in keys)) return;
+        e.preventDefault();
+        screen.classList.remove('hint');
+        animateTo(keys[e.key], 180);
+    });
+
+    // On load the whole screen starts as construction, then the divider
+    // sweeps across and settles in the middle, so the page builds itself.
+    if (reducedMotion) {
+        setSplit(50);
     } else {
-        show(size.w, size.h);
+        screen.style.setProperty('--split', `${MAX}%`);
+        split = MAX;
+        setTimeout(() => {
+            animateTo(50, 1400, MAX);
+            setTimeout(() => screen.classList.add('hint'), 1500);
+        }, 1150);
     }
 }
 
-// Julius drifts a few pixels with the pointer, against the still grid
-if (frame && !reducedMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    const hero = document.querySelector('.hero');
-    hero.addEventListener('pointermove', (e) => {
-        const r = frame.getBoundingClientRect();
-        const clamp = (v) => Math.max(-1, Math.min(1, v));
-        frame.style.setProperty('--mx', clamp((e.clientX - (r.left + r.width / 2)) / (r.width * 1.5)).toFixed(3));
-        frame.style.setProperty('--my', clamp((e.clientY - (r.top + r.height / 2)) / r.height).toFixed(3));
-    });
-    hero.addEventListener('pointerleave', () => {
-        frame.style.setProperty('--mx', '0');
-        frame.style.setProperty('--my', '0');
-    });
-}
-
-// ---------------------------------------------------------------------------
-// Release board: one row open at a time, Spendory first
-// ---------------------------------------------------------------------------
-const releases = [...document.querySelectorAll('.release')];
-
-function setOpen(release, open) {
-    const toggle = release.querySelector('.release-toggle');
-    const detail = document.getElementById(toggle.getAttribute('aria-controls'));
-    toggle.setAttribute('aria-expanded', String(open));
-    detail.hidden = !open;
-    release.classList.toggle('is-open', open);
-}
-
-releases.forEach((release, i) => {
-    setOpen(release, i === 0);
-    release.querySelector('.release-toggle').addEventListener('click', () => {
-        const opening = !release.classList.contains('is-open');
-        releases.forEach((r) => setOpen(r, r === release && opening));
-    });
-});
-
-// ---------------------------------------------------------------------------
-// Contact: the time in Lagos, and an email address you can copy
-// ---------------------------------------------------------------------------
-const clock = document.querySelector('[data-clock]');
-const lagos = document.querySelector('[data-lagos]');
-if (clock || lagos) {
-    const lagosTime = new Intl.DateTimeFormat('en-GB', { timeZone: 'Africa/Lagos', hour: '2-digit', minute: '2-digit' });
+// The time in the phone's corner is the real time in Lagos
+const clocks = document.querySelectorAll('[data-lagos-time]');
+if (clocks.length) {
+    const lagos = new Intl.DateTimeFormat('en-GB', { timeZone: 'Africa/Lagos', hour: '2-digit', minute: '2-digit' });
     const tick = () => {
-        const now = lagosTime.format(new Date());
-        if (clock) clock.textContent = `It’s ${now} now.`;
-        if (lagos) lagos.textContent = `Lagos, ${now} now`;
+        const now = lagos.format(new Date());
+        clocks.forEach((c) => { c.textContent = now; });
     };
     tick();
     setInterval(tick, 15000);
 }
 
+// ---------------------------------------------------------------------------
+// Apps: each panel's screens slide up the first time it comes into view
+// ---------------------------------------------------------------------------
+const panels = document.querySelectorAll('.app');
+if ('IntersectionObserver' in window && !reducedMotion) {
+    const seen = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('in');
+            seen.unobserve(entry.target);
+        });
+    }, { threshold: 0.25 });
+    panels.forEach((p) => seen.observe(p));
+} else {
+    panels.forEach((p) => p.classList.add('in'));
+}
+
+// ---------------------------------------------------------------------------
+// Header menu on small screens
+// ---------------------------------------------------------------------------
+const menuToggle = document.querySelector('.menu-toggle');
+const nav = document.getElementById('nav');
+if (menuToggle && nav) {
+    const setMenu = (open) => {
+        nav.classList.toggle('open', open);
+        menuToggle.setAttribute('aria-expanded', String(open));
+    };
+    menuToggle.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
+    nav.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+}
+
+// ---------------------------------------------------------------------------
+// Contact: copy the email address
+// ---------------------------------------------------------------------------
 const copyButton = document.querySelector('[data-copy]');
 if (copyButton && navigator.clipboard) {
     copyButton.hidden = false;
@@ -102,8 +148,6 @@ if (copyButton && navigator.clipboard) {
             copyButton.textContent = 'Couldn’t copy';
         }
         clearTimeout(reset);
-        reset = setTimeout(() => {
-            copyButton.textContent = 'Copy email';
-        }, 2000);
+        reset = setTimeout(() => { copyButton.textContent = 'Copy email'; }, 2000);
     });
 }
