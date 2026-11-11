@@ -83,7 +83,10 @@ ol, ul { padding: 0; list-style: none; }
 
 .lead { font-size: 24px; line-height: 1.35; letter-spacing: -0.01em; }
 
-.section { padding-top: 140px; }
+.section { padding-block: 120px; }
+/* Every other section sits on a lighter band that runs the full width of the page */
+.band { background: var(--surface); box-shadow: 0 0 0 100vmax var(--surface); clip-path: inset(0 -100vmax); }
+.band .rows > *:nth-child(odd) { background: var(--raised); }
 .section-head { margin-bottom: 48px; }
 .section-head.split { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; }
 h2 { font: 500 36px/1.15 var(--text); letter-spacing: -0.02em; }
@@ -93,7 +96,7 @@ h2.display {
 }
 .aside { max-width: 360px; color: var(--muted); }
 
-.rows > * { display: flex; align-items: center; padding: 20px 24px; }
+.rows > * { display: flex; align-items: center; padding: 16px 24px; }
 .rows > *:nth-child(odd) { background: var(--surface); }
 
 /* --------------------------------------------------------------------------
@@ -120,7 +123,7 @@ h2.display {
     box-shadow: 0 0 0 2px #4a4e57;
     border-radius: 112px 112px 0 0;
     /* Keep the name, sentence and buttons on the first screen */
-    width: min(100%, (100svh - 120px) * 1.36);
+    width: min(100%, (100svh - 310px) * 1.56);
     margin-inline: auto;
 }
 .screen {
@@ -132,7 +135,7 @@ h2.display {
     touch-action: pan-y;
 }
 
-.layer { padding-bottom: 5.5cqw; }
+.layer { padding-bottom: 10.5cqw; }
 .layer.build {
     color: var(--ink);
     background:
@@ -207,7 +210,7 @@ h2.display {
     background: var(--contree); z-index: 3;
 }
 .handle {
-    position: absolute; left: 50%; top: 49cqw; translate: -50% -50%;
+    position: absolute; left: 50%; top: 50.5cqw; translate: -50% -50%;
     width: clamp(48px, 5.1cqw, 64px); aspect-ratio: 1; border-radius: 50%; border: 0; padding: 0;
     display: grid; place-items: center; background: var(--contree); color: #fff;
     cursor: ew-resize; touch-action: none;
@@ -222,7 +225,12 @@ h2.display {
 @keyframes ring { from { opacity: 0.9; scale: 1; } to { opacity: 0; scale: 2.1; } }
 .dragging, .dragging * { cursor: ew-resize; user-select: none; }
 
-.hero-below { display: none; }
+.hero-below { display: flex; align-items: flex-end; justify-content: space-between; gap: 48px; padding-top: 40px; font-size: 24px; line-height: 1.35; letter-spacing: -0.01em; }
+.hero-below { width: min(100%, (100svh - 310px) * 1.56); margin-inline: auto; }
+.hero-below p { max-width: 24em; }
+.hero-below .actions { flex: none; margin-top: 0; }
+.hero-below .btn-outline:hover { background: var(--ink); color: var(--dark); border-color: var(--ink); }
+.hero .wrap { position: relative; }
 
 /* Load sequence: the phone rises, the outline is drawn, then the divider sweeps across (script.js) */
 @media (prefers-reduced-motion: no-preference) {
@@ -230,13 +238,14 @@ h2.display {
     .js .build .name .box { animation: draw 0.7s var(--ease) both; }
     .js .build .name .box:nth-child(1) { animation-delay: 0.35s; }
     .js .build .name .box:nth-child(2) { animation-delay: 0.5s; }
-    .js .build .bottom .box { animation: fade 0.6s 0.75s ease both; }
+    .js .hero-below { animation: rise-small 0.8s 1.3s var(--ease) both; }
     .js .build .side-label, .js .build .status { animation: fade 0.6s 0.3s ease both; }
     .js .divider { animation: fade 0.3s 0.9s ease both; }
 }
 @keyframes rise { from { opacity: 0; transform: translateY(8%); } }
 @keyframes draw { from { opacity: 0; clip-path: inset(-3cqw 100% -3cqw -1cqw); } to { opacity: 1; clip-path: inset(-3cqw -1cqw -3cqw -1cqw); } }
 @keyframes fade { from { opacity: 0; } }
+@keyframes rise-small { from { opacity: 0; transform: translateY(16px); } }
 
 /* --------------------------------------------------------------------------
    Apps
@@ -249,12 +258,11 @@ h2.display {
 .app:nth-of-type(even) .app-screens { order: -1; }
 .app:nth-of-type(even) .app-inner { grid-template-columns: auto 1fr; }
 
-.app-text { display: flex; flex-direction: column; justify-content: space-between; gap: 48px; min-width: 0; }
-.app-role { font-weight: 500; }
+.app-text { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-width: 0; }
 .app h3 { font: 800 clamp(72px, 9.4vw, 136px)/0.9 var(--display); text-transform: uppercase; letter-spacing: -0.005em; }
-.app-title .lead { max-width: 460px; margin-top: 20px; }
-.app-stack { margin-top: 40px; max-width: 520px; font-size: 14px; opacity: 0.72; }
-.badges { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 20px; }
+.app-title .lead { max-width: 460px; margin: 20px auto 0; }
+.app-stack { margin: 32px auto 0; max-width: 520px; font-size: 14px; opacity: 0.72; }
+.badges { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; margin-top: 24px; }
 .badges a, .badges span { display: block; }
 .badges a { transition: transform 0.2s var(--ease); }
 .badges a:hover { transform: translateY(-2px); }
@@ -275,7 +283,7 @@ h2.display {
    Stack
    -------------------------------------------------------------------------- */
 .stack-rows dt { flex: 0 0 410px; color: var(--muted); }
-.stack-rows dd { font-size: 24px; line-height: 1.35; letter-spacing: -0.01em; }
+.stack-rows dd { font-weight: 500; }
 
 /* --------------------------------------------------------------------------
    How I work
@@ -315,7 +323,6 @@ h2.display {
 /* --------------------------------------------------------------------------
    Contact and footer
    -------------------------------------------------------------------------- */
-.contact { padding-bottom: 120px; }
 .email-row { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 24px; background: var(--surface); }
 .email { font: 800 clamp(40px, 6.1vw, 88px)/1 var(--display); text-decoration: none; letter-spacing: -0.005em; overflow-wrap: anywhere; }
 .email:hover { text-decoration: underline; text-decoration-thickness: 4px; text-underline-offset: 8px; }
@@ -354,7 +361,8 @@ h2.display {
     .lead { font-size: 19px; }
     h2 { font-size: 28px; }
     h2.display { font-size: 48px; }
-    .section, #apps { padding-top: 96px; }
+    .section { padding-block: 72px; }
+    #apps { padding-top: 96px; }
     .section-head, #apps .section-head { margin-bottom: 24px; }
     .section-head.split { display: block; }
     .aside { margin-top: 10px; }
@@ -378,19 +386,18 @@ h2.display {
     .build .side-label { right: calc(50% + 4cqw); }
     .done .side-label { left: calc(50% + 4cqw); }
     .name { margin-top: 24cqw; font-size: 26.3cqw; }
-    .bottom { display: none; }
     .divider { top: 15.5cqw; width: 3px; }
     .handle { top: 76cqw; }
-    .hero-below { display: block; padding-top: 32px; font-size: 19px; line-height: 1.38; }
+    .hero-below { display: block; width: 100%; padding-top: 32px; font-size: 19px; line-height: 1.38; }
+    .hero-below .actions { display: flex; }
     .hero-below .actions { margin-top: 24px; gap: 10px; }
     .hero-below .btn { flex: 1; padding-inline: 12px; }
-    .hero-below .btn-outline:hover { background: var(--ink); color: var(--dark); border-color: var(--ink); }
 
     .app-inner, .app:nth-of-type(even) .app-inner { display: flex; flex-direction: column; gap: 20px; min-height: 0; padding-block: 44px 48px; }
     .app-text { display: contents; }
-    .app-role { order: -2; font-size: 14px; font-weight: 400; }
     .app-screens, .app:nth-of-type(even) .app-screens { order: -1; gap: 14px; }
     .app-screens img { width: calc(50% - 7px); border-radius: 20px; translate: none !important; }
+    .app-title { text-align: center; }
     .app h3 { font-size: 68px; margin-top: 8px; }
     .app-title .lead { margin-top: 8px; }
     .app-stack { margin-top: 20px; }
@@ -412,7 +419,6 @@ h2.display {
     .jobs time, .jobs li > span:not(.tile), .jobs strong { grid-column: 2; }
     .projects strong, .projects li > span, .projects a { grid-column: 2; }
 
-    .contact { padding-bottom: 72px; }
     .email-row { flex-direction: column-reverse; align-items: flex-start; padding: 16px; }
     .email { font-size: 7.3vw; white-space: nowrap; }
     .photo-lg { width: 64px; height: 64px; }
