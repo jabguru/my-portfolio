@@ -115,11 +115,16 @@ h2.display {
 /* --------------------------------------------------------------------------
    Hero: one phone, bigger than the screen. Everything on it fits the first screen.
    -------------------------------------------------------------------------- */
-.hero { padding-top: 24px; overflow: hidden; }
+.hero { position: relative; padding-top: 24px; overflow: hidden; }
+/* The phone dissolves into the page instead of ending on a hard edge */
+.hero::after {
+    content: ''; position: absolute; inset: auto 0 -2px; height: 160px; pointer-events: none;
+    background: linear-gradient(to bottom, transparent, var(--ground) 80%);
+}
 
 .phone {
     /* Sized from the window height so the name, sentence and buttons are all in view */
-    width: min(100%, (100svh - 270px) * 2.07);
+    width: min(100%, (100svh - 300px) * 2.26);
     margin-inline: auto;
     padding: 12px 12px 0;
     background: #1b1d21;
@@ -129,7 +134,7 @@ h2.display {
 .screen {
     --px: 0; --py: 0;
     position: relative; overflow: hidden;
-    padding-bottom: 4cqw;
+    padding-bottom: 150px;
     border-radius: 100px 100px 0 0;
     container-type: inline-size;
     background:
@@ -229,11 +234,11 @@ h2.display {
 /* --------------------------------------------------------------------------
    Apps
    -------------------------------------------------------------------------- */
-#apps { padding-top: 140px; }
+#apps { padding-top: 56px; }
 #apps .section-head { margin-bottom: 40px; }
 
 .app { background: var(--field); color: var(--on); overflow: hidden; }
-.app-inner { display: grid; grid-template-columns: 1fr auto; gap: 100px; min-height: 820px; padding-block: 80px; }
+.app-inner { display: grid; grid-template-columns: 1fr auto; gap: 100px; min-height: 100svh; padding-block: 80px; }
 .app:nth-of-type(even) .app-screens { order: -1; }
 .app:nth-of-type(even) .app-inner { grid-template-columns: auto 1fr; }
 
@@ -248,7 +253,7 @@ h2.display {
 .text-link { margin-left: 8px; font-weight: 500; text-underline-offset: 4px; }
 
 .app-screens { display: flex; gap: 24px; align-items: center; }
-.app-screens img { width: 280px; border-radius: 30px; }
+.app-screens img { width: auto; height: min(612px, 100svh - 240px); border-radius: 30px; }
 .app-screens img:first-child { translate: 0 -36px; }
 .app-screens img:last-child { translate: 0 36px; }
 
@@ -326,7 +331,7 @@ h2.display {
     .phone { border-radius: 9cqw 9cqw 0 0; }
     .screen { border-radius: 8cqw 8cqw 0 0; }
     .app-inner { gap: 48px; }
-    .app-screens img { width: 220px; border-radius: 24px; }
+    .app-screens img { height: min(480px, 100svh - 240px); border-radius: 24px; }
     .stack-rows dt { flex-basis: 280px; }
     .about { grid-template-columns: 280px 1fr; }
     .projects em { display: none; }
@@ -341,7 +346,7 @@ h2.display {
     h2 { font-size: 28px; }
     h2.display { font-size: 48px; }
     .section { padding-block: 72px; }
-    #apps { padding-top: 96px; }
+    #apps { padding-top: 32px; }
     .section-head, #apps .section-head { margin-bottom: 24px; }
     .section-head.split { display: block; }
     .aside { margin-top: 10px; }
@@ -357,7 +362,8 @@ h2.display {
 
     .hero { padding-top: 12px; }
     .phone { width: min(100%, (100svh - 290px) * 1.2); padding: 8px 8px 0; border-radius: 52px 52px 0 0; }
-    .screen { padding-bottom: 7cqw; border-radius: 44px 44px 0 0; }
+    .hero::after { height: 110px; }
+    .screen { padding-bottom: 110px; border-radius: 44px 44px 0 0; }
     .status { padding: 5.4cqw 7.8cqw 0; }
     .island { top: 3.6cqw; width: 28.7cqw; height: 8.4cqw; }
     .name { margin-top: 27cqw; font-size: 26.3cqw; }
@@ -375,10 +381,10 @@ h2.display {
     .f-braces  { --x: 45%; --y: 17.5cqw; }
     .f-build, .f-swift, .f-async { display: none; }
 
-    .app-inner, .app:nth-of-type(even) .app-inner { display: flex; flex-direction: column; gap: 20px; min-height: 0; padding-block: 44px 48px; }
+    .app-inner, .app:nth-of-type(even) .app-inner { display: flex; flex-direction: column; justify-content: center; gap: 20px; min-height: 100svh; padding-block: 44px 48px; }
     .app-text { display: contents; }
     .app-screens, .app:nth-of-type(even) .app-screens { order: -1; gap: 14px; }
-    .app-screens img { width: calc(50% - 7px); border-radius: 20px; translate: none !important; }
+    .app-screens img { width: calc(50% - 7px); height: auto; border-radius: 20px; translate: none !important; }
     .app-title { text-align: center; }
     .app h3 { font-size: 68px; margin-top: 8px; }
     .app-title .lead { margin-top: 8px; }
