@@ -152,6 +152,24 @@ if (track) {
 }
 
 // ---------------------------------------------------------------------------
+// Stack: the tool tiles pop in, one after another, the first time it's seen
+// ---------------------------------------------------------------------------
+const stack = document.querySelector('[data-stack]');
+if (stack) {
+    stack.querySelectorAll('.tool-icon').forEach((t, n) => t.style.setProperty('--n', n));
+    if ('IntersectionObserver' in window && !reducedMotion) {
+        const seenStack = new IntersectionObserver(([entry]) => {
+            if (!entry.isIntersecting) return;
+            stack.classList.add('in');
+            seenStack.disconnect();
+        }, { threshold: 0.15 });
+        seenStack.observe(stack);
+    } else {
+        stack.classList.add('in');
+    }
+}
+
+// ---------------------------------------------------------------------------
 // Header menu on small screens
 // ---------------------------------------------------------------------------
 const menuToggle = document.querySelector('.menu-toggle');

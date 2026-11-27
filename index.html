@@ -226,19 +226,93 @@
         <!-- BEGIN: Stack -->
         <section id="stack" class="wrap section" aria-labelledby="stack-title">
             <div class="section-head"><h2 id="stack-title">What I build with</h2></div>
-            <dl class="rows stack-rows">
-                <div><dt>Languages and frameworks</dt><dd>Flutter, Dart, Swift, SwiftUI</dd></div>
-                <div><dt>Architecture</dt><dd>Clean architecture, feature-first modules, Dart workspace monorepo, offline-first sync</dd></div>
-                <div><dt>State management</dt><dd>BLoC, Riverpod</dd></div>
-                <div><dt>Navigation</dt><dd>AutoRoute, GoRouter</dd></div>
-                <div><dt>Networking and data</dt><dd>Dio (REST), Supabase, Firestore, Hive</dd></div>
-                <div><dt>Backend</dt><dd>Supabase Edge Functions, Postgres, TypeScript</dd></div>
-                <div><dt>Payments</dt><dd>RevenueCat, App Store and Google Play in-app purchases</dd></div>
-                <div><dt>Hardware</dt><dd>NFC card reading</dd></div>
-                <div><dt>Monitoring</dt><dd>Sentry, Firebase Crashlytics</dd></div>
-                <div><dt>Analytics</dt><dd>Mixpanel, Firebase Analytics</dd></div>
-                <div><dt>Testing and release</dt><dd>Unit and widget tests, GitHub Actions, Codemagic</dd></div>
-            </dl>
+            <div class="stack-grid" data-stack>
+                <div class="stack-group">
+                    <h3>Languages and frameworks</h3>
+                    <ul class="tools">
+                        <li><span class="tool-icon" aria-hidden="true"><img src="images/stack/flutter.svg" width="24" height="24" alt="" /></span>Flutter</li>
+                        <li><span class="tool-icon" aria-hidden="true"><img src="images/stack/dart.svg" width="24" height="24" alt="" /></span>Dart</li>
+                        <li><span class="tool-icon" aria-hidden="true"><img src="images/stack/swift.svg" width="24" height="24" alt="" /></span>Swift</li>
+                        <li><span class="tool-icon tool-icon-swiftui" aria-hidden="true"><img src="images/stack/swiftui.svg" width="24" height="24" alt="" /></span>SwiftUI</li>
+                    </ul>
+                </div>
+                <div class="stack-group">
+                    <h3>Architecture</h3>
+                    <ul class="tools">
+                        <li><span class="tool-icon" aria-hidden="true"><img src="images/stack/layers.svg" width="24" height="24" alt="" /></span>Clean architecture</li>
+                        <li><span class="tool-icon" aria-hidden="true"><img src="images/stack/modules.svg" width="24" height="24" alt="" /></span>Feature-first modules</li>
+                        <li><span class="tool-icon" aria-hidden="true"><img src="images/stack/monorepo.svg" width="24" height="24" alt="" /></span>Dart workspace monorepo</li>
+                        <li><span class="tool-icon" aria-hidden="true"><img src="images/stack/offline.svg" width="24" height="24" alt="" /></span>Offline-first sync</li>
+                    </ul>
+                </div>
+                <div class="stack-group">
+                    <h3>State management</h3>
+                    <ul class="tools">
+                        <li><span class="tool-icon" aria-hidden="true"><img src="images/stack/flutter-package.svg" width="24" height="24" alt="" /></span>BLoC</li>
+                        <li><span class="tool-icon" aria-hidden="true"><img src="images/stack/riverpod.svg" width="24" height="24" alt="" /></span>Riverpod</li>
+                    </ul>
+                </div>
+                <div class="stack-group">
+                    <h3>Navigation</h3>
+                    <ul class="tools">
+                        <li><span class="tool-icon" aria-hidden="true"><img src="images/stack/flutter-package.svg" width="24" height="24" alt="" /></span>AutoRoute</li>
+                        <li><span class="tool-icon" aria-hidden="true"><img src="images/stack/flutter-package.svg" width="24" height="24" alt="" /></span>GoRouter</li>
+                    </ul>
+                </div>
+                <div class="stack-group">
+                    <h3>Networking and data</h3>
+                    <ul class="tools">
+                        <li><span class="tool-icon" aria-hidden="true"><img src="images/stack/flutter-package.svg" width="24" height="24" alt="" /></span>Dio</li>
+                        <li><span class="tool-icon" aria-hidden="true"><img src="images/stack/supabase.svg" width="24" height="24" alt="" /></span>Supabase</li>
+                        <li><span class="tool-icon" aria-hidden="true"><img src="images/stack/firebase.svg" width="24" height="24" alt="" /></span>Firestore</li>
+                        <li><span class="tool-icon" aria-hidden="true"><img src="images/stack/flutter-package.svg" width="24" height="24" alt="" /></span>Hive</li>
+                    </ul>
+                </div>
+                <div class="stack-group">
+                    <h3>Backend</h3>
+                    <ul class="tools">
+                        <li><span class="tool-icon" aria-hidden="true"><img src="images/stack/supabase.svg" width="24" height="24" alt="" /></span>Supabase Edge Functions</li>
+                        <li><span class="tool-icon" aria-hidden="true"><img src="images/stack/postgresql.svg" width="24" height="24" alt="" /></span>Postgres</li>
+                        <li><span class="tool-icon" aria-hidden="true"><img src="images/stack/typescript.svg" width="24" height="24" alt="" /></span>TypeScript</li>
+                    </ul>
+                </div>
+                <div class="stack-group">
+                    <h3>Payments</h3>
+                    <ul class="tools">
+                        <li><span class="tool-icon" aria-hidden="true"><img src="images/stack/revenuecat.svg" width="24" height="24" alt="" /></span>RevenueCat</li>
+                        <li><span class="tool-icon" aria-hidden="true"><img src="images/stack/appstore.svg" width="24" height="24" alt="" /></span>App Store payments</li>
+                        <li><span class="tool-icon tool-icon-play" aria-hidden="true"><img src="images/stack/../icons/google-play.svg" width="24" height="24" alt="" /></span>Google Play payments</li>
+                    </ul>
+                </div>
+                <div class="stack-group">
+                    <h3>Hardware</h3>
+                    <ul class="tools">
+                        <li><span class="tool-icon" aria-hidden="true"><img src="images/stack/nfc.svg" width="24" height="24" alt="" /></span>NFC card reading</li>
+                    </ul>
+                </div>
+                <div class="stack-group">
+                    <h3>Monitoring</h3>
+                    <ul class="tools">
+                        <li><span class="tool-icon" aria-hidden="true"><img src="images/stack/sentry.svg" width="24" height="24" alt="" /></span>Sentry</li>
+                        <li><span class="tool-icon" aria-hidden="true"><img src="images/stack/firebase.svg" width="24" height="24" alt="" /></span>Firebase Crashlytics</li>
+                    </ul>
+                </div>
+                <div class="stack-group">
+                    <h3>Analytics</h3>
+                    <ul class="tools">
+                        <li><span class="tool-icon" aria-hidden="true"><img src="images/stack/mixpanel.svg" width="24" height="24" alt="" /></span>Mixpanel</li>
+                        <li><span class="tool-icon" aria-hidden="true"><img src="images/stack/firebase.svg" width="24" height="24" alt="" /></span>Firebase Analytics</li>
+                    </ul>
+                </div>
+                <div class="stack-group">
+                    <h3>Testing and release</h3>
+                    <ul class="tools">
+                        <li><span class="tool-icon" aria-hidden="true"><img src="images/stack/tests.svg" width="24" height="24" alt="" /></span>Unit and widget tests</li>
+                        <li><span class="tool-icon" aria-hidden="true"><img src="images/stack/githubactions.svg" width="24" height="24" alt="" /></span>GitHub Actions</li>
+                        <li><span class="tool-icon" aria-hidden="true"><img src="images/stack/codemagic.svg" width="24" height="24" alt="" /></span>Codemagic</li>
+                    </ul>
+                </div>
+            </div>
         </section>
         <!-- END: Stack -->
 
