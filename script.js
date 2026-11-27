@@ -47,18 +47,29 @@ if (track) {
     const tabs = appNav ? [...appNav.querySelectorAll('[data-go]')] : [];
     const tabBox = appNav?.querySelector('.app-tabs');
     const pauseBtn = appNav?.querySelector('[data-pause]');
+    const dotBox = document.querySelector('[data-app-dots]');
+    const dots = slides.map((slide, n) => {
+        if (!dotBox) return null;
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.setAttribute('aria-label', `Show ${tabs[n]?.textContent ?? `app ${n + 1}`}`);
+        b.setAttribute('aria-current', String(n === 0));
+        b.addEventListener('click', () => go(n));
+        dotBox.append(b);
+        return b;
+    });
+    if (dotBox) dotBox.hidden = false;
     let current = 0;
     let inView = false;
 
     const go = (i) => {
         const n = slides.length;
         const target = ((i % n) + n) % n;
-        const left = Math.min(slides[target].offsetLeft - slides[0].offsetLeft, track.scrollWidth - track.clientWidth);
-        track.scrollTo({ left, behavior: reducedMotion ? 'auto' : 'smooth' });
+        track.scrollTo({ left: target * track.clientWidth, behavior: reducedMotion ? 'auto' : 'smooth' });
     };
     const show = (i) => {
         current = i;
-        slides.forEach((s, n) => s.classList.toggle('current', n === i));
+        dots.forEach((d, n) => d?.setAttribute('aria-current', String(n === i)));
         tabs.forEach((t, n) => t.setAttribute('aria-current', String(n === i)));
         // keep the current name visible when the names scroll sideways (phones)
         const tab = tabs[i];
@@ -67,7 +78,6 @@ if (track) {
         }
         if (inView) slides[i].classList.add('in');
     };
-    slides[0].classList.add('current');
 
     // --- slideshow ---------------------------------------------------------
     const autoplay = !reducedMotion && appNav;
@@ -120,11 +130,6 @@ if (track) {
         e.preventDefault();
         go(current + (e.key === 'ArrowRight' ? 1 : -1));
     }));
-    // tapping the app that peeks in at the edge brings it forward
-    track.addEventListener('click', (e) => {
-        const slide = e.target.closest('.app');
-        if (slide && !slide.classList.contains('current') && !e.target.closest('a')) go(slides.indexOf(slide));
-    });
 
     if ('IntersectionObserver' in window) {
         const seen = new IntersectionObserver((entries) => {

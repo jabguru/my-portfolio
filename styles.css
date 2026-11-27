@@ -272,17 +272,29 @@ h2.display {
 .arrow:disabled { opacity: 0.35; cursor: default; }
 .arrow svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
+.app-slider { position: relative; }
 .app-track {
-    --peek: 72px;
-    display: flex; gap: 10px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory;
+    display: flex; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory;
     scroll-behavior: smooth; scrollbar-width: none;
 }
 .app-track::-webkit-scrollbar { display: none; }
 .app-track:focus-visible { outline: 2px solid var(--ink); outline-offset: -2px; }
 
-/* each app is a little narrower than the screen, so the next one peeks in on the right */
-.app { flex: 0 0 calc(100% - var(--peek)); scroll-snap-align: start; scroll-snap-stop: always; transition: opacity 0.5s var(--ease); background: var(--field); color: var(--on); overflow: hidden; }
-.js .app:not(.current) { opacity: 0.45; cursor: pointer; }
+.app { flex: 0 0 100%; scroll-snap-align: start; scroll-snap-stop: always; background: var(--field); color: var(--on); overflow: hidden; }
+/* Dots over the bottom of the slide, on a see-through pill so they read on every app colour */
+.app-dots {
+    position: absolute; left: 50%; bottom: 22px; translate: -50% 0; display: flex; gap: 4px; padding: 6px 8px;
+    border-radius: 999px; background: rgba(14, 15, 17, 0.28); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.app-dots[hidden] { display: none; }
+.app-dots button { display: grid; place-items: center; width: 20px; height: 20px; padding: 0; border: 0; background: none; cursor: pointer; }
+.app-dots button::before {
+    content: ''; width: 8px; height: 8px; border-radius: 999px; background: rgba(255, 255, 255, 0.45);
+    transition: width 0.35s var(--ease), background 0.2s;
+}
+.app-dots button:hover::before { background: rgba(255, 255, 255, 0.8); }
+.app-dots button[aria-current="true"] { width: 32px; }
+.app-dots button[aria-current="true"]::before { width: 24px; background: #fff; }
 .app-inner { display: grid; grid-template-columns: 1fr auto; gap: 100px; min-height: calc(100svh - 132px); padding-block: 56px; }
 
 .app-text { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-width: 0; }
@@ -433,10 +445,10 @@ h2.display {
     .f-braces  { --x: 45%; --y: 17.5cqw; }
     .f-build, .f-swift, .f-async { display: none; }
 
-    .app-track { --peek: 28px; gap: 6px; }
+    .app-dots { top: 14px; bottom: auto; }
     /* phones swipe, so only the pause button stays beside the names */
     .app-arrows [data-prev], .app-arrows [data-next] { display: none; }
-    .app-inner { display: flex; flex-direction: column; justify-content: center; gap: 20px; min-height: auto; padding-block: 24px 32px; }
+    .app-inner { display: flex; flex-direction: column; justify-content: center; gap: 20px; min-height: auto; padding-block: 56px 32px; }
     .app-text { display: contents; }
     .app-screens { order: -1; gap: 14px; }
     .app-nav { gap: 16px; margin-top: 14px; }
