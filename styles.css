@@ -253,6 +253,16 @@ h2.display {
 .app-tabs button:hover { color: var(--ink); }
 .app-tabs button[aria-current="true"] { color: var(--ink); }
 .app-tabs button[aria-current="true"]::after { scale: 1 1; }
+/* While the slideshow runs, the current name's line fills up as a timer */
+.app-nav.autoplay .app-tabs button[aria-current="true"]::after { animation: dwell var(--dwell, 6s) linear both; opacity: 1; }
+.app-nav.autoplay .app-tabs button::before {
+    content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--ink); opacity: 0.18;
+}
+.app-nav.autoplay.paused .app-tabs button::after { animation-play-state: paused; }
+@keyframes dwell { from { scale: 0 1; } to { scale: 1 1; } }
+.arrow .i-play, .arrow.is-paused .i-pause { display: none; }
+.arrow.is-paused .i-play { display: block; }
+.arrow .i-play path { fill: currentColor; stroke: none; }
 .app-arrows { display: flex; gap: 10px; flex: none; }
 .arrow {
     display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 50%;
@@ -263,13 +273,16 @@ h2.display {
 .arrow svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
 .app-track {
-    display: flex; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory;
+    --peek: 72px;
+    display: flex; gap: 10px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory;
     scroll-behavior: smooth; scrollbar-width: none;
 }
 .app-track::-webkit-scrollbar { display: none; }
 .app-track:focus-visible { outline: 2px solid var(--ink); outline-offset: -2px; }
 
-.app { flex: 0 0 100%; scroll-snap-align: start; scroll-snap-stop: always; background: var(--field); color: var(--on); overflow: hidden; }
+/* each app is a little narrower than the screen, so the next one peeks in on the right */
+.app { flex: 0 0 calc(100% - var(--peek)); scroll-snap-align: start; scroll-snap-stop: always; transition: opacity 0.5s var(--ease); background: var(--field); color: var(--on); overflow: hidden; }
+.js .app:not(.current) { opacity: 0.45; cursor: pointer; }
 .app-inner { display: grid; grid-template-columns: 1fr auto; gap: 100px; min-height: calc(100svh - 132px); padding-block: 56px; }
 
 .app-text { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-width: 0; }
@@ -420,6 +433,9 @@ h2.display {
     .f-braces  { --x: 45%; --y: 17.5cqw; }
     .f-build, .f-swift, .f-async { display: none; }
 
+    .app-track { --peek: 28px; gap: 6px; }
+    /* phones swipe, so only the pause button stays beside the names */
+    .app-arrows [data-prev], .app-arrows [data-next] { display: none; }
     .app-inner { display: flex; flex-direction: column; justify-content: center; gap: 20px; min-height: auto; padding-block: 24px 32px; }
     .app-text { display: contents; }
     .app-screens { order: -1; gap: 14px; }

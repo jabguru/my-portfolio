@@ -33,48 +33,98 @@ if (clocks.length) {
 
 // ---------------------------------------------------------------------------
 // Apps: a sideways slider. Swiping and trackpads scroll the track natively;
-// the names and arrows jump to an app, and the screens slide up the first
-// time each app is shown.
+// the names and arrows jump to an app. It moves on by itself every few
+// seconds (the current name's line fills up as the timer), and holds still
+// while the pointer is over it, something in it has focus, it's off screen,
+// or the visitor pressed pause. Reduced motion: no slideshow.
 // ---------------------------------------------------------------------------
 const track = document.querySelector('.app-track');
 const appNav = document.querySelector('[data-app-nav]');
 if (track) {
+    const DWELL = 6000;
+    const section = track.closest('section');
     const slides = [...track.querySelectorAll('.app')];
     const tabs = appNav ? [...appNav.querySelectorAll('[data-go]')] : [];
-    const prev = appNav?.querySelector('[data-prev]');
-    const next = appNav?.querySelector('[data-next]');
     const tabBox = appNav?.querySelector('.app-tabs');
+    const pauseBtn = appNav?.querySelector('[data-pause]');
     let current = 0;
     let inView = false;
 
     const go = (i) => {
-        const target = Math.max(0, Math.min(slides.length - 1, i));
-        track.scrollTo({ left: target * track.clientWidth, behavior: reducedMotion ? 'auto' : 'smooth' });
+        const n = slides.length;
+        const target = ((i % n) + n) % n;
+        const left = Math.min(slides[target].offsetLeft - slides[0].offsetLeft, track.scrollWidth - track.clientWidth);
+        track.scrollTo({ left, behavior: reducedMotion ? 'auto' : 'smooth' });
     };
     const show = (i) => {
         current = i;
+        slides.forEach((s, n) => s.classList.toggle('current', n === i));
         tabs.forEach((t, n) => t.setAttribute('aria-current', String(n === i)));
         // keep the current name visible when the names scroll sideways (phones)
         const tab = tabs[i];
         if (tab && tabBox && tabBox.scrollWidth > tabBox.clientWidth) {
             tabBox.scrollTo({ left: tab.offsetLeft - tabBox.offsetLeft - 8, behavior: reducedMotion ? 'auto' : 'smooth' });
         }
-        if (prev) prev.disabled = i === 0;
-        if (next) next.disabled = i === slides.length - 1;
         if (inView) slides[i].classList.add('in');
     };
+    slides[0].classList.add('current');
 
+    // --- slideshow ---------------------------------------------------------
+    const autoplay = !reducedMotion && appNav;
+    const hold = { hover: false, focus: false, user: false };
+    const sync = () => {
+        if (!autoplay) return;
+        const paused = hold.hover || hold.focus || hold.user || !inView || document.hidden;
+        appNav.classList.toggle('paused', paused);
+    };
+    // start the current name's timer again from zero
+    const restart = () => {
+        if (!autoplay) return;
+        appNav.classList.remove('autoplay');
+        void appNav.offsetWidth;
+        appNav.classList.add('autoplay');
+    };
+    if (autoplay) {
+        appNav.style.setProperty('--dwell', `${DWELL}ms`);
+        appNav.classList.add('autoplay');
+        appNav.addEventListener('animationend', (e) => {
+            if (e.animationName === 'dwell') go(current + 1);
+        });
+        section.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') { hold.hover = true; sync(); } });
+        section.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') { hold.hover = false; sync(); } });
+        section.addEventListener('focusin', () => { hold.focus = true; sync(); });
+        section.addEventListener('focusout', (e) => { if (!section.contains(e.relatedTarget)) { hold.focus = false; sync(); } });
+        document.addEventListener('visibilitychange', sync);
+        // a finger on the slider resets the timer so it never moves mid-swipe
+        track.addEventListener('touchstart', restart, { passive: true });
+        if (pauseBtn) {
+            pauseBtn.hidden = false;
+            pauseBtn.addEventListener('click', () => {
+                hold.user = !hold.user;
+                pauseBtn.classList.toggle('is-paused', hold.user);
+                pauseBtn.setAttribute('aria-label', hold.user ? 'Play the slideshow' : 'Pause the slideshow');
+                sync();
+            });
+        }
+    }
+
+    // --- controls ----------------------------------------------------------
     if (appNav) {
         appNav.hidden = false;
         tabs.forEach((t) => t.addEventListener('click', () => go(Number(t.dataset.go))));
-        prev?.addEventListener('click', () => go(current - 1));
-        next?.addEventListener('click', () => go(current + 1));
+        appNav.querySelector('[data-prev]')?.addEventListener('click', () => go(current - 1));
+        appNav.querySelector('[data-next]')?.addEventListener('click', () => go(current + 1));
     }
     [track, appNav].forEach((el) => el?.addEventListener('keydown', (e) => {
         if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
         e.preventDefault();
         go(current + (e.key === 'ArrowRight' ? 1 : -1));
     }));
+    // tapping the app that peeks in at the edge brings it forward
+    track.addEventListener('click', (e) => {
+        const slide = e.target.closest('.app');
+        if (slide && !slide.classList.contains('current') && !e.target.closest('a')) go(slides.indexOf(slide));
+    });
 
     if ('IntersectionObserver' in window) {
         const seen = new IntersectionObserver((entries) => {
@@ -83,15 +133,17 @@ if (track) {
             });
         }, { root: track, threshold: 0.6 });
         slides.forEach((s) => seen.observe(s));
-        // screens only animate once the slider itself is on screen
+        // screens animate, and the slideshow runs, only while the slider is on screen
         new IntersectionObserver(([entry]) => {
             inView = entry.isIntersecting;
             if (inView) slides[current].classList.add('in');
+            sync();
         }, { threshold: 0.25 }).observe(track);
     } else {
         slides.forEach((s) => s.classList.add('in'));
     }
     if (reducedMotion) slides.forEach((s) => s.classList.add('in'));
+    sync();
 }
 
 // ---------------------------------------------------------------------------
