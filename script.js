@@ -32,20 +32,66 @@ if (clocks.length) {
 }
 
 // ---------------------------------------------------------------------------
-// Apps: each panel's screens slide up the first time it comes into view
+// Apps: a sideways slider. Swiping and trackpads scroll the track natively;
+// the names and arrows jump to an app, and the screens slide up the first
+// time each app is shown.
 // ---------------------------------------------------------------------------
-const panels = document.querySelectorAll('.app');
-if ('IntersectionObserver' in window && !reducedMotion) {
-    const seen = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            entry.target.classList.add('in');
-            seen.unobserve(entry.target);
-        });
-    }, { threshold: 0.25 });
-    panels.forEach((p) => seen.observe(p));
-} else {
-    panels.forEach((p) => p.classList.add('in'));
+const track = document.querySelector('.app-track');
+const appNav = document.querySelector('[data-app-nav]');
+if (track) {
+    const slides = [...track.querySelectorAll('.app')];
+    const tabs = appNav ? [...appNav.querySelectorAll('[data-go]')] : [];
+    const prev = appNav?.querySelector('[data-prev]');
+    const next = appNav?.querySelector('[data-next]');
+    const tabBox = appNav?.querySelector('.app-tabs');
+    let current = 0;
+    let inView = false;
+
+    const go = (i) => {
+        const target = Math.max(0, Math.min(slides.length - 1, i));
+        track.scrollTo({ left: target * track.clientWidth, behavior: reducedMotion ? 'auto' : 'smooth' });
+    };
+    const show = (i) => {
+        current = i;
+        tabs.forEach((t, n) => t.setAttribute('aria-current', String(n === i)));
+        // keep the current name visible when the names scroll sideways (phones)
+        const tab = tabs[i];
+        if (tab && tabBox && tabBox.scrollWidth > tabBox.clientWidth) {
+            tabBox.scrollTo({ left: tab.offsetLeft - tabBox.offsetLeft - 8, behavior: reducedMotion ? 'auto' : 'smooth' });
+        }
+        if (prev) prev.disabled = i === 0;
+        if (next) next.disabled = i === slides.length - 1;
+        if (inView) slides[i].classList.add('in');
+    };
+
+    if (appNav) {
+        appNav.hidden = false;
+        tabs.forEach((t) => t.addEventListener('click', () => go(Number(t.dataset.go))));
+        prev?.addEventListener('click', () => go(current - 1));
+        next?.addEventListener('click', () => go(current + 1));
+    }
+    [track, appNav].forEach((el) => el?.addEventListener('keydown', (e) => {
+        if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+        e.preventDefault();
+        go(current + (e.key === 'ArrowRight' ? 1 : -1));
+    }));
+
+    if ('IntersectionObserver' in window) {
+        const seen = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) show(slides.indexOf(entry.target));
+            });
+        }, { root: track, threshold: 0.6 });
+        slides.forEach((s) => seen.observe(s));
+        // screens only animate once the slider itself is on screen
+        new IntersectionObserver(([entry]) => {
+            inView = entry.isIntersecting;
+            if (inView) slides[current].classList.add('in');
+        }, { threshold: 0.25 }).observe(track);
+    } else {
+        slides.forEach((s) => s.classList.add('in'));
+    }
+    if (reducedMotion) slides.forEach((s) => s.classList.add('in'));
 }
 
 // ---------------------------------------------------------------------------

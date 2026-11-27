@@ -71,11 +71,27 @@
 
         <!-- BEGIN: Apps -->
         <section id="apps" aria-labelledby="apps-title">
-            <div class="wrap section-head">
+            <div class="wrap section-head apps-head">
                 <h2 id="apps-title">Apps I’ve shipped</h2>
+                <div class="app-nav" data-app-nav hidden>
+                    <div class="app-tabs">
+                        <button type="button" data-go="0" aria-current="true">Contree</button>
+                        <button type="button" data-go="1">TellerOne</button>
+                        <button type="button" data-go="2">AjoCard</button>
+                        <button type="button" data-go="3">Save Simple</button>
+                        <button type="button" data-go="4">Spendory</button>
+                        <button type="button" data-go="5">iJot</button>
+                    </div>
+                    <div class="app-arrows">
+                        <button type="button" class="arrow" data-prev aria-label="Previous app" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg></button>
+                        <button type="button" class="arrow" data-next aria-label="Next app"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></button>
+                    </div>
+                </div>
             </div>
 
-            <article class="app" style="--field: var(--contree); --on: var(--ink)">
+            <div class="app-track" tabindex="0" aria-roledescription="carousel" aria-label="Apps I’ve shipped">
+
+            <article class="app" style="--field: var(--contree); --on: var(--ink)" aria-roledescription="slide" aria-label="1 of 6: Contree">
                 <div class="wrap app-inner">
                     <div class="app-text">
                         <div class="app-title">
@@ -95,7 +111,7 @@
                 </div>
             </article>
 
-            <article class="app" style="--field: var(--tellerone); --on: var(--ink)">
+            <article class="app" style="--field: var(--tellerone); --on: var(--ink)" aria-roledescription="slide" aria-label="2 of 6: TellerOne">
                 <div class="wrap app-inner">
                     <div class="app-text">
                         <div class="app-title">
@@ -115,7 +131,7 @@
                 </div>
             </article>
 
-            <article class="app" style="--field: var(--ajocard); --on: var(--dark)">
+            <article class="app" style="--field: var(--ajocard); --on: var(--dark)" aria-roledescription="slide" aria-label="3 of 6: AjoCard">
                 <div class="wrap app-inner">
                     <div class="app-text">
                         <div class="app-title">
@@ -136,7 +152,7 @@
                 </div>
             </article>
 
-            <article class="app" style="--field: var(--savesimple); --on: var(--dark)">
+            <article class="app" style="--field: var(--savesimple); --on: var(--dark)" aria-roledescription="slide" aria-label="4 of 6: Save Simple">
                 <div class="wrap app-inner">
                     <div class="app-text">
                         <div class="app-title">
@@ -157,7 +173,7 @@
                 </div>
             </article>
 
-            <article class="app" style="--field: var(--spendory); --on: var(--dark)">
+            <article class="app" style="--field: var(--spendory); --on: var(--dark)" aria-roledescription="slide" aria-label="5 of 6: Spendory">
                 <div class="wrap app-inner">
                     <div class="app-text">
                         <div class="app-title">
@@ -178,7 +194,7 @@
                 </div>
             </article>
 
-            <article class="app" style="--field: var(--ijot); --on: var(--ink)">
+            <article class="app" style="--field: var(--ijot); --on: var(--ink)" aria-roledescription="slide" aria-label="6 of 6: iJot">
                 <div class="wrap app-inner">
                     <div class="app-text">
                         <div class="app-title">
@@ -199,6 +215,7 @@
                     </div>
                 </div>
             </article>
+            </div>
         </section>
         <!-- END: Apps -->
 
@@ -255,10 +272,10 @@
                     <a class="btn btn-light" href="https://drive.google.com/file/d/1GiCRpJ4y4slYvIouu8Mrq-16oKYgJNn5/view?usp=sharing" rel="noopener noreferrer" target="_blank">Download my CV</a>
                 </div>
                 <ol class="rows jobs">
-                    <li><span class="tile" style="--tile: var(--ajocard); --tile-on: var(--dark)" aria-hidden="true">A</span><strong>AjoCard Limited</strong><span>Mobile engineer. AjoCard and Save Simple.</span><time>Aug 2026 to now</time></li>
-                    <li><span class="tile" style="--tile: var(--contree); --tile-on: var(--ink)" aria-hidden="true">C</span><strong>Contree</strong><span>Founding mobile engineer. From the first commit to both stores.</span><time>Nov 2025 to Aug 2026</time></li>
-                    <li><span class="tile" style="--tile: var(--tellerone); --tile-on: var(--ink)" aria-hidden="true">T</span><strong>TellerOne</strong><span>Flutter developer. Live on both stores.</span><time>Apr 2024 to Nov 2025</time></li>
-                    <li><span class="tile" style="--tile: var(--raised); --tile-on: var(--ink)" aria-hidden="true">S</span><strong>Sisu Von</strong><span>Flutter developer.</span><time>Nov 2022 to Apr 2024</time></li>
+                    <li><span class="tile tile-mark" aria-hidden="true"><img src="images/logos/Ajocard.svg" width="40" height="40" alt="" /></span><strong>AjoCard Limited</strong><span>Mobile engineer. AjoCard and Save Simple.</span><time>Aug 2026 to now</time></li>
+                    <li><span class="tile" aria-hidden="true"><img src="images/logos/contree.webp" width="40" height="40" alt="" /></span><strong>Contree</strong><span>Founding mobile engineer. From the first commit to both stores.</span><time>Nov 2025 to Aug 2026</time></li>
+                    <li><span class="tile" aria-hidden="true"><img src="images/logos/tellerone.webp" width="40" height="40" alt="" /></span><strong>TellerOne</strong><span>Flutter developer. Live on both stores.</span><time>Apr 2024 to Nov 2025</time></li>
+                    <li><span class="tile tile-mark" aria-hidden="true"><img src="images/logos/sisuvon.svg" width="40" height="40" alt="" /></span><strong>Sisu Von</strong><span>Flutter developer.</span><time>Nov 2022 to Apr 2024</time></li>
                 </ol>
             </div>
         </section>

@@ -235,12 +235,42 @@ h2.display {
    Apps
    -------------------------------------------------------------------------- */
 #apps { padding-top: 56px; }
-#apps .section-head { margin-bottom: 40px; }
+#apps .section-head { margin-bottom: 32px; }
+.apps-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; }
 
-.app { background: var(--field); color: var(--on); overflow: hidden; }
-.app-inner { display: grid; grid-template-columns: 1fr auto; gap: 100px; min-height: 100svh; padding-block: 80px; }
-.app:nth-of-type(even) .app-screens { order: -1; }
-.app:nth-of-type(even) .app-inner { grid-template-columns: auto 1fr; }
+/* Slider controls: the app names double as the dots */
+.app-nav { display: flex; align-items: center; gap: 28px; min-width: 0; }
+.app-nav[hidden] { display: none; }
+.app-tabs { display: flex; gap: 22px; }
+.app-tabs button {
+    position: relative; padding: 10px 0; border: 0; background: none; color: var(--muted);
+    font: 500 15px/1 var(--text); white-space: nowrap; cursor: pointer; transition: color 0.2s;
+}
+.app-tabs button::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--ink);
+    scale: 0 1; transform-origin: left; transition: scale 0.35s var(--ease);
+}
+.app-tabs button:hover { color: var(--ink); }
+.app-tabs button[aria-current="true"] { color: var(--ink); }
+.app-tabs button[aria-current="true"]::after { scale: 1 1; }
+.app-arrows { display: flex; gap: 10px; flex: none; }
+.arrow {
+    display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 50%;
+    background: var(--raised); color: var(--ink); cursor: pointer; transition: background 0.2s, opacity 0.2s;
+}
+.arrow:hover:not(:disabled) { background: #30343a; }
+.arrow:disabled { opacity: 0.35; cursor: default; }
+.arrow svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+.app-track {
+    display: flex; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory;
+    scroll-behavior: smooth; scrollbar-width: none;
+}
+.app-track::-webkit-scrollbar { display: none; }
+.app-track:focus-visible { outline: 2px solid var(--ink); outline-offset: -2px; }
+
+.app { flex: 0 0 100%; scroll-snap-align: start; scroll-snap-stop: always; background: var(--field); color: var(--on); overflow: hidden; }
+.app-inner { display: grid; grid-template-columns: 1fr auto; gap: 100px; min-height: calc(100svh - 132px); padding-block: 56px; }
 
 .app-text { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-width: 0; }
 .app h3 { font: 800 clamp(72px, 9.4vw, 136px)/0.9 var(--display); text-transform: uppercase; letter-spacing: -0.005em; }
@@ -253,7 +283,7 @@ h2.display {
 .text-link { margin-left: 8px; font-weight: 500; text-underline-offset: 4px; }
 
 .app-screens { display: flex; gap: 24px; align-items: center; }
-.app-screens img { width: auto; height: min(612px, 100svh - 240px); border-radius: 30px; }
+.app-screens img { width: auto; height: min(612px, 100svh - 300px); border-radius: 30px; }
 .app-screens img:first-child { translate: 0 -36px; }
 .app-screens img:last-child { translate: 0 36px; }
 
@@ -261,6 +291,9 @@ h2.display {
     .js .app-screens img { transition: opacity 0.8s var(--ease), transform 0.9s var(--ease); }
     .js .app:not(.in) .app-screens img { opacity: 0; transform: translateY(60px); }
     .js .app-screens img:last-child { transition-delay: 0.12s; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .app-track { scroll-behavior: auto; }
 }
 
 /* --------------------------------------------------------------------------
@@ -292,7 +325,10 @@ h2.display {
 .jobs strong { flex: 0 0 204px; font-weight: 500; }
 .jobs li > span:not(.tile) { flex: 1; }
 .jobs time { color: var(--muted); white-space: nowrap; }
-.tile { display: grid; place-items: center; width: 36px; height: 36px; flex: none; background: var(--tile); color: var(--tile-on); font-weight: 500; }
+.tile { display: block; width: 40px; height: 40px; flex: none; overflow: hidden; border-radius: 10px; background: var(--raised); }
+.tile img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.tile-mark { display: grid; place-items: center; background: var(--ground); box-shadow: inset 0 0 0 1px #30343a; }
+.tile-mark img { width: 70%; height: 70%; object-fit: contain; }
 
 /* --------------------------------------------------------------------------
    Side projects
@@ -331,7 +367,10 @@ h2.display {
     .phone { border-radius: 9cqw 9cqw 0 0; }
     .screen { border-radius: 8cqw 8cqw 0 0; }
     .app-inner { gap: 48px; }
-    .app-screens img { height: min(480px, 100svh - 240px); border-radius: 24px; }
+    .app-screens img { height: min(480px, 100svh - 300px); border-radius: 24px; }
+    .apps-head { display: block; }
+    .app-nav { justify-content: space-between; margin-top: 20px; }
+    .app-tabs { overflow-x: auto; scrollbar-width: none; }
     .stack-rows dt { flex-basis: 280px; }
     .about { grid-template-columns: 280px 1fr; }
     .projects em { display: none; }
@@ -381,9 +420,12 @@ h2.display {
     .f-braces  { --x: 45%; --y: 17.5cqw; }
     .f-build, .f-swift, .f-async { display: none; }
 
-    .app-inner, .app:nth-of-type(even) .app-inner { display: flex; flex-direction: column; justify-content: center; gap: 20px; min-height: 100svh; padding-block: 44px 48px; }
+    .app-inner { display: flex; flex-direction: column; justify-content: center; gap: 20px; min-height: auto; padding-block: 24px 32px; }
     .app-text { display: contents; }
-    .app-screens, .app:nth-of-type(even) .app-screens { order: -1; gap: 14px; }
+    .app-screens { order: -1; gap: 14px; }
+    .app-nav { gap: 16px; margin-top: 14px; }
+    .app-tabs { gap: 18px; margin-right: -4px; mask-image: linear-gradient(to right, #000 85%, transparent); }
+    .app-tabs::-webkit-scrollbar { display: none; }
     .app-screens img { width: calc(50% - 7px); height: auto; border-radius: 20px; translate: none !important; }
     .app-title { text-align: center; }
     .app h3 { font-size: 68px; margin-top: 8px; }
