@@ -86,6 +86,7 @@ ol, ul { padding: 0; list-style: none; }
 .section { padding-block: 120px; }
 /* Every other section sits on a lighter band that runs the full width of the page */
 .band { background: var(--surface); box-shadow: 0 0 0 100vmax var(--surface); clip-path: inset(0 -100vmax); }
+.band .rows > *:nth-child(odd) { background: var(--raised); }
 .section-head { margin-bottom: 48px; }
 .section-head.split { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; }
 h2 { font: 500 36px/1.15 var(--text); letter-spacing: -0.02em; }
@@ -94,6 +95,9 @@ h2.display {
     max-width: 9.5em;
 }
 .aside { max-width: 360px; color: var(--muted); }
+
+.rows > * { display: flex; align-items: center; padding: 16px 24px; }
+.rows > *:nth-child(odd) { background: var(--surface); }
 
 
 /* --------------------------------------------------------------------------
@@ -479,6 +483,8 @@ h2.display {
     .app h3 { font-size: 68px; margin-top: 8px; }
     .app-title .lead { margin-top: 8px; }
     .app-stack { margin-top: 20px; }
+
+    .rows > * { padding: 14px; }
 
     .stack-grid { grid-template-columns: 1fr; gap: 12px; }
     .stack-group:last-child { grid-column: auto; }
